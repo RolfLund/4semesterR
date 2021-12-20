@@ -1,4 +1,4 @@
 baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+languageCode = 'da'
+title = '4. Semester - Introduktion til kvantitativ metode'
 theme = "learn"
