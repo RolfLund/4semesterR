@@ -1,6 +1,6 @@
 ---
 
-title: "So this is another index"
+title: "Basisfunktionerne i R"
 date: 2021-12-20T08:08:52+01:00
 draft: false
 
@@ -8,7 +8,7 @@ draft: false
 
 
 
-## Where is this even?
+## Basisfunktionerne i R
 
 
 
