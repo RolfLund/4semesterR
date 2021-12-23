@@ -10,7 +10,7 @@ draft: false
 Siden fungerer som et sted hvor vi præsenterer jer for mange forskellige visuelle virkemidler. Links kan forekomme i teksten, og links vil altid forekomme [som tekst i anden farve I kan trykke på.](https://youtu.be/dQw4w9WgXcQ) Hvis teksten bliver blå, indikerer det et link.
 
 Der kan også forekomme videoer. Videoer optræder på siden sådan her og kan afspilles direkte fra siden:
-{{< youtube 83m261lAlrs >}}
+{{< youtube 83m261lAlrs>}}
 
 Der kan også forekomme kode på siden som er designet til at virke i R. Når i læser dette i kronologisk rækkefølge giver "kode" ikke så meget mening, men senere vil i kunne gennemskue hvad det betyder. Kode forekommer sådan:
 
