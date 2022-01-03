@@ -14,13 +14,3 @@ Velkommen på 4. semester og særlig meget velkommen til kvantitativ metode. Det
 
 
 Start med at trykke på den blå pil/trekant til højre i browseren
-
-
-
-
-
-
-
-
-
-{{% right %}} Den burde være her omkring --> {{% /right %}}
