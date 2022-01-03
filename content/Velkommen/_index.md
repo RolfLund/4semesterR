@@ -12,9 +12,3 @@ På næste side bliver forskellig symbolik og visuelle værktøjer blive præsen
 
 
 
-
-
-
-
-<div style="text-align: right"> Den burde være her omrking --> </div>
-
