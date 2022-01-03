@@ -3,3 +3,7 @@ languageCode = 'da'
 title = '4. Semester - Introduktion til kvantitativ metode'
 theme = "learn"
 relativeurls = true
+
+[markup.goldmark.renderer]
+
+unsafe= true
