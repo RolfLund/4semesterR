@@ -7,3 +7,5 @@ relativeurls = true
 [markup.goldmark.renderer]
 
 unsafe= true
+
+themeVariant = "blue"
