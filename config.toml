@@ -9,4 +9,4 @@ relativeurls = true
 unsafe= true
 
 [params]
-  themeVariant = "blue"
+  themeVariant = "custom"
