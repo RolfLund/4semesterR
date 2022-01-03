@@ -15,8 +15,8 @@ Der kan også forekomme videoer. Videoer optræder på siden sådan her og kan a
 
 Der kan også forekomme kode på siden som er designet til at virke i R. Når i læser dette i kronologisk rækkefølge giver "kode" ikke så meget mening, men senere vil i kunne gennemskue hvad det betyder. Kode forekommer sådan:
 
-```
-Det her er en kodeblok
-Der kan være alle mulige ting her
-Fælles er, at de kan køre i R
+```R
+# Det her er en kodeblok
+# Der kan være alle mulige ting her
+# Fælles er, at de kan køre i R
 ```
