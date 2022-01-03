@@ -8,4 +8,5 @@ relativeurls = true
 
 unsafe= true
 
-themeVariant = "blue"
+[params]
+  themeVariant = "blue"
