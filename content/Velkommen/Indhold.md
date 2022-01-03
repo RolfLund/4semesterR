@@ -19,4 +19,5 @@ Der kan også forekomme kode på siden som er designet til at virke i R. Når i 
 # Det her er en kodeblok
 # Der kan være alle mulige ting her
 # Fælles er, at de kan køre i R
+# Kommentarer med med # foran
 ```
