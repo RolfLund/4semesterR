@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.91.2">
 <meta name=description content>
 <link rel=icon href=../../images/favicon.png type=image/png>
-<title>Måleniveau intro :: 4. Semester - Introduktion til kvantitativ metode</title>
+<title>Installation på Mac :: 4. Semester - Introduktion til kvantitativ metode</title>
 <link href=../../css/nucleus.css?1641291084 rel=stylesheet>
 <link href=../../css/fontawesome-all.min.css?1641291084 rel=stylesheet>
 <link href=../../css/hybrid.css?1641291084 rel=stylesheet>
@@ -20,7 +20,7 @@
 <script src=../../js/jquery-3.3.1.min.js?1641291084></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=../../m%C3%A5leniveau/m%C3%A5leniveau_intro/>
+<body data-url=../../ops%C3%A6tning-af-r/inst_mac/>
 <nav id=sidebar>
 <div id=header-wrapper>
 <div id=header>
@@ -77,7 +77,8 @@ Kompetencer
 </li>
 </ul>
 </li>
-<li data-nav-id=/ops%C3%A6tning-af-r/ title="Opsætning og installation af R" class=dd-item>
+<li data-nav-id=/ops%C3%A6tning-af-r/ title="Opsætning og installation af R" class="dd-item
+parent">
 <a href=../../ops%C3%A6tning-af-r/>
 Opsætning og installation af R
 </a>
@@ -87,7 +88,7 @@ Opsætning og installation af R
 Installation på Windows
 </a>
 </li>
-<li data-nav-id=/ops%C3%A6tning-af-r/inst_mac/ title="Installation på Mac" class=dd-item>
+<li data-nav-id=/ops%C3%A6tning-af-r/inst_mac/ title="Installation på Mac" class="dd-item active">
 <a href=../../ops%C3%A6tning-af-r/inst_mac/>
 Installation på Mac
 </a>
@@ -118,13 +119,12 @@ Intro til kvant.
 </li>
 </ul>
 </li>
-<li data-nav-id=/m%C3%A5leniveau/ title="Måleniveau mm." class="dd-item
-parent">
+<li data-nav-id=/m%C3%A5leniveau/ title="Måleniveau mm." class=dd-item>
 <a href=../../m%C3%A5leniveau/>
 Måleniveau mm.
 </a>
 <ul>
-<li data-nav-id=/m%C3%A5leniveau/m%C3%A5leniveau_intro/ title="Måleniveau intro" class="dd-item active">
+<li data-nav-id=/m%C3%A5leniveau/m%C3%A5leniveau_intro/ title="Måleniveau intro" class=dd-item>
 <a href=../../m%C3%A5leniveau/m%C3%A5leniveau_intro/>
 Måleniveau intro
 </a>
@@ -234,14 +234,18 @@ Korrelationer
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=../../>Velkommen på 4. semester</a> > <a href=../../m%C3%A5leniveau/>Måleniveau mm.</a> > Måleniveau intro
+<a href=../../>Velkommen på 4. semester</a> > <a href=../../ops%C3%A6tning-af-r/>Opsætning og installation af R</a> > Installation på Mac
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#vi-taler-lidt-om-måleniveau>Vi taler lidt om måleniveau</a></li>
+<li><a href=#installation-af-r-og-rstudio-på-mac>Installation af R og RStudio på Mac</a>
+<ul>
+<li></li>
+</ul>
+</li>
 </ul>
 </nav>
 </div>
@@ -252,17 +256,26 @@ Korrelationer
 </div>
 <div id=body-inner>
 <h1>
-Måleniveau intro
+Installation på Mac
 </h1>
-<h2 id=vi-taler-lidt-om-måleniveau>Vi taler lidt om måleniveau</h2>
-<p>Til første side</p>
+<h2 id=installation-af-r-og-rstudio-på-mac>Installation af R og RStudio på Mac</h2>
+<h4 id=download-r>Download R</h4>
+<p>For at bruge RStudio bliver vi nødt til at installere R først. R kan installeres ved at gå til siden <a href=https://cran.r-project.org/>cran.r-project.org</a> hvor i øverst kan se et link hvor der står &ldquo;Download R for macOS&rdquo;. Mac-brugere skal være opmærksom på, hvilken version af deres styresystem de har. Den nyeste version af R fungerer udelukkende på styresystemer 10.13 og op - det styresystem hedder &ldquo;High Sierra&rdquo;. Hvis i er i tvivl om, hvilket styresytem i har, kan i trykke på æble-logoet øverst til venstre på jeres Mac og vælge: &ldquo;Om denne mac&rdquo; eller &ldquo;About this mac&rdquo;. Der vil stå både navnet på styresystemet: &ldquo;macOS xxxx&rdquo; og versionen under. Hvis versionsnummeret er mindre end 10.13 skal i scrolle længere ned på siden hvor i kan vælge &ldquo;Binaries for legacy OS X systems&rdquo; og finde den nyeste version der kan installeres der.</p>
+<p>Med mindre i har en gammel mac kan i vælge den nyeste version ved at scrolle ned til &ldquo;Latest release:&rdquo; og vælge den øverste fil til venstre, der hedder noget i retningen af: &ldquo;R-4.X.X.pkg&rdquo; hvor X&rsquo;erne er erstattet med tal.</p>
+<p>Det er værd at notere, at hvis i er tvunget til at installere en legacy-version vil der være tidspunkter, hvor i ikke kan gøre helt det samme som resten af semestret, fordi noget af funktionaliteten er anderledes i de ældre versioner. I får ligeledes problemer med RStudio, der ligeledes kun understøtter nyere operativsystemer. Overvejer derfor, om det måske ikke var tid til en ny computer&mldr; der ikke var mac :)</p>
+<p>Den nyeste version ændrer sig ofte og den bliver altid vist som det primære valg man kan træffe på den side.</p>
+<h4 id=installation-af-r>Installation af R</h4>
+<p>Installation af R er ligetil; kør den .pkg-fil i har downloadet og følg den step-by-step guide der kommer. Med mindre i ønsker at ændre hvor R skal installeres, så kan i trykke: &ldquo;Næste&rdquo; til samtlige punkter uden at ændre jeres valg.</p>
+<h4 id=download-og-installation-af-rstudio>Download og installation af RStudio</h4>
+<p>RStudio skal installeres efterfølgende og i finder RStudio på dette link: <a href=https://www.rstudio.com/products/rstudio/download/>rstudio.com</a>. Scroll ned på siden og vælg: &ldquo;RStudio Desktop&rdquo;. Vælg den gratis udgave. Hjemmesiden finder selv ud af, hvilket operativsystem i bruger og i kan derfor trykke på knappen: &ldquo;Download RStudio for Mac&rdquo;. Hvis den er forvirret og ikke selv kan gætte styresystem, kan i scrolle lidt ned på siden og vælge macOS.</p>
+<p>Installationen ved at åben .dmg-filen og træk RStudio-ikonet ind i jeres applikationsmappe.</p>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=../../m%C3%A5leniveau/ title="Måleniveau mm."> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=../../sandsynligheder/ title="Sandsynlighed mm." style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=../../ops%C3%A6tning-af-r/inst_win/ title="Installation på Windows"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=../../pakker-og-rstudio/ title="Basisfunktionerne i R" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
