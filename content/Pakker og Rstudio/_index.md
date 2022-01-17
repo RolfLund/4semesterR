@@ -10,6 +10,4 @@ weight: 3
 
 ## Basisfunktionerne i R
 
-
-
-text fro isdng
+Følgende afsnit er designet til at give jer en basal indføring i, hvordan i navigerer i RStudio og den basale opsætning. Det kræver ikke, at i ved noget om statistik eller metoder og er udelukkende for at gøre jer komfortable med RStudio før vi reelt starter med arbejdet. Vi starter med opsætningen og basal interaktion på næste side.
