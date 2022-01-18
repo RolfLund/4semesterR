@@ -21,3 +21,9 @@ Der kan også forekomme kode på siden som er designet til at virke i R. Når i 
 # Fælles er, at de kan køre i R
 # Kommentarer med med # foran
 ```
+
+Der kan også forekomme enkelte linjer med kode. For at gøre det så let som muligt, vil enkelte linjer med kode optræde sådan her:
+
+``print("Hello world!")``
+
+Når dette optræder kan i let kopiere linjen ved at trykke på det lille clipboard-ikon der optræder til højre for koden. Når i klikker der bliver koden kopieret og i kan let indsætte det i R, som i lærer at installere lige om lidt.

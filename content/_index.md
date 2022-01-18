@@ -26,12 +26,4 @@ Start med at trykke på den blå pil/trekant til højre i browseren
 
 &nbsp;
 
-&nbsp;
-
-&nbsp;
-
-
-
-
-
 <div style="text-align: right"> Den burde være her omrking &rarr; </div>
