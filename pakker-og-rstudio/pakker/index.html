@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=../../images/favicon.png type=image/png>
 <title>Pakker :: 4. Semester - Introduktion til kvantitativ metode</title>
-<link href=../../css/nucleus.css?1642422012 rel=stylesheet>
-<link href=../../css/fontawesome-all.min.css?1642422012 rel=stylesheet>
-<link href=../../css/hybrid.css?1642422012 rel=stylesheet>
-<link href=../../css/featherlight.min.css?1642422012 rel=stylesheet>
-<link href=../../css/perfect-scrollbar.min.css?1642422012 rel=stylesheet>
-<link href=../../css/auto-complete.css?1642422012 rel=stylesheet>
-<link href=../../css/atom-one-dark-reasonable.css?1642422012 rel=stylesheet>
-<link href=../../css/theme.css?1642422012 rel=stylesheet>
-<link href=../../css/tabs.css?1642422012 rel=stylesheet>
-<link href=../../css/hugo-theme.css?1642422012 rel=stylesheet>
-<link href=../../css/theme-custom.css?1642422012 rel=stylesheet>
-<script src=../../js/jquery-3.3.1.min.js?1642422012></script>
+<link href=../../css/nucleus.css?1642502322 rel=stylesheet>
+<link href=../../css/fontawesome-all.min.css?1642502322 rel=stylesheet>
+<link href=../../css/hybrid.css?1642502322 rel=stylesheet>
+<link href=../../css/featherlight.min.css?1642502322 rel=stylesheet>
+<link href=../../css/perfect-scrollbar.min.css?1642502322 rel=stylesheet>
+<link href=../../css/auto-complete.css?1642502322 rel=stylesheet>
+<link href=../../css/atom-one-dark-reasonable.css?1642502322 rel=stylesheet>
+<link href=../../css/theme.css?1642502322 rel=stylesheet>
+<link href=../../css/tabs.css?1642502322 rel=stylesheet>
+<link href=../../css/hugo-theme.css?1642502322 rel=stylesheet>
+<link href=../../css/theme-custom.css?1642502322 rel=stylesheet>
+<script src=../../js/jquery-3.3.1.min.js?1642502322></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=../../pakker-og-rstudio/pakker/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=../../js/lunr.min.js?1642422012></script>
-<script type=text/javascript src=../../js/auto-complete.js?1642422012></script>
+<script type=text/javascript src=../../js/lunr.min.js?1642502322></script>
+<script type=text/javascript src=../../js/auto-complete.js?1642502322></script>
 <script type=text/javascript>var baseurl=""</script>
-<script type=text/javascript src=../../js/search.js?1642422012></script>
+<script type=text/javascript src=../../js/search.js?1642502322></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -251,7 +251,9 @@ Korrelationer
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#pakker>Pakker</a></li>
+<li><a href=#hvad-er-pakker>Hvad er pakker?</a></li>
+<li><a href=#hvor-er-pakkerne>Hvor er pakkerne?</a></li>
+<li><a href=#installation-gennem-kommado-vinduet>Installation gennem kommado-vinduet</a></li>
 </ul>
 </nav>
 </div>
@@ -264,7 +266,22 @@ Korrelationer
 <h1>
 Pakker
 </h1>
-<h2 id=pakker>Pakker</h2>
+<h2 id=hvad-er-pakker>Hvad er pakker?</h2>
+<p>R er anderledes end de programmer i normalt bruger på jeres computer. Når i åbner Word, Excel, Chrome, Firefox eller måske Sims, så er antagelsen at &ldquo;hele&rdquo; programmet er der per automatik. Vi behøver ikke nødvendigvis installere ekstra ting for, at det virker som det skal. Nogle gange henter vi et tilføjelsesprogram som f.eks. add-blocker eller en mod til et spil der gør oplevelsen en lille smule bedre, men for det meste er grundessensen af programmet der ved installation.</p>
+<p>I R fungerer det anderledes. R er open source hvilket vil sige, at der er et stort fællesskab omkring udviklingen af metoder og programmer, der løser meget specifikke opgaver. For ikke at gøre R uendeligt stort med et utal af ekstra funktioner kommer R (og RStudio) kun med de ting der er en del af &ldquo;Base R&rdquo; - hvilket vil sige, at programmet i udgangspunktet kun kan det, som R selv kan løse. Ved at installere pakker åbner man op for nye kommandoer, nye metoder og nye analyseredskaber. Man kan derfor se pakker som en udvidelse af den funktionalitet som R har i sig selv.</p>
+<h2 id=hvor-er-pakkerne>Hvor er pakkerne?</h2>
+<p>For at installere en pakke kan man gøre det på to måder. Oftest lærer i langsomt, at det er hurtigere at installere pakkerne via kommando-linjen, men til at starte med kan i navigere hen til R&rsquo;s &ldquo;package manager&rdquo; i menuen &ldquo;Tools&rdquo;:</p>
+<p><img src=https://i.postimg.cc/GtSRj8hv/pack-man.png alt=Pack_man></p>
+<p>Når i trykker på det markerede vil i se denne lille boks:</p>
+<p><img src=https://i.postimg.cc/PJqhZzht/pack1.jpg alt=pack_ins1></p>
+<p>I kan lade alt være som det er, men i skal bruge det felt der hedder &ldquo;Packages&rdquo; til at søge i. Her kan i f.eks. skrive stargazer. I vil se, at som i begynder at skrive, så kommer der valgmuligheder op af pakker der har samme startbogstaver. Lad være med at installere i vildskab - der kan opstå konflikter mellem pakker. Når i har fundet stargazer kan i trykke på &ldquo;Install&rdquo;. I vil kunne se i konsollen, at den installerer og ser sådan her ud, når den er færdig:</p>
+<p><img src=https://i.postimg.cc/FRpN7CMW/pack-inst.png alt=pack_inst></p>
+<p>R&rsquo;s måde at sige, at pakken er installeret på korrekt er ved at skrive: &ldquo;Package XXX succssefully unpacked and MD5 sums checked&rdquo;.</p>
+<h2 id=installation-gennem-kommado-vinduet>Installation gennem kommado-vinduet</h2>
+<p>En nemmere måde at installere pakker på, som i senere bliver fortrolig med er gennem kommando-vinduet. Her kan i simpelt skrive:</p>
+<p><code>install.packages('stargazer')</code></p>
+<p>Og trykke enter. Hvis i allerede har gjort det gennem pakkehåndteringsværktøjet ovenfor med stargazer kan i nu forsøge at installere pakken <code>tidyr</code> som vi kommer til at bruge en del gennem kurset. I installerer <code>tidyr</code> ved at skrive:</p>
+<p><code>install.packages('tidyr')</code></p>
 <footer class=footline>
 </footer>
 </div>
@@ -277,17 +294,17 @@ Pakker
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=../../js/clipboard.min.js?1642422012></script>
-<script src=../../js/perfect-scrollbar.min.js?1642422012></script>
-<script src=../../js/perfect-scrollbar.jquery.min.js?1642422012></script>
-<script src=../../js/jquery.sticky.js?1642422012></script>
-<script src=../../js/featherlight.min.js?1642422012></script>
-<script src=../../js/highlight.pack.js?1642422012></script>
+<script src=../../js/clipboard.min.js?1642502322></script>
+<script src=../../js/perfect-scrollbar.min.js?1642502322></script>
+<script src=../../js/perfect-scrollbar.jquery.min.js?1642502322></script>
+<script src=../../js/jquery.sticky.js?1642502322></script>
+<script src=../../js/featherlight.min.js?1642502322></script>
+<script src=../../js/highlight.pack.js?1642502322></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=../../js/modernizr.custom-3.6.0.js?1642422012></script>
-<script src=../../js/learn.js?1642422012></script>
-<script src=../../js/hugo-learn.js?1642422012></script>
-<script src=../../mermaid/mermaid.js?1642422012></script>
+<script src=../../js/modernizr.custom-3.6.0.js?1642502322></script>
+<script src=../../js/learn.js?1642502322></script>
+<script src=../../js/hugo-learn.js?1642502322></script>
+<script src=../../mermaid/mermaid.js?1642502322></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
