@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=../../images/favicon.png type=image/png>
 <title>Tabeldata i R :: 4. Semester - Introduktion til kvantitativ metode</title>
-<link href=../../css/nucleus.css?1645547206 rel=stylesheet>
-<link href=../../css/fontawesome-all.min.css?1645547206 rel=stylesheet>
-<link href=../../css/hybrid.css?1645547206 rel=stylesheet>
-<link href=../../css/featherlight.min.css?1645547206 rel=stylesheet>
-<link href=../../css/perfect-scrollbar.min.css?1645547206 rel=stylesheet>
-<link href=../../css/auto-complete.css?1645547206 rel=stylesheet>
-<link href=../../css/atom-one-dark-reasonable.css?1645547206 rel=stylesheet>
-<link href=../../css/theme.css?1645547206 rel=stylesheet>
-<link href=../../css/tabs.css?1645547206 rel=stylesheet>
-<link href=../../css/hugo-theme.css?1645547206 rel=stylesheet>
-<link href=../../css/theme-custom.css?1645547206 rel=stylesheet>
-<script src=../../js/jquery-3.3.1.min.js?1645547206></script>
+<link href=../../css/nucleus.css?1645547697 rel=stylesheet>
+<link href=../../css/fontawesome-all.min.css?1645547697 rel=stylesheet>
+<link href=../../css/hybrid.css?1645547697 rel=stylesheet>
+<link href=../../css/featherlight.min.css?1645547697 rel=stylesheet>
+<link href=../../css/perfect-scrollbar.min.css?1645547697 rel=stylesheet>
+<link href=../../css/auto-complete.css?1645547697 rel=stylesheet>
+<link href=../../css/atom-one-dark-reasonable.css?1645547697 rel=stylesheet>
+<link href=../../css/theme.css?1645547697 rel=stylesheet>
+<link href=../../css/tabs.css?1645547697 rel=stylesheet>
+<link href=../../css/hugo-theme.css?1645547697 rel=stylesheet>
+<link href=../../css/theme-custom.css?1645547697 rel=stylesheet>
+<script src=../../js/jquery-3.3.1.min.js?1645547697></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=../../intro-til-r-1/tabeldata-r/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=../../js/lunr.min.js?1645547206></script>
-<script type=text/javascript src=../../js/auto-complete.js?1645547206></script>
+<script type=text/javascript src=../../js/lunr.min.js?1645547697></script>
+<script type=text/javascript src=../../js/auto-complete.js?1645547697></script>
 <script type=text/javascript>var baseurl=""</script>
-<script type=text/javascript src=../../js/search.js?1645547206></script>
+<script type=text/javascript src=../../js/search.js?1645547697></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -457,38 +457,40 @@ ess18 <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>read_csv<
  3rd Qu.:131072   3rd Qu.: 300.0   3rd Qu.: 8.00                     
  Max.   :150446   Max.   :1020.0   Max.   :10.00                     
                   NA's   :151      NA's   :3                         
-   prtvtddk            health            lvpntyr             tygrtr         
+ 
+ 	prtvtddk            health            lvpntyr             tygrtr         
  Length:1285        Length:1285        Length:1285        Length:1285       
  Class :character   Class :character   Class :character   Class :character  
  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+ 
+ 	gndr               yrbrn        edlvddk              eduyrs  
+ Length:1285        Min.   :1929   Length:1285        Min.   : 0  
+ Class :character   1st Qu.:1952   Class :character   1st Qu.:11  
+ Mode  :character   Median :1966   Mode  :character   Median :14  
+					Mean   :1967                      Mean   :14  
+ 					3rd Qu.:1982                      3rd Qu.:17  
+ 					Max.   :2003                      Max.   :40  
+                                                      NA's   :7   
+
+         wkhct           wkhtot         grspnum           frlgrsp      
+ Min.   : 0.00   Min.   : 0.00   Min.   :      0   Min.   :     0  
+ 1st Qu.:35.00   1st Qu.:35.00   1st Qu.:  26000   1st Qu.: 28375  
+ Median :37.00   Median :37.00   Median :  32000   Median : 35000  
+ Mean   :33.81   Mean   :36.44   Mean   :  43686   Mean   : 37255  
+ 3rd Qu.:37.00   3rd Qu.:41.00   3rd Qu.:  41000   3rd Qu.: 40000  
+ Max.   :80.00   Max.   :90.00   Max.   :3000000   Max.   :500000  
+ NA's   :68      NA's   :27      NA's   :570       NA's   :1033    
+
+	inwtm       
+ Min.   : 18.00  
+ 1st Qu.: 51.00  
+ Median : 59.00  
+ Mean   : 63.32  
+ 3rd Qu.: 70.00  
+ Max.   :613.00  
+ NA's   :5       
 </code></pre>
-<p>​ <br>
-​ <br>
-​ <br>
-gndr yrbrn edlvddk eduyrs<br>
-Length:1285 Min. :1929 Length:1285 Min. : 0<br>
-Class :character 1st Qu.:1952 Class :character 1st Qu.:11<br>
-Mode :character Median :1966 Mode :character Median :14<br>
-Mean :1967 Mean :14<br>
-3rd Qu.:1982 3rd Qu.:17<br>
-Max. :2003 Max. :40<br>
-NA&rsquo;s :7<br>
-wkhct wkhtot grspnum frlgrsp <br>
-Min. : 0.00 Min. : 0.00 Min. : 0 Min. : 0<br>
-1st Qu.:35.00 1st Qu.:35.00 1st Qu.: 26000 1st Qu.: 28375<br>
-Median :37.00 Median :37.00 Median : 32000 Median : 35000<br>
-Mean :33.81 Mean :36.44 Mean : 43686 Mean : 37255<br>
-3rd Qu.:37.00 3rd Qu.:41.00 3rd Qu.: 41000 3rd Qu.: 40000<br>
-Max. :80.00 Max. :90.00 Max. :3000000 Max. :500000<br>
-NA&rsquo;s :68 NA&rsquo;s :27 NA&rsquo;s :570 NA&rsquo;s :1033 <br>
-inwtm <br>
-Min. : 18.00<br>
-1st Qu.: 51.00<br>
-Median : 59.00<br>
-Mean : 63.32<br>
-3rd Qu.: 70.00<br>
-Max. :613.00<br>
-NA&rsquo;s :5</p>
+<p>​</p>
 <footer class=footline>
 </footer>
 </div>
@@ -501,17 +503,17 @@ NA&rsquo;s :5</p>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=../../js/clipboard.min.js?1645547206></script>
-<script src=../../js/perfect-scrollbar.min.js?1645547206></script>
-<script src=../../js/perfect-scrollbar.jquery.min.js?1645547206></script>
-<script src=../../js/jquery.sticky.js?1645547206></script>
-<script src=../../js/featherlight.min.js?1645547206></script>
-<script src=../../js/highlight.pack.js?1645547206></script>
+<script src=../../js/clipboard.min.js?1645547697></script>
+<script src=../../js/perfect-scrollbar.min.js?1645547697></script>
+<script src=../../js/perfect-scrollbar.jquery.min.js?1645547697></script>
+<script src=../../js/jquery.sticky.js?1645547697></script>
+<script src=../../js/featherlight.min.js?1645547697></script>
+<script src=../../js/highlight.pack.js?1645547697></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=../../js/modernizr.custom-3.6.0.js?1645547206></script>
-<script src=../../js/learn.js?1645547206></script>
-<script src=../../js/hugo-learn.js?1645547206></script>
-<script src=../../mermaid/mermaid.js?1645547206></script>
+<script src=../../js/modernizr.custom-3.6.0.js?1645547697></script>
+<script src=../../js/learn.js?1645547697></script>
+<script src=../../js/hugo-learn.js?1645547697></script>
+<script src=../../mermaid/mermaid.js?1645547697></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
