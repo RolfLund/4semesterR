@@ -34,11 +34,9 @@ max(ess18$inwtm) # NA is neither high or low - returns NA
 mean(ess18$inwtm) # NA is neither high or low - returns NA
 ```
 
-	&lt;NA&gt;
-
-	&lt;NA&gt;
-
-	&lt;NA&gt;
+	<NA>
+	<NA>
+	<NA>
 
 Ofte er man nødt til at håndtere missing-værdier i sit analysearbejde; enten ved at erstatte dem eller ved at fjerne rækker, som har missing-værdier.
 

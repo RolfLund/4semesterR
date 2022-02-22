@@ -145,24 +145,22 @@ summary(ess18)
      3rd Qu.:131072   3rd Qu.: 300.0   3rd Qu.: 8.00                     
      Max.   :150446   Max.   :1020.0   Max.   :10.00                     
                       NA's   :151      NA's   :3                         
-       prtvtddk            health            lvpntyr             tygrtr         
+     
+     	prtvtddk            health            lvpntyr             tygrtr         
      Length:1285        Length:1285        Length:1285        Length:1285       
      Class :character   Class :character   Class :character   Class :character  
      Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-
-
-​                                                                                
-​                                                                                
-​                                                                                
-         gndr               yrbrn        edlvddk              eduyrs  
+     
+     	gndr               yrbrn        edlvddk              eduyrs  
      Length:1285        Min.   :1929   Length:1285        Min.   : 0  
      Class :character   1st Qu.:1952   Class :character   1st Qu.:11  
      Mode  :character   Median :1966   Mode  :character   Median :14  
-                        Mean   :1967                      Mean   :14  
-                        3rd Qu.:1982                      3rd Qu.:17  
-                        Max.   :2003                      Max.   :40  
+    					Mean   :1967                      Mean   :14  
+     					3rd Qu.:1982                      3rd Qu.:17  
+     					Max.   :2003                      Max.   :40  
                                                           NA's   :7   
-         wkhct           wkhtot         grspnum           frlgrsp      
+    
+             wkhct           wkhtot         grspnum           frlgrsp      
      Min.   : 0.00   Min.   : 0.00   Min.   :      0   Min.   :     0  
      1st Qu.:35.00   1st Qu.:35.00   1st Qu.:  26000   1st Qu.: 28375  
      Median :37.00   Median :37.00   Median :  32000   Median : 35000  
@@ -170,7 +168,8 @@ summary(ess18)
      3rd Qu.:37.00   3rd Qu.:41.00   3rd Qu.:  41000   3rd Qu.: 40000  
      Max.   :80.00   Max.   :90.00   Max.   :3000000   Max.   :500000  
      NA's   :68      NA's   :27      NA's   :570       NA's   :1033    
-         inwtm       
+    
+    	inwtm       
      Min.   : 18.00  
      1st Qu.: 51.00  
      Median : 59.00  
@@ -178,3 +177,5 @@ summary(ess18)
      3rd Qu.: 70.00  
      Max.   :613.00  
      NA's   :5       
+
+​    

@@ -40,23 +40,7 @@ head(ess18_male)
 ```
 
 
-    Vedhæfter pakke: 'dplyr'
 
-
-​    
-​    De følgende objekter er maskerede fra 'package:stats':
-​    
-        filter, lag
-
-
-​    
-​    De følgende objekter er maskerede fra 'package:base':
-​    
-        intersect, setdiff, setequal, union
-
-
-​    
-​    
 
 {{< rawhtml >}}
 <table class="dataframe">

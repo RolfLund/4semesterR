@@ -49,7 +49,7 @@ R kan fx forstå matematiske operationer:
 ```
 
 
-42
+	42
 
 
 
@@ -58,7 +58,7 @@ R kan fx forstå matematiske operationer:
 ```
 
 
-780
+	780
 
 
 R kan dog ikke forstå tilfældige kommandoer:
