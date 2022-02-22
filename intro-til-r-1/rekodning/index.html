@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.92.2">
 <meta name=description content>
 <link rel=icon href=../../images/favicon.png type=image/png>
-<title>Læringsmål :: 4. Semester - Introduktion til kvantitativ metode</title>
+<title>Rekodning og nye variable :: 4. Semester - Introduktion til kvantitativ metode</title>
 <link href=../../css/nucleus.css?1645547206 rel=stylesheet>
 <link href=../../css/fontawesome-all.min.css?1645547206 rel=stylesheet>
 <link href=../../css/hybrid.css?1645547206 rel=stylesheet>
@@ -20,7 +20,7 @@
 <script src=../../js/jquery-3.3.1.min.js?1645547206></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=../../velkommen/l%C3%A6ringsm%C3%A5l/>
+<body data-url=../../intro-til-r-1/rekodning/>
 <nav id=sidebar>
 <div id=header-wrapper>
 <div id=header>
@@ -45,8 +45,7 @@
 </section>
 <div class=highlightable>
 <ul class=topics>
-<li data-nav-id=/velkommen/ title="Velkommen på 4. semester" class="dd-item
-parent">
+<li data-nav-id=/velkommen/ title="Velkommen på 4. semester" class=dd-item>
 <a href=../../velkommen/>
 Velkommen på 4. semester
 </a>
@@ -56,7 +55,7 @@ Velkommen på 4. semester
 Indhold
 </a>
 </li>
-<li data-nav-id=/velkommen/l%C3%A6ringsm%C3%A5l/ title=Læringsmål class="dd-item active">
+<li data-nav-id=/velkommen/l%C3%A6ringsm%C3%A5l/ title=Læringsmål class=dd-item>
 <a href=../../velkommen/l%C3%A6ringsm%C3%A5l/>
 Læringsmål
 </a>
@@ -153,7 +152,8 @@ Sandsynligheder intro
 </li>
 </ul>
 </li>
-<li data-nav-id=/intro-til-r-1/ title="Intro til R 1" class=dd-item>
+<li data-nav-id=/intro-til-r-1/ title="Intro til R 1" class="dd-item
+parent">
 <a href=../../intro-til-r-1/>
 Intro til R 1
 </a>
@@ -193,7 +193,7 @@ Missing-værdier
 Datahåndtering i R: Subsetting
 </a>
 </li>
-<li data-nav-id=/intro-til-r-1/rekodning/ title="Rekodning og nye variable" class=dd-item>
+<li data-nav-id=/intro-til-r-1/rekodning/ title="Rekodning og nye variable" class="dd-item active">
 <a href=../../intro-til-r-1/rekodning/>
 Rekodning og nye variable
 </a>
@@ -289,14 +289,23 @@ Korrelationer
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=../../>Velkommen på 4. semester</a> > <a href=../../velkommen/>Velkommen på 4. semester</a> > Læringsmål
+<a href=../../>Velkommen på 4. semester</a> > <a href=../../intro-til-r-1/>Intro til R 1</a> > Rekodning og nye variable
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#læringsmål>Læringsmål</a></li>
+<li><a href=#rekodning-samt-at-danne-nye-variable>Rekodning samt at danne nye variable</a>
+<ul>
+<li><a href=#rekodning-samt-at-danne-nye-variable-med-dplyr>Rekodning samt at danne nye variable med <code>dplyr</code></a></li>
+</ul>
+</li>
+<li><a href=#classes-i-r>&ldquo;Classes&rdquo; i R</a>
+<ul>
+<li><a href=#class-coercion---tving-en-variabel-til-en-anden-type>&ldquo;Class coercion&rdquo; - tving en variabel til en anden type</a></li>
+</ul>
+</li>
 </ul>
 </nav>
 </div>
@@ -307,17 +316,63 @@ Korrelationer
 </div>
 <div id=body-inner>
 <h1>
-Læringsmål
+Rekodning og nye variable
 </h1>
-<h2 id=læringsmål>Læringsmål</h2>
-<p>På de næste sider kan du læse om læringsmålene for kurset. De er delt op i: &ldquo;Viden&rdquo;, &ldquo;Færdigheder&rdquo; og &ldquo;Kompetencer&rdquo;. Hver sektion beskriver de elementer i skal lære gennem kurset og hvad vi forventer i er i stand til, når kurset er overstået.</p>
+<h2 id=rekodning-samt-at-danne-nye-variable>Rekodning samt at danne nye variable</h2>
+<p>At lave nye variable og (simple) rekodninger er typisk gjort på samme måde. Den eneste forskel er blot, om ændringerne skrives til ny variabel, eller om ændringerne overskriver en eksisterende variabel (rekodning).</p>
+<p>(I dag ser vi kun på rekodning som &ldquo;omregninger&rdquo; af eksisterende variable. Næste gang ser vi på rekodning af kategorier).</p>
+<h3 id=rekodning-samt-at-danne-nye-variable-med-dplyr>Rekodning samt at danne nye variable med <code>dplyr</code></h3>
+<p>Funktionen <code>mutate()</code> i <code>dplyr</code> bruges til at rekode samt til at danne nye variable:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R>ess18 <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>mutate</span>(ess18, inwth <span style=color:#f92672>=</span> inwtm <span style=color:#f92672>/</span> <span style=color:#ae81ff>60</span>)
+
+<span style=color:#a6e22e>head</span>(ess18<span style=color:#f92672>$</span>inwth)
+</code></pre></div>
+<style>.list-inline{list-style:none;margin:0;padding:0}.list-inline>li{display:inline-block}.list-inline>li:not(:last-child)::after{content:"\00b7";padding:0 .5ex}</style>
+<ol class=list-inline><li>1.01666666666667</li><li>1.13333333333333</li><li>1.48333333333333</li><li>0.833333333333333</li><li>1.28333333333333</li><li>0.8</li></ol>
+<h2 id=classes-i-r>&ldquo;Classes&rdquo; i R</h2>
+<p>Som nævnt tidligere, adskiller R mellem objekter via deres &ldquo;class&rdquo;.</p>
+<p>Funktionen <code>class()</code> bruges til at tjekke hvilken &ldquo;class&rdquo; objektet har:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R>name <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;keenan&#34;</span>
+year <span style=color:#f92672>=</span> <span style=color:#ae81ff>1964</span>
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=color:#a6e22e>class</span>(name)
+</code></pre></div><pre><code>'character'
+</code></pre>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=color:#a6e22e>class</span>(year)
+</code></pre></div><pre><code>'numeric'
+</code></pre>
+<p>Enkelte variable(/&ldquo;vectors&rdquo;) kan <em>kun</em> indeholde værdier med samme class. Funktionen <code>class()</code> virker derfor også på variable.</p>
+<p>Variablen <code>tygrtr</code> (i hvilken alder er man for ung til at gå på pension) ligner en variabel, der bør indeholde numeriske værdier (en alder). Ser vi nærmere på variablen, kan vi dog se, at den også indeholder tekst-værdier:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=color:#a6e22e>head</span>(ess18<span style=color:#f92672>$</span>tygrtr)
+</code></pre></div>
+<style>.list-inline{list-style:none;margin:0;padding:0}.list-inline>li{display:inline-block}.list-inline>li:not(:last-child)::after{content:"\00b7";padding:0 .5ex}</style>
+<ol class=list-inline><li>'60'</li><li>'40'</li><li>'55'</li><li>'64'</li><li>'50'</li><li>'60'</li></ol>
+<p>Undersøger vi variablens &ldquo;class&rdquo;, kan vi se, at variablen er lagret som tekst (også kaldt &ldquo;string&rdquo; i programmeringssprog):</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=color:#a6e22e>class</span>(ess18<span style=color:#f92672>$</span>tygrtr)
+</code></pre></div><pre><code>'character'
+</code></pre>
+<p>Dette betyder at vi ikke kan lave beregninger med variablen:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=color:#a6e22e>max</span>(ess18<span style=color:#f92672>$</span>tygrtr, na.rm <span style=color:#f92672>=</span> <span style=color:#66d9ef>TRUE</span>) <span style=color:#75715e># Viser højeste værdi alfabetisk</span>
+</code></pre></div><pre><code>'Should never retire permanently'
+</code></pre>
+<h3 id=class-coercion---tving-en-variabel-til-en-anden-type>&ldquo;Class coercion&rdquo; - tving en variabel til en anden type</h3>
+<p>I de fleste tilfælde kan R tvinge værdier fra en type/class til en anden. Ved at gøre dette, bliver inkompatible værdier til missing (<code>NA</code>).</p>
+<p>Værdier kan tvinges til tekst værdier med <code>as.character()</code></p>
+<p>Værdier kan tvinges til numeriske værdier med <code>as.numeric()</code></p>
+<p>Herunder dannes en numerisk version af <code>tygrtr</code> (bemærk advarslen):</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R>ess18 <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>mutate</span>(ess18, tygrtr_num <span style=color:#f92672>=</span> <span style=color:#a6e22e>as.numeric</span>(tygrtr))
+</code></pre></div><pre><code>Warning message in mask$eval_all_mutate(quo):
+&quot;NAs introduced by coercion&quot;
+</code></pre>
+<p>Nu kan variablen bruges i beregninger:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=color:#a6e22e>max</span>(ess18<span style=color:#f92672>$</span>tygrtr_num, na.rm <span style=color:#f92672>=</span> <span style=color:#66d9ef>TRUE</span>)
+</code></pre></div><pre><code>88</code></pre>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=../../velkommen/indhold/ title=Indhold> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=../../velkommen/viden/ title=Viden style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=../../intro-til-r-1/subsetting/ title="Datahåndtering i R: Subsetting"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=../../intro-til-r-1/gem/ title="Gem dit arbejde" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>

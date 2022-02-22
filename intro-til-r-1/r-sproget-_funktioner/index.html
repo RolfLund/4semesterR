@@ -5,7 +5,7 @@
 <meta name=generator content="Hugo 0.92.2">
 <meta name=description content>
 <link rel=icon href=../../images/favicon.png type=image/png>
-<title>Læringsmål :: 4. Semester - Introduktion til kvantitativ metode</title>
+<title>R Sproget: Funktioner :: 4. Semester - Introduktion til kvantitativ metode</title>
 <link href=../../css/nucleus.css?1645547206 rel=stylesheet>
 <link href=../../css/fontawesome-all.min.css?1645547206 rel=stylesheet>
 <link href=../../css/hybrid.css?1645547206 rel=stylesheet>
@@ -20,7 +20,7 @@
 <script src=../../js/jquery-3.3.1.min.js?1645547206></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
-<body data-url=../../velkommen/l%C3%A6ringsm%C3%A5l/>
+<body data-url=../../intro-til-r-1/r-sproget-_funktioner/>
 <nav id=sidebar>
 <div id=header-wrapper>
 <div id=header>
@@ -45,8 +45,7 @@
 </section>
 <div class=highlightable>
 <ul class=topics>
-<li data-nav-id=/velkommen/ title="Velkommen på 4. semester" class="dd-item
-parent">
+<li data-nav-id=/velkommen/ title="Velkommen på 4. semester" class=dd-item>
 <a href=../../velkommen/>
 Velkommen på 4. semester
 </a>
@@ -56,7 +55,7 @@ Velkommen på 4. semester
 Indhold
 </a>
 </li>
-<li data-nav-id=/velkommen/l%C3%A6ringsm%C3%A5l/ title=Læringsmål class="dd-item active">
+<li data-nav-id=/velkommen/l%C3%A6ringsm%C3%A5l/ title=Læringsmål class=dd-item>
 <a href=../../velkommen/l%C3%A6ringsm%C3%A5l/>
 Læringsmål
 </a>
@@ -153,7 +152,8 @@ Sandsynligheder intro
 </li>
 </ul>
 </li>
-<li data-nav-id=/intro-til-r-1/ title="Intro til R 1" class=dd-item>
+<li data-nav-id=/intro-til-r-1/ title="Intro til R 1" class="dd-item
+parent">
 <a href=../../intro-til-r-1/>
 Intro til R 1
 </a>
@@ -168,7 +168,7 @@ Hvad er R?
 R Sproget: Objekter
 </a>
 </li>
-<li data-nav-id=/intro-til-r-1/r-sproget-_funktioner/ title="R Sproget: Funktioner" class=dd-item>
+<li data-nav-id=/intro-til-r-1/r-sproget-_funktioner/ title="R Sproget: Funktioner" class="dd-item active">
 <a href=../../intro-til-r-1/r-sproget-_funktioner/>
 R Sproget: Funktioner
 </a>
@@ -289,14 +289,19 @@ Korrelationer
 </span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>
-<a href=../../>Velkommen på 4. semester</a> > <a href=../../velkommen/>Velkommen på 4. semester</a> > Læringsmål
+<a href=../../>Velkommen på 4. semester</a> > <a href=../../intro-til-r-1/>Intro til R 1</a> > R Sproget: Funktioner
 </span>
 </div>
 <div class=progress>
 <div class=wrapper>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#læringsmål>Læringsmål</a></li>
+<li><a href=#funktioner>Funktioner</a>
+<ul>
+<li><a href=#eksempler-på-funktioner>Eksempler på funktioner</a></li>
+<li><a href=#funktioner-og-output>Funktioner og output</a></li>
+</ul>
+</li>
 </ul>
 </nav>
 </div>
@@ -307,17 +312,40 @@ Korrelationer
 </div>
 <div id=body-inner>
 <h1>
-Læringsmål
+R Sproget: Funktioner
 </h1>
-<h2 id=læringsmål>Læringsmål</h2>
-<p>På de næste sider kan du læse om læringsmålene for kurset. De er delt op i: &ldquo;Viden&rdquo;, &ldquo;Færdigheder&rdquo; og &ldquo;Kompetencer&rdquo;. Hver sektion beskriver de elementer i skal lære gennem kurset og hvad vi forventer i er i stand til, når kurset er overstået.</p>
+<h2 id=funktioner>Funktioner</h2>
+<p>Funktioner er kommandoer brugt til at transformere objektet på en måde og give et output.</p>
+<p>Det, som man sætter i funktionen, kaldes et &ldquo;argument&rdquo; eller &ldquo;input&rdquo;. Antallet af argumenter varierer mellem funktioner.</p>
+<p>Funktioner har alle den samme opbygning: <code>funktionsnavn(arg1, arg2, arg3)</code>. (funktionsnavn med argumenterne i parentes adskilt med kommaer).</p>
+<p>Nogle argumenter er krævet, mens andre er valgfrie.</p>
+<h3 id=eksempler-på-funktioner>Eksempler på funktioner</h3>
+<p>Gør tekst til blokbogstaver:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R>name <span style=color:#f92672>&lt;-</span> <span style=color:#e6db74>&#39;kilmister&#39;</span>
+<span style=color:#a6e22e>toupper</span>(name) 
+</code></pre></div><pre><code>'KILMISTER'
+</code></pre>
+<p>Erstat bogstaver i tekst:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=color:#a6e22e>gsub</span>(<span style=color:#e6db74>&#34;e&#34;</span>, <span style=color:#e6db74>&#34;a&#34;</span>, name)
+</code></pre></div><pre><code>'kilmistar'
+</code></pre>
+<h3 id=funktioner-og-output>Funktioner og output</h3>
+<p>Bemærk at funktioner <em>aldrig</em> ændrer et objekt. Når man bruger en funktion, beder man R om at <em>se</em> et output, men ikke om at ændre noget.</p>
+<p>Hvis man vil ændre et objekt, skal man derfor lagre outputtet i et objekt (et nyt eller eksisterende).</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R>name <span style=color:#75715e># uændret selvom det er brugt i flere funktioner</span>
+</code></pre></div><pre><code>'kilmister'
+</code></pre>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R>name <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>gsub</span>(<span style=color:#e6db74>&#34;e&#34;</span>, <span style=color:#e6db74>&#34;a&#34;</span>, name) <span style=color:#75715e># overskriv objekt med ændringen</span>
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R>name
+</code></pre></div><pre><code>'kilmistar'
+</code></pre>
 <footer class=footline>
 </footer>
 </div>
 </div>
 <div id=navigation>
-<a class="nav nav-prev" href=../../velkommen/indhold/ title=Indhold> <i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=../../velkommen/viden/ title=Viden style=margin-right:0><i class="fa fa-chevron-right"></i></a>
+<a class="nav nav-prev" href=../../intro-til-r-1/r-sproget_objekter/ title="R Sproget: Objekter"> <i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=../../intro-til-r-1/tabeldata-r/ title="Tabeldata i R" style=margin-right:0><i class="fa fa-chevron-right"></i></a>
 </div>
 </section>
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
