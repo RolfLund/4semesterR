@@ -6,18 +6,18 @@
 <meta name=description content>
 <link rel=icon href=../images/favicon.png type=image/png>
 <title>Intro til R 1 :: 4. Semester - Introduktion til kvantitativ metode</title>
-<link href=../css/nucleus.css?1645547697 rel=stylesheet>
-<link href=../css/fontawesome-all.min.css?1645547697 rel=stylesheet>
-<link href=../css/hybrid.css?1645547697 rel=stylesheet>
-<link href=../css/featherlight.min.css?1645547697 rel=stylesheet>
-<link href=../css/perfect-scrollbar.min.css?1645547697 rel=stylesheet>
-<link href=../css/auto-complete.css?1645547697 rel=stylesheet>
-<link href=../css/atom-one-dark-reasonable.css?1645547697 rel=stylesheet>
-<link href=../css/theme.css?1645547697 rel=stylesheet>
-<link href=../css/tabs.css?1645547697 rel=stylesheet>
-<link href=../css/hugo-theme.css?1645547697 rel=stylesheet>
-<link href=../css/theme-custom.css?1645547697 rel=stylesheet>
-<script src=../js/jquery-3.3.1.min.js?1645547697></script>
+<link href=../css/nucleus.css?1645690095 rel=stylesheet>
+<link href=../css/fontawesome-all.min.css?1645690095 rel=stylesheet>
+<link href=../css/hybrid.css?1645690095 rel=stylesheet>
+<link href=../css/featherlight.min.css?1645690095 rel=stylesheet>
+<link href=../css/perfect-scrollbar.min.css?1645690095 rel=stylesheet>
+<link href=../css/auto-complete.css?1645690095 rel=stylesheet>
+<link href=../css/atom-one-dark-reasonable.css?1645690095 rel=stylesheet>
+<link href=../css/theme.css?1645690095 rel=stylesheet>
+<link href=../css/tabs.css?1645690095 rel=stylesheet>
+<link href=../css/hugo-theme.css?1645690095 rel=stylesheet>
+<link href=../css/theme-custom.css?1645690095 rel=stylesheet>
+<script src=../js/jquery-3.3.1.min.js?1645690095></script>
 <style>:root #header+#content>#left>#rlblock_left{display:none!important}</style>
 </head>
 <body data-url=../intro-til-r-1/>
@@ -31,10 +31,10 @@
 <input data-search-input id=search-by type=search placeholder=Search...>
 <span data-search-clear><i class="fas fa-times"></i></span>
 </div>
-<script type=text/javascript src=../js/lunr.min.js?1645547697></script>
-<script type=text/javascript src=../js/auto-complete.js?1645547697></script>
+<script type=text/javascript src=../js/lunr.min.js?1645690095></script>
+<script type=text/javascript src=../js/auto-complete.js?1645690095></script>
 <script type=text/javascript>var baseurl=""</script>
-<script type=text/javascript src=../js/search.js?1645547697></script>
+<script type=text/javascript src=../js/search.js?1645690095></script>
 </div>
 <section id=homelinks>
 <ul>
@@ -316,7 +316,7 @@ Korrelationer
 Intro til R 1
 </h1>
 <h2 id=første-intro-til-r>Første intro til R</h2>
-<p>Til denne undervisningsgang introduceres i til R. Undervisningsgangen kombinerer præsentation, demonstration og øvelser.</p>
+<p>Til denne undervisningsgang introduceres I til R. Undervisningsgangen kombinerer præsentation, demonstration og øvelser.</p>
 <h3 id=pakker-brugt-i-undervisningsgangen>Pakker brugt i undervisningsgangen</h3>
 <p>Vi bruger forskellige pakker fra samlingen &ldquo;tidyverse&rdquo;: <a href=https://www.tidyverse.org/>https://www.tidyverse.org/</a>. Alle pakker kan installeres ved blot at installere &ldquo;tidyverse&rdquo; (<code>install.packages("tidyverse")</code>). Specifikt bruges følgende pakker:</p>
 <ul>
@@ -328,15 +328,15 @@ Intro til R 1
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=color:#a6e22e>library</span>(readr)
 <span style=color:#a6e22e>library</span>(dplyr)
 </code></pre></div><h3 id=data-brugt-i-undervisningen>Data brugt i undervisningen</h3>
-<p>Til R introduktionerne bruger vi et udsnit af European Social Survey fra 2018 (<a href=https://www.europeansocialsurvey.org/)>https://www.europeansocialsurvey.org/)</a>. Data indeholder kun den danske del af data, nogle udvalgte variable samt nogle få filtreringer.</p>
+<p>Til R introduktionerne bruger vi et udsnit af European Social Survey fra 2018 (<a href=https://www.europeansocialsurvey.org/)>https://www.europeansocialsurvey.org/)</a>. Udsnittet indeholder nogle udvalgte variable fra den danske del af data med nogle få filtreringer.</p>
 <ul>
-<li>Kodebog kan findes her: <a href=https://www.europeansocialsurvey.org/docs/round9/survey/ESS9_appendix_a7_e03_1.pdf>https://www.europeansocialsurvey.org/docs/round9/survey/ESS9_appendix_a7_e03_1.pdf</a></li>
-<li>Spørgeskeamet brugt i undersøgelsen kan findes her: <a href=https://www.europeansocialsurvey.org/docs/round9/fieldwork/source/ESS9_source_questionnaires.pdf>https://www.europeansocialsurvey.org/docs/round9/fieldwork/source/ESS9_source_questionnaires.pdf</a></li>
+<li>Kodebog for hele datasættet kan findes her: <a href=https://www.europeansocialsurvey.org/docs/round9/survey/ESS9_appendix_a7_e03_1.pdf>https://www.europeansocialsurvey.org/docs/round9/survey/ESS9_appendix_a7_e03_1.pdf</a></li>
+<li>Spørgeskemaet brugt i undersøgelsen kan findes her: <a href=https://www.europeansocialsurvey.org/docs/round9/fieldwork/source/ESS9_source_questionnaires.pdf>https://www.europeansocialsurvey.org/docs/round9/fieldwork/source/ESS9_source_questionnaires.pdf</a></li>
 </ul>
 <h4 id=link-til-data>Link til data</h4>
-<p>I vil i løbet af undervisningsgangen blive bedt om at indlæse data. Dette gøres via et direkte link til data.</p>
+<p>I vil i løbet af undervisningsgangen blive bedt om at indlæse data. Hertil bruges et direkte link til data.</p>
 <ul>
-<li>Brug dette link, når I skal læse data ind: <a href=https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv>https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv</a></li>
+<li>Brug dette link, når I skal læse data ind: <a href=https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv>https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv</a> (I skal ikke klikke på det, men bruge det i R-kode).</li>
 </ul>
 <p>Data læses ind i R med følgende kode:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-R data-lang=R><span style=color:#a6e22e>library</span>(readr)
@@ -434,17 +434,17 @@ ess18 <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>read_csv<
 <div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px>
 <div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div>
 </div>
-<script src=../js/clipboard.min.js?1645547697></script>
-<script src=../js/perfect-scrollbar.min.js?1645547697></script>
-<script src=../js/perfect-scrollbar.jquery.min.js?1645547697></script>
-<script src=../js/jquery.sticky.js?1645547697></script>
-<script src=../js/featherlight.min.js?1645547697></script>
-<script src=../js/highlight.pack.js?1645547697></script>
+<script src=../js/clipboard.min.js?1645690095></script>
+<script src=../js/perfect-scrollbar.min.js?1645690095></script>
+<script src=../js/perfect-scrollbar.jquery.min.js?1645690095></script>
+<script src=../js/jquery.sticky.js?1645690095></script>
+<script src=../js/featherlight.min.js?1645690095></script>
+<script src=../js/highlight.pack.js?1645690095></script>
 <script>hljs.initHighlightingOnLoad()</script>
-<script src=../js/modernizr.custom-3.6.0.js?1645547697></script>
-<script src=../js/learn.js?1645547697></script>
-<script src=../js/hugo-learn.js?1645547697></script>
-<script src=../mermaid/mermaid.js?1645547697></script>
+<script src=../js/modernizr.custom-3.6.0.js?1645690095></script>
+<script src=../js/learn.js?1645690095></script>
+<script src=../js/hugo-learn.js?1645690095></script>
+<script src=../mermaid/mermaid.js?1645690095></script>
 <script>mermaid.initialize({startOnLoad:!0})</script>
 </body>
 </html>
