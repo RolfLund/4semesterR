@@ -7,7 +7,7 @@ weight: 7
 
 ## Første intro til R
 
-Til denne undervisningsgang introduceres i til R. Undervisningsgangen kombinerer præsentation, demonstration og øvelser.
+Til denne undervisningsgang introduceres I til R. Undervisningsgangen kombinerer præsentation, demonstration og øvelser.
 
 
 
@@ -31,18 +31,18 @@ library(dplyr)
 
 ### Data brugt i undervisningen
 
-Til R introduktionerne bruger vi et udsnit af European Social Survey fra 2018 (https://www.europeansocialsurvey.org/). Data indeholder kun den danske del af data, nogle udvalgte variable samt nogle få filtreringer.
+Til R introduktionerne bruger vi et udsnit af European Social Survey fra 2018 (https://www.europeansocialsurvey.org/). Udsnittet indeholder nogle udvalgte variable fra den danske del af data med nogle få filtreringer.
 
-- Kodebog kan findes her: https://www.europeansocialsurvey.org/docs/round9/survey/ESS9_appendix_a7_e03_1.pdf
-- Spørgeskeamet brugt i undersøgelsen kan findes her: https://www.europeansocialsurvey.org/docs/round9/fieldwork/source/ESS9_source_questionnaires.pdf
+- Kodebog for hele datasættet kan findes her: https://www.europeansocialsurvey.org/docs/round9/survey/ESS9_appendix_a7_e03_1.pdf
+- Spørgeskemaet brugt i undersøgelsen kan findes her: https://www.europeansocialsurvey.org/docs/round9/fieldwork/source/ESS9_source_questionnaires.pdf
 
 
 
 #### Link til data
 
-I vil i løbet af undervisningsgangen blive bedt om at indlæse data. Dette gøres via et direkte link til data.
+I vil i løbet af undervisningsgangen blive bedt om at indlæse data. Hertil bruges et direkte link til data.
 
-- Brug dette link, når I skal læse data ind: https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv
+- Brug dette link, når I skal læse data ind: https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv (I skal ikke klikke på det, men bruge det i R-kode).
 
 Data læses ind i R med følgende kode:
 
