@@ -1,34 +1,12 @@
 ---
-title: "Datahåndtering i R: Subsetting"
-date: 2021-12-20T08:08:52+01:00
+title: "Udvælg rækker (filter)"
 draft: false
-weight: 7
+weight: 1
 ---
 
+## Udvælg rækker med `filter`
 
-
-## Datahåndtering i R
-
-Når man arbejder med data, er man næste altid nødt til at foretage visse ændringer i data, før at de er egnet til analyse. Dette kaldes "datahåndtering".
-
-Datahåndtering inkluderer blandt andet:
-- Udvælge specifikke observationer og variable (kaldes også subsetting)
-- Danne nye variables
-- Rekode værdier
-
-R understøtter datahåndtering med "basis"-kommandoer, men funktionerne tilgængelige gennem tidyverse (https://www.tidyverse.org/) er langt mere intuitive.
-
-### Subset data med `dplyr` 
-
-`dplyr` indeholder blandt andet funktionerne `filter` og `select`, som kan bruges til at subsette data.
-
-`filter()` tager et datasæt og kriterier i form af "logiske udtryk" (mere om dette senere) med brug af variable. Funktionen returnerer de rækker, som opfylder kriterierne.
-
-`select()` tager et datasæt efterfulgt af de variable, som skal bevares. Funktionen returnerer de valgte variable.
-
-BEMÆRK: Basis R har også en `filter()` funktion. Denne funktion overskrives, når man importerer `dplyr`.
-
-### Udvælg rækker med `filter`
+`filter` funktionen tager mindst to input: et datasæt (en dataframe) og et kriterie.
 
 
 ```R
@@ -39,10 +17,8 @@ ess18_male <- filter(ess18, gndr == 'Male') # Subset kun med mænd
 head(ess18_male)
 ```
 
-
-
-
 {{< rawhtml >}}
+
 <table class="dataframe">
 <caption>A tibble: 6 × 17</caption>
 <thead>
@@ -87,9 +63,13 @@ head(ess18_edusub)
 {{< /rawhtml >}}
 
 
-### Logiske udtryk og logiske værdier
+{{% notice note %}}
+Bemærk! Ved brug af `filter` behøves kun at skrive navnet på variablen (`eduyrs`), og ikke både navn på variabel og datasæt, som man ellers typisk gør for at referere til enkeltkolonner i R (`ess18$eduyrs`). 
+Dette behøves ikke, da `filter` antager, at variabelnavnet kommer fra det datasæt, som er angivet. Dette er gennemgående for de fleste `tidyverse` pakker og kommandoer (`filter`, `select`, `mutate` osv.)
 
-Normalt kender vi ikke rækkenumrene på de rækker, som vi gerne vil beholde. Vi udvælger derfor rækker med brug af kriterier. 
+{{% /notice %}}
+
+### Logiske udtryk og logiske værdier
 
 I R skrives kriterier som "logiske udtryk". Logiske udtryk er kommandoer, som altid returnere logiske værdier. Disse er altid enten `TRUE` eller `FALSE` (eller `NA`).
 
@@ -107,7 +87,8 @@ En række operationer i R returnerer altid logiske værdier:
 42 > 10
 ```
 
-	TRUE
+
+TRUE
 
 
 
@@ -115,32 +96,7 @@ En række operationer i R returnerer altid logiske værdier:
 10 != 10
 ```
 
-	FALSE
 
+FALSE
 
-### Vælg kolonner/variable med `select`
-
-
-```R
-ess18_male_subset <- select(ess18_male, idno, gndr, yrbrn, edlvddk) # Udvælg specifikke variable
-
-head(ess18_male_subset)
-```
-
-{{< rawhtml >}}
-<table class="dataframe">
-<caption>A tibble: 6 × 4</caption>
-<thead>
-	<tr><th scope=col>idno</th><th scope=col>gndr</th><th scope=col>yrbrn</th><th scope=col>edlvddk</th></tr>
-	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td> 5816</td><td>Male</td><td>1974</td><td>Mellemlang videregående uddannelse af 3-4 års varighed. Professionsbachelorer,</td></tr>
-	<tr><td> 7887</td><td>Male</td><td>1958</td><td>Lang videregående uddannelse. Kandidatuddannelser af 5.-6. års varighed, F.eks</td></tr>
-	<tr><td>12355</td><td>Male</td><td>1963</td><td>Faglig uddannelse (håndværk, handel, landbrug mv.), F.eks. Faglærte, Social-  </td></tr>
-	<tr><td>16357</td><td>Male</td><td>1991</td><td>Mellemlang videregående uddannelse af 3-4 års varighed. Professionsbachelorer,</td></tr>
-	<tr><td>20724</td><td>Male</td><td>1958</td><td>Faglig uddannelse (håndværk, handel, landbrug mv.), F.eks. Faglærte, Social-  </td></tr>
-	<tr><td>24928</td><td>Male</td><td>1965</td><td>Mellemlang videregående uddannelse af 3-4 års varighed. Professionsbachelorer,</td></tr>
-</tbody>
-</table>
-{{< /rawhtml >}}
+`filter()` forventer et logisk udtryk som kriterie, og bevarer så alle de observationer, som opfylder kriteriet.
