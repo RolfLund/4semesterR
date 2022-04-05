@@ -20,7 +20,7 @@ data <- read_csv("C:/Users/Admin/Desktop/Eksempel_mappe/value99.csv")
 
 Bemærk, at min sti nu er længere. Det er ikke længere nok at fortælle R hvilken mappe det er i, jeg skal forlænge min sti så den nu inkluderer selve filen (value99.csv) som er mit datasæt. Det vil sige, at den er gået fra at være ```C:/Users/Admin/Desktop/Eksempel_mappe``` til nu af være ```C:/Users/Admin/Desktop/Eksempel_mappe/value99.csv```. Fordi jeg har sat mit working directory som den mappe hvor mit datasæt er placeret, så kan jeg nu referere til min fil i den mappe markant nemmere. Så kan jeg gøre sådan her fremadrettet:
 
-```library(tidyverse)
+```R
 library(tidyverse)
 setwd("C:/Users/Admin/Desktop/Eksempel_mappe")
 data <- read_csv("value99.csv")
