@@ -11,6 +11,10 @@ weight: 6
 
 ## Hvordan refererer vi til stier?
 
+{{% notice info %}}
+Hvis i sidder på en Windows-computer og forsøger manuelt at gøre det første i denne beskrivelse vil i opleve, at i nok får en fejl. Lad derfor være med at manuelt begynde at kopiere stier endnu, men følg guiden som den skrider fremad. Hvis i senere manuelt vil kopiere en sti (når i ved hvor de er), så se punktet: "Skråstregerne vender forkert?" under "Troubleshooting".
+{{% /notice %}}
+
 Hvis jeg har lavet en mappe på mit skrivebord der hedder "Eksempel_mappe" og jeg ved hvad stien til mappen er, så skal jeg ende ud med en kommando der hedder:
 
 ```setwd("C:/Users/Admin/Desktop/Eksempel_mappe")```

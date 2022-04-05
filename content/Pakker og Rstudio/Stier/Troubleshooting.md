@@ -15,7 +15,7 @@ Når det kommer til stier og særligt stier på jeres lokale computere, er der t
 
 #### Skråstregerne vender forkert?
 
-Det med skråstreger er forskelligt fra Mac til Windows. Windows bruger generelt forward slash / i stier mens Mac bruger backslash \ . Det er, for R, ikke noget problem, så længe Windows-brugerne holder fast i / mens Mac-brugerne holder fast i \ . 
+Det med skråstreger er forskelligt fra Mac til Windows. Windows bruger generelt backslash \ i stier mens Mac bruger forward slash /. Hvis i bemærker det, så laver R-studio det om for Windows-brugerne, men hvorfor? Der er en meget lang forklaring der handler om hvilken arkitektur systemet er bygget på, men den korte er, at Windows bruger backslashes helt forkert til virkelig mange ting. Når i bruger ```setwd()``` er det ikke noget problem - R kan selv vende skråstregerne som den foretrækker det, men hvis i kopierer stierne ind i R, så bliver det noget bøvl. Der er fancy måder at ændre det på, men lige nu kan i ændre det ved at lave \ om til / manuelt.
 
 
 
