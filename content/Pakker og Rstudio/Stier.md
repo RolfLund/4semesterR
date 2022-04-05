@@ -17,7 +17,7 @@ En "sti" er en måde at referere til, hvor "ting" eksisterer på en computer. Sa
 
 Det refererer til, at min Windows-bruger er placeret på C-drevet (den primære harddisk på min computer). For hvert element der kommer efter "C:\" taler vi om mapper. Hvis man skulle beskrive ovenstående sti i menneskeord, så kunne man sige, at i min harddisk ("C:") findes der en mappe der hedder "Users" og i mappen "Users" er der en mappe der hedder "Rolf". Stier kan enten være generelle, som i første eksempel, eller de kan være enormt specifikke, hvor de refererer til en enkelt fil der ligger i tonsvis af undermapper. F.eks. kan jeg referere til en enkelt fil i mange undermapper ved stien:
 
-```C:\Users\Admin\Jedi\Jedi\CPython-37-33\593d51111df2a7984c5d14ec09b1fb4e1c5fa86889ca077d5efe8caf989e2ebc-b778ca99450ae54520d907217075b9ebc8ce4ba22ff117e5a79a9fc16bd81614.pkl```
+```C:\Users\Admin\Jedi\Jedi\CPython-37-33\a86889ca0\d5efe8caf92ebc20d\f9ce4ba22ff117\a9fc16bd81614.pkl```
 
 Men hvad har det med R at gøre? R, som alle andre programmer, har brug for at vide, hvordan den skal finde specifikke elementer på jeres computer. Hvis vi smadder gerne vil have den til at bruge et bestemt datasæt som ikke ligger på nettet, så skal vi vide hvor det datasæt er på vores computer. Det kan vi gøre på mange forskellige måder og denne side viser jer et par eksempler på, hvordan vi gør det nemmest.
 
@@ -30,4 +30,26 @@ R, om det er på Windows eller Mac, har samme måde den forstår hvor filer ligg
 
 
 ## Hvordan refererer vi til stier?
+
+Hvis jeg har lavet en mappe på mit skrivebord der hedder "Eksempel_mappe" og jeg ved hvad stien til mappen er, så skal jeg ende ud med en kommando der hedder:
+
+```setwd("C:/Users/Admin/Desktop/Eksempel_mappe")```
+
+Her bruger jeg kommandoen ```setwd```, der står for "set working directory" til at pege på det sted min mappe eksisterer. Den ligger på C-drevet, hvor der findes en mappe der hedder "Users". I "Users" er der en mappe der hedder "Admin". I mappen "Admin" er der en mappe der hedder "Desktop" og endeligt i mappen "Desktop" er der en mappe der hedder "Eksempel_mappe". Men hvad gør man, hvis man ikke ved hvad stien til den mappe man leder efter hedder?
+
+Den nemmeste løsning er at bruge R-studio til at finde stien. I R kan i trykke på menuen "Session" -> "Set working directory" -> "Choose directory" som vist her:
+
+![WD1](https://i.postimg.cc/V6HZhbB0/R-WD.png)
+
+Når vi trykker på det menupunkt kommer der et lille vindue op. Her skal vi navigere til det sted vi har lagt vores mappe. I mit tilfælde åbner vinduet det sidste sted jeg har været således:
+
+![WD2](https://i.postimg.cc/yxMQ14GV/R-WD2.png)
+
+Når jeg navigerer rundt ender jeg med at finde den mappe jeg har lagt min fil i. Klik på mappen én gang uden at gå ind i mappen. Vi skal ikke vælge filen i mappen, men blot mappen og trykke "open":
+
+![WD3](https://i.postimg.cc/VsJzkqhT/R-WD3.png)
+
+Når vi har valg mappen, kommer vi tilbage til R, som viser følgende i konsollen:
+
+![WD4](https://i.postimg.cc/C5BrpLmP/R-WD4.jpg)
 
