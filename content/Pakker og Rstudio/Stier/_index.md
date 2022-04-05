@@ -8,7 +8,7 @@ weight: 4
 
 
 
-## Hvad er stier?
+## Stier er...
 
 En "sti" er en måde at referere til, hvor "ting" eksisterer på en computer. Samtlige computere (Windows, Mac, Linux, Chromebooks) benytter sig af stier for at kunne finde elementer den skal bruge når man klikker på et ikon, billede eller andet. Når i f.eks. trykker på et program eller en app som er på skrivebordet eller i jeres menu-linje nederst på skærmen, så kan computeren kun forholde sig til hvad det ikon er, fordi ikonet indeholder information om, hvad det skal gøre når i klikker der. En genvej på skrivebordet er derfor, helt simpelt, bare en funktion til at finde hen til det sted hvor en bestemt fil eller mappe ligger. På de fleste Windows-computere er stistrukturen ret ens. F.eks. er mappestrukturen til den bruger jeg sidder på nu:
 
