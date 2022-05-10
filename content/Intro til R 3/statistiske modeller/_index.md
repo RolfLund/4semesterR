@@ -45,10 +45,10 @@ grsp_model
 ```
 
 
-​    
-​    Call:
-​    lm(formula = grspnum ~ eduyrs + wkhtot, data = ess18)
-​    
+
+    Call:
+    lm(formula = grspnum ~ eduyrs + wkhtot, data = ess18)
+    
     Coefficients:
     (Intercept)       eduyrs       wkhtot  
         -3668.7        891.1        888.4  
@@ -62,14 +62,12 @@ For at få alle relevante resultater fra modellen (koefficienter, $R^2$, osv.) b
 summary(grsp_model)
 ```
 
-
-​    
-​    Call:
-​    lm(formula = grspnum ~ eduyrs + wkhtot, data = ess18)
-​    
+    Call:
+    lm(formula = grspnum ~ eduyrs + wkhtot, data = ess18)
+     
     Residuals:
-        Min      1Q  Median      3Q     Max 
-     -64614  -16639  -10324   -1448 2955649 
+    Min      1Q  Median      3Q     Max 
+    -64614  -16639  -10324   -1448 2955649 
     
     Coefficients:
                 Estimate Std. Error t value Pr(>|t|)  

@@ -5,9 +5,9 @@ draft: false
 weight: 13
 ---
 
-# Introduktion til R (del 3)
+## Introduktion til R (del 3)
 
-## Program
+### Program
 - Statistiske modeller i R
 - Output af model
 - Visualisering med `ggplot2`

@@ -17,7 +17,7 @@ summary(grsp_vote_model)
 ```
 
 
-​    
+    
     Call:
     lm(formula = grspnum ~ eduyrs + wkhtot + vote, data = ess18)
     
@@ -59,7 +59,7 @@ summary(grsp_vote_model)
 ```
 
 
-​    
+    
     Call:
     lm(formula = grspnum ~ eduyrs + wkhtot + vote, data = ess18)
     
@@ -79,5 +79,4 @@ summary(grsp_vote_model)
       (576 observations deleted due to missingness)
     Multiple R-squared:  0.0087,	Adjusted R-squared:  0.003068 
     F-statistic: 1.545 on 4 and 704 DF,  p-value: 0.1875
-
 
