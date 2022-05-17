@@ -60,6 +60,7 @@ head(ess18)
 
 ## Program
 - Statistiske modeller i R
+- Værdirækker (vectors) i R
 - Output af model
 - Visualisering med `ggplot2`
 
@@ -78,7 +79,7 @@ Funktionen `lm()` bruges fx til at specificere en lineær model (lineære sammenhæ
 
 Formlen for en multipel lineær regression med tre uafhængige variable er fx:
 
-$y = \beta_{0} + \beta_{1} x_{1} + \beta_{2}x_{2} + \beta_{3}x_{3}$
+ $y = \beta_{0} + \beta_{1} x_{1} + \beta_{2}x_{2} + \beta_{3}x_{3}$
 
 I R skrives denne formel som (læg mærke til at skæringspunktet med y-aksen ($\beta_{0}$) ikke skal skrives ind, da denne bestemmes af modellen):
 
@@ -222,6 +223,45 @@ summary(grsp_vote_model)
     
 
 
+## Værdirækker (vectors) i R
+
+En basal datastruktur i R er en *vector*.
+
+En *vector* er en række af værdier af den samme type (fx en række tal, en række ord osv.). 
+
+En *vector* svarer til en enkelt variabel/kolonne i en dataframe, og man arbejder med vectors på samme måde, som man arbejder med enkelte kolonner (samme funktioner kan bruges).
+
+*Vectors* dukker op i mange forskellige sammenhænge i R, da de bruges hver gang, at man skal specificere en samling af flere værdier.
+
+**Dan en vector**
+
+En vector dannes med `c()`, hvor værdierne adskilles med `,`:
+
+
+```R
+numbers <- c(2, 9, 11, 7, 12, 14, 4)
+```
+
+`numbers` er nu en talrække, som der kan laves beregninger på, ligesom med en variabel i en dataframe:
+
+
+```R
+mean(numbers)
+```
+
+
+8.42857142857143
+
+
+
+```R
+sd(numbers)
+```
+
+
+4.35343323738644
+
+
 ## Output af model (med `stargazer`)
 
 Outputtet i R konsollen af en model er ikke kønt og egner sig dårligt til at fremstille. Der findes dog en række måder at lave pæne outputs af modeller fra R. En god pakke til dette er pakken `stargazer` (https://cran.r-project.org/web/packages/stargazer/stargazer.pdf).
@@ -245,7 +285,7 @@ Herunder dannes output af en af ovenstående model med `stargazer()`:
 stargazer(grsp_model, type = "html", out = "grsp_model.html")
 ```
 
-Outputtet ser ud som nedenstående, når åbnet i et andet program:
+Outputtet ser ud som nedenstående, når fx åbnet i en browser:
 
 {{< rawhtml >}}
 <table style="text-align:center"><tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td><em>Dependent variable:</em></td></tr>
@@ -269,39 +309,80 @@ Outputtet ser ud som nedenstående, når åbnet i et andet program:
 </table>
 {{< /rawhtml >}}
 
+Outputtet kan føres over i Word ved at markere tabellen og kopiere over. Word skulle gerne genkende automatisk, at det er en tabel, hvorefter den kan redigeres som en hvilken som helst anden tabel i Word.
 
-**Tilpasning af output**
+### Tilpasning af output med `stargazer`
 
-Outputtet kan tilpasses på mange måder. Herunder ses blot nogen af eksemplerne:
+`stargazer` indeholder ufatteligt mange tilpasningsmuligheder, som ændres ved at referere til de forskellige argumenter. 
+
+Selvom man kan tilpasse outputtet i fx Word, efter at det er eksporteret, så frarådes det *på det kraftigste* at rette i værdier og stjernenotation for signifikansniveau manuelt i fx Word, da der er stor risiko for at lave fejl.
+Disse bør i stedet tilpasses i `stargazer` 
+
+Herunder ses et brug af `stargazer`, der bruger nogen af de mange tilpasningsmuligheder (forklaring under koden:
 
 ```R
-stargazer(grsp_model, type = "html",
-          title = "Effekt af års uddannelse og arbejdstid på løn",
-          covariate.labels = c("Års uddannelse", "Arbejdstimer om ugen"),
-          dep.var.labels.include = FALSE, dep.var.caption = "Model 1", star.cutoffs = c(0.05, 0.01, 0.001),
-          out = "grsp_model.html")
+
+# Eksport af én model med tilpasninger
+stargazer(grsp_model,   # hvilken model skal ud?
+          type = "html",  # hvilken filtype skal modellen ud som?
+          out = "grsp_model2.html", # hvad skal filen med modellen gemmes som? (husk arbejdssti/working directory)
+          star.cutoffs = c(0.05, 0.01, 0.001), # sæt skæringsværdier for stjernemarkeringer for p-værdier
+          decimal.mark = ",", # ændr decimal-adskiller
+          digit.separator = ".", # ændr tusinde-adskiller
+          covariate.labels = c("Antal års uddannelse", "Arbejdstimer om ugen"), # mærkater for uafhængige variable (obs på rækkefølge - samme som i model)
+          dep.var.labels.include = FALSE, # udelad mærkat for afhængig variabel
+          dep.var.caption = "", # udelad overskrift for afhængig variabel
+          digits = 2, # Antal decimaler
+          title = "Effekt af års uddannelse og arbejdstid på løn") # titel
 ```
+
+---
+**Forklaring**
+
+- `type`: Hvilken filtype skal output gemmes som? (anbefales at bruge "html")
+
+- `out`: Hvad skal filen hedde? (Husk at ende med ".html", hvis `type = "html"` - vær desuden obs på arbejdssti (`getwd()`)
+
+- `star.cutoffs`: Skæringsværider for p-værdier til stjernenotation. Specificeres som værdiserie/vector med tre tal, svarnede til værdi for hhv. \*, \*\*, \*\*\* (fx `c(0.05, 0.01, 0.001)`)
+
+- `decimal.mark`: Sæt hvilket tegn, der skal adskille decimaler
+
+- `digit.separator`: Sæt hvilket tegn, der skal adskille tusinde
+
+- `digits`: Bestemt antal decimaler
+
+- `covariate.labels`: Ændre mærkater for uafhængige variable. Skrives som en værdiserie/vector (`c()`). Skal skrives i samme rækkefølge, som de er skrevet i modellen.
+
+- `dep.var.labels.include`: Sæt hvorvidt mærkat for afhængig variable skal inkluderes (logisk værdi, `TRUE`/`FALSE`)
+
+- `dep.var.caption`: Sæt overskrift for afhængig variabel (udelad ved at angive  `""`)
+
+- `title`: Giv output en overskrift
+
+---
+
+Output ser ud som nedenstående, når åbnet i browser:
 
 {{< rawhtml >}}
 
 <table style="text-align:center"><caption><strong>Effekt af års uddannelse og arbejdstid på løn</strong></caption>
-<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>Model 1</td></tr>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td><em>Dependent variable:</em></td></tr>
 <tr><td></td><td colspan="1" style="border-bottom: 1px solid black"></td></tr>
-<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Års uddannelse</td><td>891.145</td></tr>
-<tr><td style="text-align:left"></td><td>(856.409)</td></tr>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Antal års uddannelse</td><td>891,15</td></tr>
+<tr><td style="text-align:left"></td><td>(856,41)</td></tr>
 <tr><td style="text-align:left"></td><td></td></tr>
-<tr><td style="text-align:left">Arbejdstimer om ugen</td><td>888.389</td></tr>
-<tr><td style="text-align:left"></td><td>(458.219)</td></tr>
+<tr><td style="text-align:left">Arbejdstimer om ugen</td><td>888,39</td></tr>
+<tr><td style="text-align:left"></td><td>(458,22)</td></tr>
 <tr><td style="text-align:left"></td><td></td></tr>
-<tr><td style="text-align:left">Constant</td><td>-3,668.748</td></tr>
-<tr><td style="text-align:left"></td><td>(20,645.310)</td></tr>
+<tr><td style="text-align:left">Constant</td><td>-3.668,75</td></tr>
+<tr><td style="text-align:left"></td><td>(20.645,31)</td></tr>
 <tr><td style="text-align:left"></td><td></td></tr>
 <tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>710</td></tr>
-<tr><td style="text-align:left">R<sup>2</sup></td><td>0.008</td></tr>
-<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.005</td></tr>
-<tr><td style="text-align:left">Residual Std. Error</td><td>121,581.200 (df = 707)</td></tr>
-<tr><td style="text-align:left">F Statistic</td><td>2.742 (df = 2; 707)</td></tr>
-<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td style="text-align:right"><sup>*</sup>p<0.05; <sup>**</sup>p<0.01; <sup>***</sup>p<0.001</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0,01</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0,005</td></tr>
+<tr><td style="text-align:left">Residual Std. Error</td><td>121.581,20 (df = 707)</td></tr>
+<tr><td style="text-align:left">F Statistic</td><td>2,74 (df = 2; 707)</td></tr>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td style="text-align:right"><sup>*</sup>p<0,05; <sup>**</sup>p<0,01; <sup>***</sup>p<0,001</td></tr>
 </table>
 
 {{< /rawhtml >}}
