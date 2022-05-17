@@ -2,7 +2,7 @@
 title: "Statistiske modeller i R"
 date: 2022-05-10T08:08:52+01:00
 draft: false
-weight: 1
+weight: 2
 mathjax: true
 ---
 
