@@ -117,3 +117,10 @@ a:hover {
 #homelinks a:hover {
   color: var(--MENU-HOME-LINK-HOVERED-color);
 }
+
+code.has-jax {
+    -webkit-font-smoothing: antialiased;
+    background: inherit !important;
+    border: none !important;
+    font-size: 100%;
+}
