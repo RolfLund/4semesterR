@@ -15,7 +15,7 @@ Variablen `lvpntyr` ("Year first left parents for living separately for 2 months
 
 Variablen `ppltrst` ("Most people can be trusted or you can’t be too careful") bruges til at undersøge tillid. 
 
-Der kontrolleres for køn (`gndr`) og alder (udregnet med `yrbrn` - fødselsår) samt hvorvidt, man stemte på rød blok til sidste Folketingsvalg eller ej (variabel dannet ud fra `prtvtddk` - "Party voted for in last national election, Denmark".
+Der kontrolleres for køn (`gndr`) og alder (udregnet med `yrbrn` "fødselsår") samt hvorvidt, man stemte på rød blok til sidste Folketingsvalg eller ej (variabel dannet ud fra `prtvtddk` - "Party voted for in last national election, Denmark".
 
 
 
