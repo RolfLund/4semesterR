@@ -1,7 +1,7 @@
 ---
 title: "Datahåndteringsøvelse"
 date: 2022-05-18
-draft: false
+draft: true
 weight: 14
 ---
 
