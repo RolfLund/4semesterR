@@ -1,5 +1,5 @@
 ---
-title: "Opsætning og installation af R"
+title: "Installation af R"
 date: 2021-12-20T08:08:52+01:00
 draft: false
 weight: 2
@@ -8,7 +8,7 @@ weight: 2
 
 
 
-## Opsætning og installation af R
+## Installation af R
 
 __VIGTIGT__: At installere R er lidt mere besværligt end bare at trykke på nogle knapper. Følg derfor denne guide sådan at vi sikrer os, at der ikke er nogle uhensigtsmæssige installationer før vi har brug for at bruge R. Alle undervisere forventer, at i har installeret R til forelæsning 2.
 
