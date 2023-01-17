@@ -1,0 +1,251 @@
+---
+format: gfm
+editor: visual
+execute:
+  echo: true
+  warning: false
+  error: true
+---
+
+# {#Kapitel}Datastrukturer i R
+
+R har forskellige måder at lagre data på. Vi har hidtil set på, hvordan R håndterer enkelte værdier. I det følgende ser vi på, hvordan R arbejder med flere værdier. Objekter til at holde på flere værdier refereres også til som "datastrukturer". 
+
+Den mest centrale datastruktur i R er en såkaldt "data frame", hvor data er struktureret i rækker og kolonner.
+
+# {#Afsnit}Tidyverse
+
+[Tidyverse](https://www.tidyverse.org/) er en samling af pakker til R, der letter arbejdet med at indlæse, håndtere og arbejde med data. 
+
+Pakkerne fra Tidyverse har den fordel, at de alle følger den samme designfilosofi og opbygning i deres funktioner.
+
+Vi vil i dette materiale primært bruge funktioner fra tidyverse til data- og variabelhåndtering. Inden du fortsætter kan du derfor med fordel installere denne pakkesamling.
+
+**Installation og brug af tidyverse**
+
+Alle pakker i tidyverse kan installeres med følgende kommando:
+
+```{r}
+#| eval: false
+install.packages('tidyverse')
+```
+
+Når tidyverse er installeret, kan alle pakker fra tidyverse indlæses blot ved én library-kommando:
+
+```{r}
+library(tidyverse)
+```
+
+# {#Afsnit}Indlæsning af data
+
+I koden herunder indlæses data fra en csv-fil og gemmes i objektet `ess18`:
+
+
+```{r}
+library(tidyverse)
+
+ess18 <- read_csv("https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv")
+```
+    
+`read_csv` er en del af tidyverse (mere specifikt pakken `readr`).
+
+R har også en basisfunktion til at indlæse csv-filer (`read.csv`), men `read_csv` er mere effektiv.
+
+
+### Indlæsning med peg og klik
+
+Data kan også indlæses med peg-og-klik under "File"->"Import dataset". Her hjælper RStudio med importen af data:
+
+![impdat](./img/impdat.png)
+
+
+### Data brugt i undervisningen: European Social Survey 2018
+
+Til R introduktionerne bruger vi et udsnit af European Social Survey fra 2018 (https://www.europeansocialsurvey.org/). Data indeholder kun den danske del af data, nogle udvalgte variable samt nogle få filtreringer.
+
+- Kodebog kan findes her: https://www.europeansocialsurvey.org/docs/round9/survey/ESS9_appendix_a7_e03_1.pdf
+- Spørgeskeamet brugt i undersøgelsen kan findes her: https://www.europeansocialsurvey.org/docs/round9/fieldwork/source/ESS9_source_questionnaires.pdf
+
+**Datasættet indeholder følgende variable:**
+
+|variabel | beskrivelse |
+|----|---|
+|idno|Respondent's identification number|
+|netustm |Internet use, how much time on typical day, in minutes|
+|ppltrst|Most people can be trusted or you can't be too careful|
+|vote|Voted last national election|
+|prtvtddk|Party voted for in last national election, Denmark|
+|health|Subjective general health|
+|lvpntyr|Year first left parents for living separately for 2 months or more|
+|tygrtr|Retire permanently, age too young. SPLIT BALLOT|
+|gndr|Gender|
+|yrbrn|Year of birth|
+|edlvddk|Highest level of education, Denmark|
+|eduyrs|Years of full-time education completed|
+|wkhct|Total contracted hours per week in main job overtime excluded|
+|wkhtot|Total hours normally worked per week in main job overtime included|
+|grspnum|What is your usual [weekly/monthly/annual] gross pay|
+|frlgrsp|Fair level of [weekly/monthly/annual] gross pay for you|
+|inwtm|Interview length in minutes, main questionnaire|
+
+
+# {#Afsnit}Data Frames (Tabeldata i R)
+
+`ess18` er nu et objekt, der indeholder et datasæt. Bemærk at måden vi danner objektet ikke er anderledes end andre måder, som vi har dannet objekter: `objectname <- somefunction(something)`.
+
+`ess18` er en "data frame". En "data frame" er måden R lagrer tabeldata (data struktureret i rækker og kolonner).
+
+## Udforskning af data frames
+For at få et overblik over data, kan man bruge funktionen `head()`:
+
+
+```{r}
+head(ess18)
+```
+
+`head()` viser de første seks rækker af data, og er god til at tjekke, om data ser ud, som det skal.
+
+Vi kan tjekke kolonnenavnene (variabelnavnene) med `colnames`. 
+
+```{r}
+colnames(ess18)
+```
+
+`dim` returnerer antallet af rækker og kolonner/variable.
+
+```{r}
+dim(ess18)
+```
+
+`summary()` bruges til at se deskriptive mål for variable i data (antal, middelværdi, standardafvigelse, minimum, maksimum, kvartiler).
+
+
+```{r}
+summary(ess18)
+```
+
+
+## Data frames og variable
+
+Data frames består af rækker og kolonner. R forventer typisk at rækkerne indeholder "observationer" (fx personer), mens kolonner indeholder variable (information omkring observationerne).
+
+R behandler en enkelt kolonne/variabel som en "vector". En "vector" er en samling af værdier af den samme *class* (fx tal eller tekster).
+
+Man udpeger en enkelt kolonne i en data frame med `$` (en "vector").
+
+
+```{r}
+head(ess18$yrbrn) # første seks værdier i yrbrn
+```
+
+Hver værdi i en variabel har et indeks, som afspejler rækkenummeret i data.
+
+Man udpeger et specifikt rækkenummer med `[]`:
+
+
+```{r}
+ess18$yrbrn[10] # Giver 10. værdi (række 10) af yrbrn variabel
+```
+
+
+```{r}
+ess18$yrbrn[2:10] # Giver række 2 til 10 af yrbrn (begge inkluderet)
+```
+
+`unique()` giver de unikke værdier i en variabel:
+
+
+```{r}
+unique(ess18$health)
+```
+
+# {#Afsnit}Enkeltvarialbe (vectors)
+
+En basal datastruktur i R er en *vector*.
+
+En *vector* er en række af værdier af den samme type (fx en række tal, en række ord osv.). 
+
+En *vector* svarer til en enkelt variabel/kolonne i en dataframe, og man arbejder med vectors på samme måde, som man arbejder med enkelte kolonner (samme funktioner kan bruges).
+
+*Vectors* dukker op i mange forskellige sammenhænge i R, da de bruges hver gang, at man skal specificere en samling af flere værdier.
+
+**Dan en vector**
+
+En vector dannes med `c()`, hvor værdierne adskilles med `,`:
+
+```{r}
+numbers <- c(2, 9, 11, 7, 12, 14, 4)
+```
+
+`numbers` er nu en talrække, som der kan laves beregninger på, ligesom med en variabel i en dataframe:
+
+```{r}
+mean(numbers)
+```
+
+```{r}
+sd(numbers)
+```
+
+# {#Afsnit}Deskriptive mål
+
+R indeholder en række funktioner til at regne specifikke deskriptive mål, fx `min()` (minimum), `max()` (maksimum), `mean()` (middelværdi), `sd()` (standardafvigelse) og `length()` (antal værdier/rækker).
+
+
+```{r}
+min(ess18$yrbrn) # Mindste værdi
+max(ess18$yrbrn) # Største værdi
+mean(ess18$yrbrn) # Middelværdi
+sd(ess18$yrbrn) # Standardafvigelse
+length(ess18$yrbrn) # Antal værdier i variabel (svarer til antal rækker)
+```
+
+Husk at vi med R kan lagre hvad som helst som et objekt. Hvis vi fx løbende får brug for at kalde et mål frem, kan vi lagre det som et objekt for sig:
+
+
+```{r}
+mean_yrbrn <- mean(ess18$yrbrn)
+
+print(mean_yrbrn)
+```
+
+
+# {#Afsnit}Missing-værdier
+
+Data vil ofte indeholde missing-værdier. Missing-værdier angiver ikke-gyldige værdier; fx et manglende svar, ugyldigt svar, information der ikke kunne skaffes eller lignende.
+
+Missing-værdier bruges til at give en værdi uden at give en værdi (cellerne skal indeholde *noget*). Missing-værdier angives som `NA` i R.
+
+BEMÆRK: Det er ikke givet at missing-værdier er kodet som missing på forhånd i et datasæt. Hvordan missing-værdier kodes varierer mellem programmer. Derfor bruger man ofte specifikke talværdier (fx 777777 eller 888888) til at indikere missing-værdier. Man kan også stå i situationer, hvor visse kategorier er irrelevante for analysen, hvor man så koder disse til missing.
+
+`summary()`-funktionen inkluderer antallet af missing-værdier i variablen:
+
+```{r}
+summary(ess18$inwtm)
+```
+
+Missing-værdier er hverken høje eller lave i R. Dette betyder at det ikke er muligt at lave beregninger med missing-værdier.
+
+```{r}
+min(ess18$inwtm) # NA is neither high or low - returns NA
+max(ess18$inwtm) # NA is neither high or low - returns NA
+mean(ess18$inwtm) # NA is neither high or low - returns NA
+```
+
+Ofte er man nødt til at håndtere missing-værdier i sit analysearbejde; enten ved at erstatte dem eller ved at fjerne rækker, som har missing-værdier.
+
+Nogle funktioner har indbyggede argumenter til at håndtere missing-værdier.
+
+### Kan vi fjerne missing i vores beregning?
+
+Ved at kigge på hjælpefilen for `max()`, kan vi finde argumentet `na.rm`. Dette argument bruges til at fjerne missing, når R laver beregningen.
+
+Bemærk at argumentet i hjælpefilen er skrevet `na.rm = FALSE`. Dette angiver standardindstillingen for funktionen. Det vil sige, at hvis ikke man specificerer andet, så er det den måde, som funktionen køres. I dette tilfælde er argumentet som standard sat til `FALSE` (missing-værdier fjernes *ikke*).
+
+Ved at ændre argumentet, når vi bruger funktionen, fjernes missing-værdierne inden beregning:
+
+```{r}
+max(ess18$inwtm, na.rm = TRUE)
+```
+
+# {#END} end

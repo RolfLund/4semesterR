@@ -1,0 +1,226 @@
+---
+format: gfm
+editor: visual
+execute:
+  echo: true
+  warning: false
+  error: true
+---
+
+# {#Kapitel}Datahåndtering i R
+
+```{r}
+#| echo: false
+ess18 <- read_csv("https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv")
+```
+
+Når man arbejder med data, er man næsten altid nødt til at foretage visse ændringer i data, før at de er egnet til analyse. Dette kaldes "datahåndtering".
+
+Datahåndtering inkluderer blandt andet:
+- Udvælge specifikke observationer og variable (kaldes også subsetting)
+- Danne nye variables
+- Rekode værdier
+
+R understøtter datahåndtering med "basis"-kommandoer, men funktionerne tilgængelige gennem tidyverse (https://www.tidyverse.org/) er langt mere intuitive.
+
+# {#Afsnit}Subset data med tidyverse 
+
+Med "subsetting" menes at danne et mindre udsnit af data. Dette gøres blandt andet ved at udvælge specifikke rækker og kolonner i data.
+
+`tidyverse` indeholder funktionerne `filter` og `select`, som kan bruges til at subsette data (fra pakken `dplyr`).
+
+`filter()` tager et datasæt og kriterier i form af logiske udtryk som argumenter. Funktionen returnerer de rækker, som opfylder kriterierne.
+
+`select()` tager et datasæt efterfulgt af de variable, som skal bevares som argumenter. Funktionen returnerer de valgte variable.
+
+BEMÆRK: Basis R har også en `filter()` funktion. Denne funktion overskrives, når man importerer `tidyverse` (se advarsel).
+
+```{r}
+#| warning: true
+library(tidyverse)
+```
+
+# {#Afsnit}Udvælg rækker med filter
+
+`filter` funktionen tager mindst to input: et datasæt (en dataframe) og et kriterie.
+
+```{r}
+library(tidyverse)
+
+ess18_male <- filter(ess18, gndr == 'Male') # Subset kun med mænd
+
+head(ess18_male)
+```
+
+```{r}
+ess18_edusub <- filter(ess18, eduyrs > 15) # Subset med folk med mere end 15 års uddannelse
+
+head(ess18_edusub)
+```
+
+{{% notice note %}}
+Bemærk! Ved brug af `filter` behøves kun at skrive navnet på variablen (`eduyrs`), og ikke både navn på variabel og datasæt, som man ellers typisk gør for at referere til enkeltkolonner i R (`ess18$eduyrs`). 
+
+Dette behøves ikke, da `filter` antager, at variabelnavnet kommer fra det datasæt, som er angivet. Dette er gennemgående for de fleste `tidyverse` pakker og kommandoer (`filter`, `select`, `mutate` osv.)
+
+{{% /notice %}}
+
+**Logiske udtryk og logiske værdier**
+
+I R skrives kriterier som logiske udtryk. Husk at logiske udtryk altid returnerer en logisk værdi (`TRUE`, `FALSE` eller `NA`).
+
+En række operationer i R returnerer altid logiske værdier:
+
+- `>`
+- `>=`
+- `<`
+- `<=`
+- `==`
+- `!=`
+
+`filter()` forventer et logisk udtryk som kriterie, og bevarer så alle de observationer, som opfylder kriteriet.
+
+# #{#Afsnit}Udvælg variable med select
+
+`select` tager mindst to input: et datasæt (en dataframe) og en eller flere variable fra det datasæt, som kan beholdes/gemmes i et nyt datasæt. 
+
+Datasættet er altid første input, hvorefter variable listes i den rækkefølge, som man gerne vil have dem, adskilt med mellemrum.
+
+
+```{r}
+ess18_male_subset <- select(ess18_male, idno, gndr, yrbrn, edlvddk) # Udvælg specifikke variable
+
+head(ess18_male_subset)
+```
+
+`select` kan også bruges til at fravælge bestemte variable ved at sætte et `-` foran variabel-navnet:
+
+```{r}
+ess18_male_subset <- select(ess18_male, -edlvddk) # Alle variable undtagen edlvddk
+```
+
+`select` indeholder en række funktioner til at vælge variable forskellige kriterier, herunder:
+- `starts_with()`: Vælger alle variable, hvis navne starter med tekststrengen angivet i funktionen
+- `contains()`: Vælger alle variable, hvis navn indeholder tekststrengen angivet i funktionen.
+
+Se mere her: https://dplyr.tidyverse.org/reference/select.html
+
+# {#Afsnit}Håndtering af missingværdier
+
+Missingværdier er angivet med `NA` i R. 
+
+Som vist ved beregning af deskriptive mål (middelværdi, standardafvigelse osv.), så kan R ikke lave beregninger på missingværdier. Ved nogle beregninger frasorterer R missingværdierne automatisk inden beregning, men andre gange skal man selv specificerer, hvad der skal ske med missingværdierne.
+
+Man har derfor typisk brug for at kunne identificere hvilke værdier i datasættet, der er missing. `NA` er dog en speciel værdi, så den kan ikke bruges i et filter på samme måde som andre værdier.
+
+I nedenstående forsøges at udvælge de respondenter fra `ess18_male` subsettet, som *ikke* er missing i `grspnum` (selvangivet månedlig indkomst):
+
+
+```{r}
+ess18_male_filter <- filter(ess18_male, grspnum != NA)
+
+head(ess18_male_filter)
+```
+
+Ovenstående returnerer ingen rækker, da man ikke kan arbejde med missingværdier på den måde i R. 
+
+For at identificere missingværdier bruges funktionen `is.na()`. Funktionen spørger "er værdien missing?" og returner `TRUE`/`FALSE` (`TRUE` hvis missing; ellers `FALSE`):
+
+```{r}
+head(is.na(ess18_male$grspnum)) # Er de første seks værdier i grspnum missing?
+```
+
+Funktionen kan bruges til at finde de observationer, som *er* missing. Hvordan vælges så dem, som *ikke* er missing?
+
+En simpel måde at vælge de observationer, som *ikke* er missing, er ved at "vende" udtrykket om, sådan at det evaluerer til `TRUE`, hvis de *ikke* er missing. 
+
+I R kan logiske udtryk vendes om ved at bruge `!` foran udtrykket (ved at "vende om" menes, at `TRUE` bliver til `FALSE`, og `FALSE` bliver til `TRUE`:
+
+```{r}
+!(2 < 4) # 2 er mindre end fire, men giver FALSE, da det vendes om med !
+```
+
+`!` kan også bruges i kombination med `is.na()`:
+
+```{r}
+head(!(is.na(ess18_male$grspnum))) # Er de første seks værdier i grspnum ikke missing?
+```
+
+Med ovenstående kan man udelukkende vælge de respondenter, som ikke er missing:
+
+```{r}
+ess18_male_filter <- filter(ess18_male, !(is.na(grspnum)))
+
+head(ess18_male_filter)
+```
+
+
+# {#Afsnit}Kombinér datahåndteringsfunktioner med pipe (|>)
+
+Det bliver hurtigt omstændeligt at foretage flere datahåndteringsoperationer, hvis man skal specificere navnet på datasættet hver gang. Dette kan forsimples ved brug af "pipe"-operatoren (`|>`).
+
+Et "pipe" fungerer kort sagt ved at erstatte det første argument i funktionen til højre for pipet med outputtet på venstre side af pipet (typisk opbrudt med linjeskift for at gøre det nemmere at læse). 
+
+Man bruger for det meste pipe i forbindelse med datahåndtering, da man på den måde undgår at skulle lave midlertidige data frame objekter undervejs, men blot kan sammenkæde datahåndteringer i et langt pipe.
+
+
+**Flere datahåndteringsudtryk uden pipe**
+
+Herunder dannes et subet af ESS18, der indeholder alle mænd og variablene `idno`, `gndr`, `yrbrn`, `edlvddk`:
+
+
+```{r}
+ess18_male_subset <- filter(ess18, gndr == 'Male')
+ess18_male_subset <- select(ess18, idno, gndr, yrbrn, edlvddk)
+
+head(ess18_male_subset)
+```
+
+Ovenstående kode er omstændelig af flere grunde: For det første skal navnet på det endelige subset `ess18_male_subset` gentages for hver datahåndteringsudtryk. For det andet skal input data frame (`ess18`) også gentages hver gang.
+
+**Flere datahåndteringsudtryk med pipe**
+
+Med et pipe kan flere udtryk kædes sammen, så man undgår at lave midlertidige data frame objekter samt at skulle skrive navn på input data frame:
+
+
+```{r}
+ess18_male_subset <- ess18 %>% # subset skal tage udgangspunkt i ess18
+    filter(gndr == 'Male') %>% # filter for mænd - datainput er output af ovenstående (en kopi af ess18)
+    select(idno, gndr, yrbrn, edlvddk) # udvælg variable - datainput er output af ovenstående (ess18 filtreret for mænd)
+
+head(ess18_male_subset)
+```
+
+# {#Afsnit}Variabelændringer med mutate
+
+En væsentlig del af datahåndtering er at foretage forskellige variabelændringer - enten i form af at rekode værdier i en variabel eller ved at danne nye variable, som gør brug af informaiton fra andre variable. 
+
+I `tidyverse` bruges funktionen `mutate` til at foretage variabelændringer - uanset om der er tale om nye variable eller ændring af eksisterende (rekodning).
+
+**Dan ny variabel med `mutate`**
+
+Funktionen `mutate()` fra `tidyverse` (pakken `dplyr`) bruges til at foretage variabelændringer (rekodning samt danne nye variable.
+
+Funktionen mindst to input: 
+1. Et datasæt, hvor der skal dannes/ændres en variabel
+2. Et udtryk for, hvad den ændrede/nye variabel skal indeholde. Dette skrives som `nyvar` = `[variabelindhold]`.
+
+I nedenstående dannes en variabel for interviewtid i timer. Denne dannes ved at tage `inwtm` (interviewtid i minutter) og dividere med 60:
+
+
+```{r}
+ess18 <- mutate(ess18, inwth = inwtm / 60)
+
+head(ess18$inwth)
+```
+
+At lave nye variable og rekodninger er typisk gjort på samme måde. Den eneste forskel er blot, om ændringerne skrives til ny variabel, eller om ændringerne overskriver en eksisterende variabel (rekodning).
+
+Det er typisk bedst at danne nye variable, hvis indholdet i variablen er ændret. Hvis man dog blot ville ændre den oprindelige variabel, skulle man blot specificere det oprindelige variabelnavn i stedet for et nyt:
+
+```{r}
+#| eval: false
+ess18 <- mutate(ess18, inwtm = inwtm / 60) # Overskriver variabel
+```
+
+# {#END} end

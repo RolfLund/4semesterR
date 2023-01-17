@@ -1,0 +1,160 @@
+---
+format: gfm
+editor: visual
+execute:
+  echo: true
+  warning: false
+  error: true
+---
+
+# {#Kapitel}Kategoriske variable i R (factors)
+
+```{r}
+#| echo: false
+
+library(tidyverse)
+ess18 <- read_csv("https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv")
+```
+
+Kategoriske variable (nominale og ordinale variable) er typisk gemt som typen "factor" i R. I det følgende ser vi nærmere på, hvordan man arbejder med denne.
+
+# {#Afsnit}Hvad er en factor?
+
+Factors bruges til eksplicit at fortælle R, at variablen skal behandles som nominal eller ordinal. Ved at konvertere en variabel til en factor, sætter man både begrænsninger for de mulige værdier (denne variabel indeholder kun X værdier), og man fortæller R, hvordan den skal håndtere variablen, når den bruges i en statistisk model.
+
+Factors kan enten være "unordered" eller "ordered". En "unordered" factor svarer til en nominalskaleret variabel (en variabel *uden* rangorden), mens en "ordered" factor svarer til en ordinalskaleret variabel (en variabel *med* rangorden).
+
+R kan nogen gange finde på at indlæse tekstvariable som factorer. Dette kan give problemer, da man i sådanne tilfælde ikke har kontrol med, hvordan den er blevet konverteret til en factor (fx at en ordinalskaleret bliver lavet til en "unordered" factor).
+
+### Dan en factor
+
+En variabel kan omdannes til en factor med funktionen (`as.factor`):
+
+```{r}
+ess18n <- ess18 |>
+    mutate(gndr = as.factor(gndr))
+
+head(ess18n)
+```
+
+Ved bare at se på data, ses ikke umiddelbart nogen ændring, da værdierne stadig er "Male" og "Female". Ses der nærmere på den specifikke variabel, kan det dog ses, hvordan den nu er opbygget:
+
+```{r}
+unique(ess18n$gndr)
+```
+
+### Levels i en factor
+
+Når man omdanner en variabel til en factor, fortæller man også R, at denne variabel *kun* kan indeholde nogle specifikke værdier. De værdier, som variablen kan indeholde, er dens "levels".
+
+Ser man fx på de unikke værdier i et subet kun med mænd, vil man se, at data kun indeholder værdien "Male", men at de mulige værdier er "Male" og "Female":
+
+```{r}
+ess18_male_subset <- filter(ess18, gndr == 'Male')
+
+unique(ess18_male_subset$gndr)
+```
+
+`as.factor()` vil altid antage, at værdierne i variablen er de mulige værdier. Hvis man gerne vil styre de mulige værdier (levels), skal man bruge funktionen `factor()` i stedet.
+
+```{r}
+ess18n <- ess18 |>
+    mutate(gndr = factor(gndr, levels = c('Male', 'Female')))
+```
+
+{{% notice warning %}} Husk! R tager ting *meget* bogstaveligt - herunder også tekstværdierne i en variabel. Når du specificerer levels, så sørg for at de er skrevet præcist, som de er angivet i variablen. {{% /notice %}}
+
+Ved at specificere `levels` fortæller man R, at variablen *kun* skal indeholde de værdier. Alle øvrige værdier bliver derfor sat til missing:
+
+```{r}
+ess18n <- ess18 |>
+    mutate(gndr_3 = factor(gndr, levels = c("Male", "Other")))
+
+table(ess18n$gndr_3)
+```
+
+For at hjælpe sig selv, kan man som alternativ til `factor()` bruge `parse_factor()` (fra `tidyverse`/`readr`). Denne fungerer præcis ligesom `factor()` med den ene forskel, at den giver advarsler, hvis værdier bliver tvunget til missing:
+
+```{r}
+#| warning: true
+ess18n <- ess18 |>
+    mutate(gndr_3 = parse_factor(gndr, levels = c('Male', 'Other')))
+
+table(ess18n$gndr_3)
+```
+
+### Strings (tekstværider) vs. factors
+
+Fordelen ved at bruge factors er, at man kan styre hvordan kategorierne skal forstås af R. Factors tillader også at man kan arbejde med kategorier, som muligvis ikke er til stede i data. Dette er fx brugbart i surveystudier, hvor man kan komme ud for, at visse kategorier ikke er besvaret.
+
+```{r}
+ess18n <- ess18 |>
+    mutate(gndr_3 = factor(gndr, levels = c('Female', 'Male', 'Other')))
+
+table(ess18n$gndr_3)
+```
+
+# {#Afsnit}"Ordered" og "unordered" factors
+
+En factor vil som standard blive sat til "unordered" (nominalskaleret). Dette kan ændres ved at bruge funktionen `factor()` sammen med `ordered =` argumentet. Hvor `as.factor()` bruges til at konvertere værdierne i en variabel til ikke-rangordnede kategorier, så bruges `factor()` både til at styre hvilke kategorier, der skal indgå i factoren samt til at styre, om den skal være rangordnet eller ej.
+
+Herunder omdannes `health`-variablen (selvvurderet helbred) til en rangordnet factor, uden rækkefølgen specificeres:
+
+```{r}
+# Dan factor som rangordnet/ordinal (men hvilken rækkefølge?)
+ess18n <- ess18 |>
+    mutate(health_r = factor(health, ordered = TRUE))
+
+unique(ess18n$health_r)
+```
+
+Fordi rækkefølgen ikke er specificeret, antager R, at de skal sættes i alfabetisk rangorden. Dette betyder, at `health_r` variablen er kodet sådan, at "Very bad" betragtes som en højere værdi end "Good":
+
+```{r}
+print(ess18n$health_r[5])
+print(ess18n$health_r[10])
+
+ess18n$health_r[5] > ess18n$health_r[10] # Er "Very bad" højere end "Good"?
+```
+
+R kan ikke vide, hvad der kommer først i rækkefølge ud fra tekstværdien alene, så det skal man selv specificere i rekodningen. Dette gøres ved at specificere levels i rækkefølgen lav til høj:
+
+```{r}
+ess18n <- ess18 |>
+    mutate(health_r = factor(health, levels = c('Very bad', 'Bad', 'Fair', 'Good', 'Very good'), ordered = TRUE))
+
+unique(ess18n$health_r)
+```
+
+```{r}
+print(ess18n$health_r[5])
+print(ess18n$health_r[10])
+
+ess18n$health_r[5] > ess18n$health_r[10] # Er "Very bad" højere end "Good"?
+```
+
+# {#Afsnit}Labels i en factor
+
+`factor()` funktionen har også et `labels` argument. Denne bruges til at angive, hvad værdierne i factoren skal hedde. Som standard antager R, at `labels` skal være det samme som `levels`, men man kan vælge at specificere andre labels. Disse skal så angives i samme rækkefølge som labels:
+
+```{r}
+ess18n <- ess18 |>
+    mutate(health_r = factor(health, levels = c('Very bad', 'Bad', 'Fair', 'Good', 'Very good'), 
+                             labels = c('Meget dårligt', 'Dårligt', 'Jævnt', 'Godt', 'Meget godt'), 
+                             ordered = TRUE))
+
+unique(ess18n$health_r)
+```
+
+At specificere `labels` er principielt en rekodning af værdierne. Man kan derfor bruge denne funktionalitet til at slå kategorier sammen også:
+
+```{r}
+ess18n <- ess18 |>
+    mutate(health_r = factor(health, levels = c('Very bad', 'Bad', 'Fair', 'Good', 'Very good'), 
+                             labels = c('Dårligt', 'Dårligt', 'Jævnt', 'Godt', 'Godt'), 
+                             ordered = TRUE))
+
+unique(ess18n$health_r)
+```
+
+# {#END} end

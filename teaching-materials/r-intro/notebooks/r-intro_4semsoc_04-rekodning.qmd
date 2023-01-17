@@ -1,0 +1,306 @@
+---
+format: gfm
+editor: visual
+execute:
+  echo: true
+  warning: false
+  error: true
+---
+
+# {#Kapitel}Rekodning i R
+
+```{r}
+#| echo: false
+library(tidyverse)
+ess18 <- read_csv('https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv')
+```
+
+I denne sektion ser vi nærmere på forskellige funktioner til at rekode i R. 
+
+Vi kan overordnet adskille mellem tre typer af rekodning:
+
+- Simpel rekodning (fx omregning af eksisterende varibel)
+- Ændring af kategorier (fx ved at sammenslå flere kategorier til én)
+- Omkodning fra numerisk til kategorisk (fx ved at lave variable for kategoriseringer af alder, indkomst eller andet)
+
+# {#Afsnit}Hvornår laver man en ny variabel?
+
+Når man laver datahåndtering, bør man altid bestræbe sig efter ikke at *fjerne* information fra datasættet. Når man laver variabelændringer, bør man derfor *altid* lave en ny variabel, hvis informationen i den oprindleige variabel ændres (fx når man rekoder fra numerisk til kateogriske eller sammenslår kategorier).
+
+Hvis variabelændringer primært går på at rette fejl i variablen, så kan man typisk fint overskrive den oprindelige variabel. Dette kan fx være aktuelt, hvis variabel skal ændres fra tekst til numerisk, eller hvis der skal rettes fejl i kategorinavne.
+
+Er man i tvivl bør man altid lave en ny variabel. På den måde er der ikke information, som går tabt.
+
+
+# {#Afsnit}Ændring af variabeltype (class)
+
+Som nævnt tidligere, adskiller R mellem objekter via deres "class".
+
+Enkelte variable(/vectors) kan *kun* indeholde værdier med samme class. Funktionen `class()` virker derfor også på variable.
+
+Variablen `tygrtr` (i hvilken alder er man for ung til at gå på pension) ligner en variabel, der bør indeholde numeriske værdier (en alder). Ser vi nærmere på variablen, kan vi dog se, at den også indeholder tekst-værdier:
+
+```{r}
+head(ess18$tygrtr)
+```
+
+Undersøger vi variablens class, kan vi se, at variablen er lagret som tekst (en string).
+
+```{r}
+class(ess18$tygrtr)
+```
+
+Dette betyder at vi ikke kan lave beregninger med variablen:
+
+```{r}
+max(ess18$tygrtr, na.rm = TRUE) # Viser højeste værdi alfabetisk
+```
+
+### "Class coercion" - tving variabel til en anden type
+
+I de fleste tilfælde kan R tvinge værdier fra en type/class til en anden (kaldes også "casting" i programmering generelt). Ved at gøre dette, bliver inkompatible værdier til missing (`NA`). 
+
+Værdier kan tvinges til tekst værdier med `as.character()`
+
+Værdier kan tvinges til numeriske værdier med `as.numeric()`
+
+Herunder dannes en numerisk version af `tygrtr` (bemærk advarslen):
+
+```{r}
+#| warning: true
+ess18 <- mutate(ess18, tygrtr_num = as.numeric(tygrtr))
+```
+
+Nu kan variablen bruges i beregninger:
+
+```{r}
+max(ess18$tygrtr_num, na.rm = TRUE)
+```
+
+
+# {#Afsnit}Rekodning af kategoriske variable
+
+Vi har tidligere set på hvordan variable kan dannes eller rekodes fra eksisterende variable med brug af simple omregninger (fx `inwtm / 60` for at få interviewtid i timer).
+
+Rekodning af kategoriske data må gøres anderledes. Her står man typisk enten over for at skulle ændre kategorierne, slå kategorier sammen eller danne kategorier ud fra nogle betingelser (fx hvis man skal lave en intervalskaleret variabel om til kategorisk).
+
+`tidyverse` (pakken `dplyr`) har en række funktioner til rekodning af kategoriske værdier. De tre hovedfunktioner er:
+- `recode`: Ændrer enkelte kategorier
+- `if_else`: Rekodning baseret på ét logisk udtryk
+- `case_when`: Rekodning baseret på flere logiske udtryk
+
+Alle disse skal kombineres med `mutate`.
+
+Ved at indlæse `tidyverse` er alle disse rekodningsfunktioner læst ind:
+
+```{r}
+library(tidyverse)
+```
+
+# {#Afsnit}Rekodning af enkelte kategorier (recode)
+
+Funktionen `recode()` tager mindst to input:
+
+- Variabel der skal rekodes
+- Værdi der skal ændres (i format [gammel] = [ny])
+Herunder bruges `recode()` til at ændre kategorierne for køn til dansk:
+
+```{r}
+ess18n <- ess18 |>
+    mutate(gndr_da = recode(gndr, 'Male' = 'Mand', 'Female' = 'Kvinde')) |>
+    select(idno, gndr, gndr_da) # Variable udvælges for nemmere at kunne se forskel
+
+head(ess18n)
+```
+
+Ved brug af `.default` argumentet, kan man angive en værdi for alle øvrige værdier (bortset fra missing):
+
+```{r}
+ess18n <- ess18 |>
+    mutate(gndr_da = recode(gndr, 'Male' = 'Mand', .default = 'Ikke mand')) |>
+    select(idno, gndr, gndr_da)
+
+head(ess18n)
+```
+
+`recode()` er en meget simpel funktion og kan *kun* bruges til at omkode enkelte værdier. Hvis man skal omkode mange kategorier, bør man derfor overveje, om variablen kan rekode med betingelser i stedet.
+
+# {#Afsnit}Rekodning baseret på enkelt betingelse (if_else/ifelse)
+
+Funktionen `ifelse()` bruges til at rekode værdier baseret på ét logisk udtryk.
+
+Opbygningen er: `ifelse([logisk udtryk], [værdi for sandt], [værdi for falsk])`
+
+```{r}
+ess18n <- ess18 |> 
+    mutate(health_r = factor(health, levels = c('Very bad', 'Bad', 'Fair', 'Good', 'Very good'), ordered = TRUE)) |>
+    mutate(healthdum = ifelse(health_r <= 'Fair', 'Not good', 'Good')) |>
+    select(idno, health_r, healthdum)
+
+head(ess18n)
+```
+
+
+### Rekod flere værdier med `%in%`
+
+`%in%` er et basisudtryk i R, der bruges til at spørge "er denne værdi i denne samling af værdier"?
+
+Udtrykket kan både bruges til at spørge, om en værdi ligger inden for et interval eller om en værdi er til stede i en vector:
+
+```{r}
+243 %in% c(109:321) # Er værdi i interval?
+```
+
+```{r}
+'Skywalker' %in% c('Katarn', 'Kenobi', 'Windu') # Er værdi i vector?
+```
+
+Fordi `%in%` altid evaluerer til en logisk værdi (`TRUE`/`FALSE`) kan denne også bruges som del af betingelse i rekodning (fx i `ifelse()`):
+
+```{r}
+ess18n <- ess18 |> 
+    mutate(healthdum = ifelse(health %in% c('Very bad', 'Bad', 'Fair'), 'Not good', 'Good')) |>
+    select(idno, health, healthdum)
+
+head(ess18n)
+```
+
+{{% notice warning %}} BEMÆRK: Ovenstående kodestykke rekoder også missingværdier til 'Good'. Dette sker fordi funktionen koder alt, som ikke er fanget af if-betingelsen, til den værdi, som er angivet i "else"-delen. {{% /notice %}}
+
+
+### Behold oprindelige værdier
+
+I visse tilfælde kan man have brug for at bevare værdier, som de er, og kun rekode nogen af dem. Med `ifelse()` kan man sikrer dette ved at angive den oprindelige variabel som værdi for hhv. sandt eller falsk afhængigt af hvilke værdier, der skal bevares. 
+
+Nedenstående rekoder tre af værdierne fra `health` til "Not good", men bevarer resten, som de er:
+
+```{r}
+ess18n <- ess18 |> 
+    mutate(health_r = ifelse(health %in% c('Very bad', 'Bad', 'Fair'), 'Not good', health)) |>
+    select(idno, health, healthdum)
+
+head(ess18n)
+```
+
+Koden kan oversættes til: Hvis værdien i `health` er enten "Very bad", "Bad" eller "Fair", så kod om til "Not good". Ellers bevar værdien, som den er.
+
+### `ifelse` eller `if_else`?
+
+`ifelse()` er en basis R funktion, men der findes i `tidyverse` den tilsvarende funktion `if_else` (fra pakken `dplyr`).
+
+`if_else()` fungerer mere eller mindre på præcis samme måde som `ifelse()`. Den primære forskel mellem funktionerne er, at `if_else` er mere streng, og forventer at værdierne for sand og falsk er af samme type (class).
+
+I eksemplet herunder laves en (ubrugelig) rekodning, hvor alle værdier over 5 i `ppltrst` (tillid til andre mennesker fra 0-10) gives værdien "Over 5", mens alle andre beholder deres oprindelige værdi (dette gøres ved bare at specificere den oprindelige variabel under værdien for falsk).
+
+Først med `ifelse()`:
+
+```{r}
+ess18n <- ess18 |> 
+    mutate(ppltrst_n = ifelse(ppltrst > 5, 'Over 5', ppltrst)) |>
+    select(idno, ppltrst, ppltrst_n)
+
+head(ess18n)
+```
+
+`ifelse()` foretager rekodningen uden problemer, men bemærk at den nye variabel er ændret fra `dbl` (en numerisk type/class) til `chr` ("character" - en string).
+
+Forsøges samme med `if_else()`, gives der en fejl:
+
+```{r}
+#| error: true
+ess18n <- ess18 |> 
+    mutate(ppltrst_n = if_else(ppltrst > 5, 'Over 5', ppltrst)) |>
+    select(idno, ppltrst, ppltrst_n)
+```
+
+# {#Afsnit}Rekodning baseret på flere udtryk (case_when)
+
+Man kan bruge `case_when()` at rekode baseret på flere logiske udtryk. For hvert udtryk bruges `~` efterfulgt af en værdi for at angive, hvilken værdi observationerne, der opfylder betiungelsen, skal have. Hvert logisk udtryk adskilles med komma:
+
+```{r}
+#| eval: false
+nyvar = case_when(
+    betingelse1 ~ 'kategori 1',
+    betingelse2 ~ 'kategori 2',
+    betingelse3 ~ 'kategori 3'
+    )
+```
+
+Herunder dannes en kategorisering af selvangivet arbejdstid om ugen (`wkhtot`), hvor respondenter inddeles efter, hvorvidt de arbejder mindre end 37 timer, 37 timer eller mere end 37 timer om ugen:
+
+```{r}
+ess18n <- ess18 |>
+    mutate(
+      wkhtot_cat = case_when(
+        wkhtot == 37 ~ '37 timer om ugen',
+        wkhtot < 37 ~ 'Mindre end 37 timer',
+        wkhtot > 37 ~ 'Mere end 37 timer'
+        )
+      ) |>
+    select(idno, wkhtot, wkhtot_cat)
+
+head(ess18n)
+```
+
+`case_when()` forventer, at alle rækker er indfanget af betingelserne. Rækker, som ikke er indfanget af betingelser, bliver derfor kodet til missing. 
+
+Hvis man gerne vil undgå dette, kan man kode resterende værdier med brug af `TRUE ~` (herunder beholdes de værdier, som ikke indfanges af betingelserne):
+
+```{r}
+ess18n <- ess18 |>
+    mutate(
+      wkhtot_cat = case_when(
+        wkhtot == 37 ~ '37 timer om ugen',
+        wkhtot < 37 ~ 'Mindre end 37 timer',
+        wkhtot > 37 ~ 'Mere end 37 timer',
+        TRUE ~ as.character(wkhtot)
+        )
+      ) |>
+    select(idno, wkhtot, wkhtot_cat)
+
+head(ess18n)
+```
+
+### Evaluering af betingelser i `case_when()`
+
+`case_when()` evaluerer de enkelte udtryk i rækkefølge. Derudover bliver rækker i data også *kun* evalueret én gang. Dette vil sige, at hvis man i `case_when()` har angivet betingelser, som ikke er gensidigt udelukkende (altså at rækker har flere betingelser, som er sande), så er det den første betingelse, som er gældende.Man kan læse betingelserne i `case_when()` linje for linje lig: For rækkerne hvor denne betingelse er sand, giv dem følgende værdi og evaluér ikke disse rækker yderligere.
+
+Fordi funktionen fungerer på denne måde, kan man bruge linjen `TRUE ~ something` til sidst for at angive, hvad de resterende rækker skal kodes til. Linjen kan læses som "for de rækker, som er tilbage, giv dem denne værdi".
+
+
+### Kod resterende værdier til missing
+
+Linjen `TRUE ~ something` kan også bruges til at kode værdier til missing. `case_when()` forventer dog, at alle værdier er af samme type, så dette kan nogen gange give problemer. 
+
+Selvom det ikke er tydeligt, så adskiller R mellem forskellige typer af missing (missing som talværdi, missing som tekstværdi osv.). Hvis man blot forsøger at kode resten om til missing med `TRUE ~ NA` gives en fejl:
+
+```{r}
+#| error: true
+ess18n <- ess18 |>
+    mutate(
+      wkhtot_cat = case_when(
+        wkhtot == 37 ~ '37 timer om ugen',
+        wkhtot < 37 ~ 'Mindre end 37 timer',
+        wkhtot > 37 ~ 'Mere end 37 timer',
+        TRUE ~ NA
+        )
+      ) |>
+    select(idno, wkhtot, wkhtot_cat)
+```
+
+Den nemmeste måde at undgå denne fejl, er ved at angive hvilken type missing, som der er tale om (fx ved brug af casting-funktioner som `as.numeric()` til tal og `as.character()` til tekst):
+
+```{r}
+ess18n <- ess18 |>
+    mutate(
+      wkhtot_cat = case_when(
+        wkhtot == 37 ~ '37 timer om ugen',
+        wkhtot < 37 ~ 'Mindre end 37 timer',
+        wkhtot > 37 ~ 'Mere end 37 timer',
+        TRUE ~ as.character(NA)
+        )
+      ) |>
+    select(idno, wkhtot, wkhtot_cat)
+```
+
+# {#END} end
