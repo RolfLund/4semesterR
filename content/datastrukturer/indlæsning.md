@@ -29,15 +29,15 @@ Til R introduktionerne bruger vi et udsnit af European Social Survey fra
 2018 (https://www.europeansocialsurvey.org/). Data indeholder kun den
 danske del af data, nogle udvalgte variable samt nogle få filtreringer.
 
--   Kodebog kan findes her:
-    https://www.europeansocialsurvey.org/docs/round9/survey/ESS9_appendix_a7_e03_1.pdf
--   Spørgeskeamet brugt i undersøgelsen kan findes her:
-    https://www.europeansocialsurvey.org/docs/round9/fieldwork/source/ESS9_source_questionnaires.pdf
+- Kodebog kan findes her:
+  https://www.europeansocialsurvey.org/docs/round9/survey/ESS9_appendix_a7_e03_1.pdf
+- Spørgeskeamet brugt i undersøgelsen kan findes her:
+  https://www.europeansocialsurvey.org/docs/round9/fieldwork/source/ESS9_source_questionnaires.pdf
 
 **Datasættet indeholder følgende variable:**
 
 | variabel | beskrivelse                                                        |
-|-----------------------------------------|-------------------------------|
+|----------|--------------------------------------------------------------------|
 | idno     | Respondent’s identification number                                 |
 | netustm  | Internet use, how much time on typical day, in minutes             |
 | ppltrst  | Most people can be trusted or you can’t be too careful             |

@@ -9,13 +9,13 @@ execute:
 
 # {#Kapitel}Datastrukturer i R
 
-R har forskellige måder at lagre data på. Vi har hidtil set på, hvordan R håndterer enkelte værdier. I det følgende ser vi på, hvordan R arbejder med flere værdier. Objekter til at holde på flere værdier refereres også til som "datastrukturer". 
+R har forskellige måder at lagre data på. Vi har hidtil set på, hvordan R håndterer enkelte værdier. I det følgende ser vi på, hvordan R arbejder med flere værdier. Objekter til at holde på flere værdier refereres også til som "datastrukturer".
 
 Den mest centrale datastruktur i R er en såkaldt "data frame", hvor data er struktureret i rækker og kolonner.
 
 # {#Afsnit}Tidyverse
 
-[Tidyverse](https://www.tidyverse.org/) er en samling af pakker til R, der letter arbejdet med at indlæse, håndtere og arbejde med data. 
+[Tidyverse](https://www.tidyverse.org/) er en samling af pakker til R, der letter arbejdet med at indlæse, håndtere og arbejde med data.
 
 Pakkerne fra Tidyverse har den fordel, at de alle følger den samme designfilosofi og opbygning i deres funktioner.
 
@@ -36,58 +36,62 @@ Når tidyverse er installeret, kan alle pakker fra tidyverse indlæses blot ved 
 library(tidyverse)
 ```
 
+### Supplerende materiale om datahåndtering med `tidyverse`
+
+Bogen "R for Data Science" introducerer til datahåndtering og visualiseirng med `tidyverse`, og kan tilgås gratis online: https://r4ds.had.co.nz/
+
+<center><a href = "https://r4ds.had.co.nz/"> <img src="https://d33wubrfki0l68.cloudfront.net/b88ef926a004b0fce72b2526b0b5c4413666a4cb/24a30/cover.png" width="200"/></a></center>
+
+Derudover har `tidyverse` også en fast side med vejledninger og guides til deres pakker og funktioner: https://www.tidyverse.org/
+
 # {#Afsnit}Indlæsning af data
 
 I koden herunder indlæses data fra en csv-fil og gemmes i objektet `ess18`:
-
 
 ```{r}
 library(tidyverse)
 
 ess18 <- read_csv("https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv")
 ```
-    
+
 `read_csv` er en del af tidyverse (mere specifikt pakken `readr`).
 
 R har også en basisfunktion til at indlæse csv-filer (`read.csv`), men `read_csv` er mere effektiv.
 
-
 ### Indlæsning med peg og klik
 
-Data kan også indlæses med peg-og-klik under "File"->"Import dataset". Her hjælper RStudio med importen af data:
+Data kan også indlæses med peg-og-klik under "File"-\>"Import dataset". Her hjælper RStudio med importen af data:
 
 ![impdat](./img/impdat.png)
-
 
 ### Data brugt i undervisningen: European Social Survey 2018
 
 Til R introduktionerne bruger vi et udsnit af European Social Survey fra 2018 (https://www.europeansocialsurvey.org/). Data indeholder kun den danske del af data, nogle udvalgte variable samt nogle få filtreringer.
 
-- Kodebog kan findes her: https://www.europeansocialsurvey.org/docs/round9/survey/ESS9_appendix_a7_e03_1.pdf
-- Spørgeskeamet brugt i undersøgelsen kan findes her: https://www.europeansocialsurvey.org/docs/round9/fieldwork/source/ESS9_source_questionnaires.pdf
+-   Kodebog kan findes her: https://www.europeansocialsurvey.org/docs/round9/survey/ESS9_appendix_a7_e03_1.pdf
+-   Spørgeskeamet brugt i undersøgelsen kan findes her: https://www.europeansocialsurvey.org/docs/round9/fieldwork/source/ESS9_source_questionnaires.pdf
 
 **Datasættet indeholder følgende variable:**
 
-|variabel | beskrivelse |
-|----|---|
-|idno|Respondent's identification number|
-|netustm |Internet use, how much time on typical day, in minutes|
-|ppltrst|Most people can be trusted or you can't be too careful|
-|vote|Voted last national election|
-|prtvtddk|Party voted for in last national election, Denmark|
-|health|Subjective general health|
-|lvpntyr|Year first left parents for living separately for 2 months or more|
-|tygrtr|Retire permanently, age too young. SPLIT BALLOT|
-|gndr|Gender|
-|yrbrn|Year of birth|
-|edlvddk|Highest level of education, Denmark|
-|eduyrs|Years of full-time education completed|
-|wkhct|Total contracted hours per week in main job overtime excluded|
-|wkhtot|Total hours normally worked per week in main job overtime included|
-|grspnum|What is your usual [weekly/monthly/annual] gross pay|
-|frlgrsp|Fair level of [weekly/monthly/annual] gross pay for you|
-|inwtm|Interview length in minutes, main questionnaire|
-
+| variabel | beskrivelse                                                        |
+|-----------------------------------------|-------------------------------|
+| idno     | Respondent's identification number                                 |
+| netustm  | Internet use, how much time on typical day, in minutes             |
+| ppltrst  | Most people can be trusted or you can't be too careful             |
+| vote     | Voted last national election                                       |
+| prtvtddk | Party voted for in last national election, Denmark                 |
+| health   | Subjective general health                                          |
+| lvpntyr  | Year first left parents for living separately for 2 months or more |
+| tygrtr   | Retire permanently, age too young. SPLIT BALLOT                    |
+| gndr     | Gender                                                             |
+| yrbrn    | Year of birth                                                      |
+| edlvddk  | Highest level of education, Denmark                                |
+| eduyrs   | Years of full-time education completed                             |
+| wkhct    | Total contracted hours per week in main job overtime excluded      |
+| wkhtot   | Total hours normally worked per week in main job overtime included |
+| grspnum  | What is your usual \[weekly/monthly/annual\] gross pay             |
+| frlgrsp  | Fair level of \[weekly/monthly/annual\] gross pay for you          |
+| inwtm    | Interview length in minutes, main questionnaire                    |
 
 # {#Afsnit}Data Frames (Tabeldata i R)
 
@@ -96,8 +100,8 @@ Til R introduktionerne bruger vi et udsnit af European Social Survey fra 2018 (h
 `ess18` er en "data frame". En "data frame" er måden R lagrer tabeldata (data struktureret i rækker og kolonner).
 
 ## Udforskning af data frames
-For at få et overblik over data, kan man bruge funktionen `head()`:
 
+For at få et overblik over data, kan man bruge funktionen `head()`:
 
 ```{r}
 head(ess18)
@@ -105,7 +109,7 @@ head(ess18)
 
 `head()` viser de første seks rækker af data, og er god til at tjekke, om data ser ud, som det skal.
 
-Vi kan tjekke kolonnenavnene (variabelnavnene) med `colnames`. 
+Vi kan tjekke kolonnenavnene (variabelnavnene) med `colnames`.
 
 ```{r}
 colnames(ess18)
@@ -119,11 +123,9 @@ dim(ess18)
 
 `summary()` bruges til at se deskriptive mål for variable i data (antal, middelværdi, standardafvigelse, minimum, maksimum, kvartiler).
 
-
 ```{r}
 summary(ess18)
 ```
-
 
 ## Data frames og variable
 
@@ -133,7 +135,6 @@ R behandler en enkelt kolonne/variabel som en "vector". En "vector" er en samlin
 
 Man udpeger en enkelt kolonne i en data frame med `$` (en "vector").
 
-
 ```{r}
 head(ess18$yrbrn) # første seks værdier i yrbrn
 ```
@@ -142,18 +143,15 @@ Hver værdi i en variabel har et indeks, som afspejler rækkenummeret i data.
 
 Man udpeger et specifikt rækkenummer med `[]`:
 
-
 ```{r}
 ess18$yrbrn[10] # Giver 10. værdi (række 10) af yrbrn variabel
 ```
-
 
 ```{r}
 ess18$yrbrn[2:10] # Giver række 2 til 10 af yrbrn (begge inkluderet)
 ```
 
 `unique()` giver de unikke værdier i en variabel:
-
 
 ```{r}
 unique(ess18$health)
@@ -163,7 +161,7 @@ unique(ess18$health)
 
 En basal datastruktur i R er en *vector*.
 
-En *vector* er en række af værdier af den samme type (fx en række tal, en række ord osv.). 
+En *vector* er en række af værdier af den samme type (fx en række tal, en række ord osv.).
 
 En *vector* svarer til en enkelt variabel/kolonne i en dataframe, og man arbejder med vectors på samme måde, som man arbejder med enkelte kolonner (samme funktioner kan bruges).
 
@@ -191,7 +189,6 @@ sd(numbers)
 
 R indeholder en række funktioner til at regne specifikke deskriptive mål, fx `min()` (minimum), `max()` (maksimum), `mean()` (middelværdi), `sd()` (standardafvigelse) og `length()` (antal værdier/rækker).
 
-
 ```{r}
 min(ess18$yrbrn) # Mindste værdi
 max(ess18$yrbrn) # Største værdi
@@ -202,13 +199,11 @@ length(ess18$yrbrn) # Antal værdier i variabel (svarer til antal rækker)
 
 Husk at vi med R kan lagre hvad som helst som et objekt. Hvis vi fx løbende får brug for at kalde et mål frem, kan vi lagre det som et objekt for sig:
 
-
 ```{r}
 mean_yrbrn <- mean(ess18$yrbrn)
 
 print(mean_yrbrn)
 ```
-
 
 # {#Afsnit}Missing-værdier
 
