@@ -1,0 +1,400 @@
+
+# {#Kapitel}Basiskoncepter i R
+
+I denne sektion introduceres til de mest basale R koncepter.
+
+R fungerer kort sagt ved, at man gennem skrevne kommandoer lagrer
+værdier, information og data i “objekter”. Disse objekter kan derefter
+bruges i forskellige funktioner. Funktioner kan være alt fra at udregne
+et gennemsnit, lave en figur, gemme et datasæt osv.
+
+Forsimplet sagt: Et objekt er en eller anden lagret information, mens en
+funktion er noget, som kan bearbejde eller gøre noget ved denne
+information.
+
+På de følgende sider forklares dette mere uddybende.
+
+# {#Afsnit}Hvad er R?
+
+R er et gratis analyseprogram med sit eget kommandosprog.
+
+Programmet egner sig især til kvantiative analyser og visualiseringer af
+kvantitative data.
+
+R kan arbejde med mange forskellige dataformater. Da programmet er “open
+source”, findes ufattelig mange udvidelser til programmet, der tilføjer
+funktioner.
+
+## RStudio
+
+R i sig selv er meget begrænset. RStudio tilføjer en brugerflade ovenpå
+R, der gør det rarere at arbejde med.
+
+Man arbejder typisk i RStudio, når man bruger R.
+
+## At arbejde med R
+
+R har sit eget kodesprog. R fungerer ved at man skriver kommandoer i R
+sproget, som R derefter “fortolker”.
+
+R (og RStudio) har en meget begrænset brugerflade. Det betyder, at
+næsten alt vi vil i R (statistik, visualisering osv.), skal ske ved at
+skrive koder i R sproget.
+
+### R som lommeregner
+
+Hvad menes med at R “fortolker” kode?
+
+“Fortolkning” i R er blot et spørgsmål om R forstår, hvad du forsøger at
+gøre. Man får R til at gøre ting ved at skrive kommandoer. Hvis R
+forstår det, gør R den ting. Hvis R ikke forstår det, får man en fejl.
+
+R kan fx forstå matematiske operationer:
+
+``` r
+7 * 6
+```
+
+    [1] 42
+
+``` r
+912 - 132
+```
+
+    [1] 780
+
+R kan dog ikke forstå tilfældige kommandoer:
+
+``` r
+lav min eksamensopgave
+```
+
+    Error: <text>:1:5: unexpected symbol
+    1: lav min
+            ^
+
+# {#Afsnit}Brug af R scripts
+
+Script filer er tekstfiler med kode, som R kan forstå/fortolke.
+
+En script-fil kan forstås som en “analyseopskrift”, der indeholder alle
+kommandoer nødvendige for at foretage en analyse. Det tillader også, at
+man nemt kan køre kommandoer igen.
+
+Man bør altid skrive de kommandoer, som man bruger, ind i et script.
+Brug derfor kun konsolvinduet til at finde frem til den rigtige
+kommando.
+
+- `#` kan bruges til kommentarer (ignoreres når man kører koden)
+- `Ctrl` + `Enter` (Windows), `Command` + `Enter` (Mac): Kører aktuel
+  linje eller selektion
+
+***BEMÆRK!*** Der er ingen fortryd-knap i R! Når koden er kørt, er
+ændringen sket. Den eneste måde at “fortryde” er ved at genskabe det,
+som man har lavet, ved at køre tidligere kode igen. Netop derfor er
+scripts vigtige.
+
+## Gem dit arbejde
+
+Det vigtigste at gemme, når man arbejder med R, er at gemme sit R
+script.
+
+Brug gem-ikonet til at gemme dit script.
+
+![save](./img/save-script.png)
+
+# {#Afsnit}Objekter
+
+At arbejde med R involverer kontinuerligt at definere objekter. Objekter
+er blot et navn til at kalde lagret information frem igen.
+
+Objekter kan være mange ting: h \* et ord \* et tal \* en talrække \* et
+datasæt \* en matematisk formel \* et resultat \* en filsti \* en graf
+\* og så videre…
+
+Når et objekt er defineret, er det tilgængeligt i det aktuelle
+arbejdsmiljø (dvs.: tilgængeligt indtil vi starter en ny R session eller
+fjerner det igen).
+
+Der er ingen grænser for mængden af objekter, som vi kan danne. Dette
+tillader at vi kan arbejde med meget forskellig information samtidig.
+
+## Definér objekter
+
+Objekter dannes ved brug af `<-` (`Alt` + `-`):
+
+``` r
+year <- 1964
+
+print(year)
+```
+
+    [1] 1964
+
+Hvis objektet indeholder et tal, kan R arbejde med det som ethvert andet
+tal.
+
+``` r
+year + 10
+```
+
+    [1] 1974
+
+Bemærk at R behandler store og små bogstaver som forskellige:
+
+``` r
+Year # Findes ikke
+```
+
+    Error in eval(expr, envir, enclos): object 'Year' not found
+
+Når man bruger `' '` eller`" "` fortæller man R, at inputtet skal
+behandles som tekst. *Dette gælder også tal!*
+
+``` r
+name <-  "keenan"
+
+print(name)
+```
+
+    [1] "keenan"
+
+``` r
+year_now  <- '2021'
+
+print(year_now)
+```
+
+    [1] "2021"
+
+Bemærk at tal lagret som tekst også har citationstegn om sig. Tal lagret
+som tekst kan ikke bruges som tal:
+
+``` r
+year_now - 5
+```
+
+    Error in year_now - 5: non-numeric argument to binary operator
+
+Ovenstående fejl sker fordi R adskiller mellem forskellige objekter ved
+at tildele dem en *class*. Objektets *class* bestemmer kort sagt, hvad
+der er muligt med objektet.
+
+## Navngivning af objekter
+
+Objekter kan hedde næsten hvad som helst. En god tommelfingerregel er at
+bruge navne, der indikerer, hvad objektet indeholder.
+
+### Restriktioner ved navngivning
+
+- De fleste specialtegn kan ikke bruges: `/`, `?`, `*`, `+` (mange af
+  disse betyder noget i R)
+- Allerede eksisterende navne i R (overskriver den/det eksisterende
+  funktion/objektet)
+
+### Navngivningskonventioner
+
+- Brug ‘`_`’: `my_object`, `room_number`
+
+Eller:
+
+- Lad hvert ord starte med stort bortset fra det første: `myObject`,
+  `roomNumber`
+
+# {#Afsnit}Funktioner
+
+Funktioner er kommandoer brugt til at transformere objektet på en måde
+og give et output.
+
+Det, som man sætter i funktionen, kaldes et “argument” eller “input”.
+Antallet af argumenter varierer mellem funktioner.
+
+Funktioner har alle den samme opbygning:
+`funktionsnavn(arg1, arg2, arg3)`. (funktionsnavn med argumenterne i
+parentes adskilt med kommaer).
+
+Nogle argumenter er krævet, mens andre er valgfrie.
+
+### Eksempler på funktioner
+
+Gør tekst til blokbogstaver:
+
+``` r
+name <- 'kilmister'
+toupper(name) 
+```
+
+    [1] "KILMISTER"
+
+Erstat bogstaver i tekst:
+
+``` r
+gsub("e", "a", name)
+```
+
+    [1] "kilmistar"
+
+## Funktioner og output
+
+Bemærk at funktioner *aldrig* ændrer et objekt. Når man bruger en
+funktion, beder man R om at *se* et output, men ikke om at ændre noget.
+
+Hvis man vil ændre et objekt, skal man derfor lagre outputtet i et
+objekt (et nyt eller eksisterende).
+
+``` r
+print(name) # uændret selvom det er brugt i flere funktioner
+```
+
+    [1] "kilmister"
+
+``` r
+name <- gsub("e", "a", name) # overskriv objekt med ændringen
+
+print(name)
+```
+
+    [1] "kilmistar"
+
+# {#Afsnit}Classes
+
+R adskiller mellem objekter via deres “class”.
+
+Funktionen `class()` bruges til at tjekke hvilken “class” objektet har:
+
+``` r
+name = "keenan"
+year = 1964
+```
+
+``` r
+class(name)
+```
+
+    [1] "character"
+
+``` r
+class(year)
+```
+
+    [1] "numeric"
+
+Talværdier tilskrives typisk class `numeric`, mens tekst tilskrives
+`character`. Tekstværdier omtales mere generelt som “strings” i
+programmeringssammenhænge (også i R).
+
+En “class” er R’s måde at holde styr på, hvilken type af information,
+som objektet indeholder. Samtidig sætter class betingelserne for, hvad
+der kan lade sig gøre med objektet (fx at vi kan lave udregninger med
+tal, men at vi ikke kan det med tekst).
+
+I de fleste tilfælde kan R tvinge værdier fra en type (“class”) til en
+anden. Ved at gøre dette, bliver inkompatible værdier til missing
+(`NA`).
+
+Værdier kan tvinges til tekst værdier med `as.character()`
+
+Værdier kan tvinges til numeriske værdier med `as.numeric()`
+
+Herunder omdannes `year` til en string (tekstværdi):
+
+``` r
+year_chr <- as.character(year)
+
+print(year_chr)
+```
+
+    [1] "1964"
+
+``` r
+class(year_chr)
+```
+
+    [1] "character"
+
+Senere skal vi se, hvordan man nogen gange kan have brug for at fortælle
+R, hvad class værdier skal have.
+
+# {#Afsnit}Logiske udtryk
+
+I R har man ofte brug for at formulere “logiske udtryk”. Logiske udtryk
+er kommandoer, som altid returnere logiske værdier. Disse er altid enten
+`TRUE` eller `FALSE` (eller `NA`).
+
+En række operationer i R returnerer altid logiske værdier:
+
+- `>`
+- `>=`
+- `<`
+- `<=`
+- `==`
+- `!=`
+
+Disse bruges blandt til at filtrere data, sætte betingelser for
+funktioner og lignende. Logiske udtryk kaldes også for “booleans” eller
+“boolean values” på engelsk
+
+BEMÆRK: Logiske udtryk har også sin egen class:
+
+``` r
+test <- 2 > 5
+
+print(test)
+```
+
+    [1] FALSE
+
+``` r
+class(test)
+```
+
+    [1] "logical"
+
+# {#Afsnit}R Libraries (pakker)
+
+Fordi R er “open source”, bliver der konstant tilføjet nye funktioner
+til R. Funktioner, som andre har lavet, kan læses ind via “R pakker”,
+som kan gøres til del af ens “R bibliotek”.
+
+Alle kommandoer indtil videre har været del af `base` pakken (del af R
+fra starten).
+
+Pakker kan installeres enten gennem konsolen eller gennem peg-og-klik.
+
+R adskiller mellem installation og indlæsning. Dette for at undgå
+konflikter mellem pakker.
+
+Funktioner fra en pakke læses ind i arbejdsmiljøet på følgende måde
+(pakkenavn *uden* citationstegn!):
+
+`library(packagename)`
+
+### Installation gennem konsol
+
+Pakker kan installere på følgende måde (pakkenavn *med* citationstegn!):
+
+`install.packages('packagename')`
+
+### Installation med peg og klik
+
+Gå i “Packages”-fanen i vinduet med “Files, Plots, Packages, Help,
+Viewer”:
+
+![pckwin](./img/pckwin.png)
+
+Tryk “Install”. Skriv navnet på pakkerne i andet felt adskilt med
+mellemrum og tryk “Install”:
+
+![pckinst](./img/pckinst.png)
+
+# {#Afsnit}Brug af hjælpe-funktionen
+
+Alle R funktioner og kommandoer er dokumenteret, så du behøver ikke at
+huske hvordan hver enkelt funktion fungerer.
+
+Alle funktioner har sin egen “hjælpefil”. Hjælpefilen beskriver hvordan
+funktionen bruges, og hvad de forskellige argumenter gør.
+
+Man åbner hjælpefilen for en funktion ved at skrive `?` foran.
+
+# {#END} end
