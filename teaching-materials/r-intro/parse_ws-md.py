@@ -21,6 +21,7 @@ with open(notebooks_path + filename_in, 'r') as file:
 
 # Fix paths for imgs
 doc = doc.replace('(./img/', '(/')
+doc = re.sub(re.compile(r'(?<=\!\[\w{3}\])\((?=\w)'), '(/', doc)
 
 # Define regexes
 chapter_regex = re.compile('# {#Kapitel}.*?(?=\n# {#Kapitel}|\n# {#END})', re.DOTALL)
