@@ -1,5 +1,5 @@
 ---
-title: Kombinér datahåndteringsfunktioner med pipe (|>)
+title: Kombinér datahåndteringsfunktioner med pipe (\|\>)
 weight: 4
 ---
 Det bliver hurtigt omstændeligt at foretage flere
