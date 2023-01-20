@@ -12,9 +12,11 @@ danne kategorier ud fra nogle betingelser (fx hvis man skal lave en
 intervalskaleret variabel om til kategorisk).
 
 `tidyverse` (pakken `dplyr`) har en række funktioner til rekodning af
-kategoriske værdier. De tre hovedfunktioner er: - `recode`: Ændrer
-enkelte kategorier - `if_else`: Rekodning baseret på ét logisk udtryk -
-`case_when`: Rekodning baseret på flere logiske udtryk
+kategoriske værdier. De tre hovedfunktioner er:
+
+- `recode`: Ændrer enkelte kategorier
+- `if_else`: Rekodning baseret på ét logisk udtryk
+- `case_when`: Rekodning baseret på flere logiske udtryk
 
 Alle disse skal kombineres med `mutate`.
 

@@ -15,13 +15,13 @@ library(tidyverse)
 ess18 <- read_csv('https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv')
 ```
 
-I denne sektion ser vi nærmere på forskellige funktioner til at rekode i R. 
+I denne sektion ser vi nærmere på forskellige funktioner til at rekode i R.
 
 Vi kan overordnet adskille mellem tre typer af rekodning:
 
-- Simpel rekodning (fx omregning af eksisterende varibel)
-- Ændring af kategorier (fx ved at sammenslå flere kategorier til én)
-- Omkodning fra numerisk til kategorisk (fx ved at lave variable for kategoriseringer af alder, indkomst eller andet)
+-   Simpel rekodning (fx omregning af eksisterende varibel)
+-   Ændring af kategorier (fx ved at sammenslå flere kategorier til én)
+-   Omkodning fra numerisk til kategorisk (fx ved at lave variable for kategoriseringer af alder, indkomst eller andet)
 
 # {#Afsnit}Hvornår laver man en ny variabel?
 
@@ -30,7 +30,6 @@ Når man laver datahåndtering, bør man altid bestræbe sig efter ikke at *fjer
 Hvis variabelændringer primært går på at rette fejl i variablen, så kan man typisk fint overskrive den oprindelige variabel. Dette kan fx være aktuelt, hvis variabel skal ændres fra tekst til numerisk, eller hvis der skal rettes fejl i kategorinavne.
 
 Er man i tvivl bør man altid lave en ny variabel. På den måde er der ikke information, som går tabt.
-
 
 # {#Afsnit}Ændring af variabeltype (class)
 
@@ -58,7 +57,7 @@ max(ess18$tygrtr, na.rm = TRUE) # Viser højeste værdi alfabetisk
 
 ### "Class coercion" - tving variabel til en anden type
 
-I de fleste tilfælde kan R tvinge værdier fra en type/class til en anden (kaldes også "casting" i programmering generelt). Ved at gøre dette, bliver inkompatible værdier til missing (`NA`). 
+I de fleste tilfælde kan R tvinge værdier fra en type/class til en anden (kaldes også "casting" i programmering generelt). Ved at gøre dette, bliver inkompatible værdier til missing (`NA`).
 
 Værdier kan tvinges til tekst værdier med `as.character()`
 
@@ -77,16 +76,16 @@ Nu kan variablen bruges i beregninger:
 max(ess18$tygrtr_num, na.rm = TRUE)
 ```
 
-
 # {#Afsnit}Rekodning af kategoriske variable
 
 Vi har tidligere set på hvordan variable kan dannes eller rekodes fra eksisterende variable med brug af simple omregninger (fx `inwtm / 60` for at få interviewtid i timer).
 
 Rekodning af kategoriske data må gøres anderledes. Her står man typisk enten over for at skulle ændre kategorierne, slå kategorier sammen eller danne kategorier ud fra nogle betingelser (fx hvis man skal lave en intervalskaleret variabel om til kategorisk).
 
-`tidyverse` (pakken `dplyr`) har en række funktioner til rekodning af kategoriske værdier. De tre hovedfunktioner er:
-- `recode`: Ændrer enkelte kategorier
-- `if_else`: Rekodning baseret på ét logisk udtryk
+`tidyverse` (pakken `dplyr`) har en række funktioner til rekodning af kategoriske værdier. De tre hovedfunktioner er: 
+
+- `recode`: Ændrer enkelte kategorier 
+- `if_else`: Rekodning baseret på ét logisk udtryk 
 - `case_when`: Rekodning baseret på flere logiske udtryk
 
 Alle disse skal kombineres med `mutate`.
@@ -101,9 +100,8 @@ library(tidyverse)
 
 Funktionen `recode()` tager mindst to input:
 
-- Variabel der skal rekodes
-- Værdi der skal ændres (i format [gammel] = [ny])
-Herunder bruges `recode()` til at ændre kategorierne for køn til dansk:
+-   Variabel der skal rekodes
+-   Værdi der skal ændres (i format \[gammel\] = \[ny\]) Herunder bruges `recode()` til at ændre kategorierne for køn til dansk:
 
 ```{r}
 ess18n <- ess18 |>
@@ -140,7 +138,6 @@ ess18n <- ess18 |>
 head(ess18n)
 ```
 
-
 ### Rekod flere værdier med `%in%`
 
 `%in%` er et basisudtryk i R, der bruges til at spørge "er denne værdi i denne samling af værdier"?
@@ -167,10 +164,9 @@ head(ess18n)
 
 {{% notice warning %}} BEMÆRK: Ovenstående kodestykke rekoder også missingværdier til 'Good'. Dette sker fordi funktionen koder alt, som ikke er fanget af if-betingelsen, til den værdi, som er angivet i "else"-delen. {{% /notice %}}
 
-
 ### Behold oprindelige værdier
 
-I visse tilfælde kan man have brug for at bevare værdier, som de er, og kun rekode nogen af dem. Med `ifelse()` kan man sikrer dette ved at angive den oprindelige variabel som værdi for hhv. sandt eller falsk afhængigt af hvilke værdier, der skal bevares. 
+I visse tilfælde kan man have brug for at bevare værdier, som de er, og kun rekode nogen af dem. Med `ifelse()` kan man sikrer dette ved at angive den oprindelige variabel som værdi for hhv. sandt eller falsk afhængigt af hvilke værdier, der skal bevares.
 
 Nedenstående rekoder tre af værdierne fra `health` til "Not good", men bevarer resten, som de er:
 
@@ -242,7 +238,7 @@ ess18n <- ess18 |>
 head(ess18n)
 ```
 
-`case_when()` forventer, at alle rækker er indfanget af betingelserne. Rækker, som ikke er indfanget af betingelser, bliver derfor kodet til missing. 
+`case_when()` forventer, at alle rækker er indfanget af betingelserne. Rækker, som ikke er indfanget af betingelser, bliver derfor kodet til missing.
 
 Hvis man gerne vil undgå dette, kan man kode resterende værdier med brug af `TRUE ~` (herunder beholdes de værdier, som ikke indfanges af betingelserne):
 
@@ -267,10 +263,9 @@ head(ess18n)
 
 Fordi funktionen fungerer på denne måde, kan man bruge linjen `TRUE ~ something` til sidst for at angive, hvad de resterende rækker skal kodes til. Linjen kan læses som "for de rækker, som er tilbage, giv dem denne værdi".
 
-
 ### Kod resterende værdier til missing
 
-Linjen `TRUE ~ something` kan også bruges til at kode værdier til missing. `case_when()` forventer dog, at alle værdier er af samme type, så dette kan nogen gange give problemer. 
+Linjen `TRUE ~ something` kan også bruges til at kode værdier til missing. `case_when()` forventer dog, at alle værdier er af samme type, så dette kan nogen gange give problemer.
 
 Selvom det ikke er tydeligt, så adskiller R mellem forskellige typer af missing (missing som talværdi, missing som tekstværdi osv.). Hvis man blot forsøger at kode resten om til missing med `TRUE ~ NA` gives en fejl:
 
