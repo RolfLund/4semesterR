@@ -18,11 +18,11 @@ På de følgende sider forklares dette mere uddybende.
 
 R er et gratis analyseprogram med sit eget kommandosprog.
 
-Programmet egner sig især til kvantiative analyser og visualiseringer af
-kvantitative data.
+Programmet egner sig især til kvantitative analyser og visualiseringer
+af kvantitative data.
 
 R kan arbejde med mange forskellige dataformater. Da programmet er “open
-source”, findes ufattelig mange udvidelser til programmet, der tilføjer
+source”, findes ufatteligt mange udvidelser til programmet, der tilføjer
 funktioner.
 
 ## RStudio
@@ -75,7 +75,7 @@ lav min eksamensopgave
 
 # {#Afsnit}Brug af R scripts
 
-Script filer er tekstfiler med kode, som R kan forstå/fortolke.
+Script-filer er tekstfiler med kode, som R kan forstå/fortolke.
 
 En script-fil kan forstås som en “analyseopskrift”, der indeholder alle
 kommandoer nødvendige for at foretage en analyse. Det tillader også, at
@@ -203,8 +203,8 @@ Eller:
 
 # {#Afsnit}Funktioner
 
-Funktioner er kommandoer brugt til at transformere objektet på en måde
-og give et output.
+Funktioner er kommandoer brugt til at transformere objekter på en eller
+anden måde og give et output.
 
 Det, som man sætter i funktionen, kaldes et “argument” eller “input”.
 Antallet af argumenter varierer mellem funktioner.
@@ -213,7 +213,7 @@ Funktioner har alle den samme opbygning:
 `funktionsnavn(arg1, arg2, arg3)`. (funktionsnavn med argumenterne i
 parentes adskilt med kommaer).
 
-Nogle argumenter er krævet, mens andre er valgfrie.
+Nogle argumenter er krævede, mens andre er valgfrie.
 
 ### Eksempler på funktioner
 

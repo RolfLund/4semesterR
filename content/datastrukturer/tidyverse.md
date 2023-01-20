@@ -2,7 +2,7 @@
 title: Tidyverse
 weight: 1
 ---
-Tidyverse](https://www.tidyverse.org/) er en samling af pakker til R,
+[Tidyverse](https://www.tidyverse.org/) er en samling af pakker til R,
 der letter arbejdet med at indlæse, håndtere og arbejde med data.
 
 Pakkerne fra Tidyverse har den fordel, at de alle følger den samme

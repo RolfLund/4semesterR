@@ -2,7 +2,7 @@
 title: Data Frames (Tabeldata i R)
 weight: 3
 ---
-ess18` er nu et objekt, der indeholder et datasæt. Bemærk at måden vi
+`ess18` er nu et objekt, der indeholder et datasæt. Bemærk at måden vi
 danner objektet ikke er anderledes end andre måder, som vi har dannet
 objekter: `objectname <- somefunction(something)`.
 
@@ -69,10 +69,11 @@ summary(ess18)
      Length:1285        Length:1285        Length:1285        Length:1285       
      Class :character   Class :character   Class :character   Class :character  
      Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-                                                                                
-                                                                                
-                                                                                
-                                                                                
+
+
+​                                                                                
+​                                                                                
+​                                                                                
          gndr               yrbrn        edlvddk              eduyrs  
      Length:1285        Min.   :1929   Length:1285        Min.   : 0  
      Class :character   1st Qu.:1952   Class :character   1st Qu.:11  
