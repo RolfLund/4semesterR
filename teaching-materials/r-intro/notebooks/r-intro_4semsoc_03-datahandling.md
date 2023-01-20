@@ -5,9 +5,11 @@ Når man arbejder med data, er man næsten altid nødt til at foretage
 visse ændringer i data, før at de er egnet til analyse. Dette kaldes
 “datahåndtering”.
 
-Datahåndtering inkluderer blandt andet: - Udvælge specifikke
-observationer og variable (kaldes også subsetting) - Danne nye
-variables - Rekode værdier
+Datahåndtering inkluderer blandt andet:
+
+- Udvælge specifikke observationer og variable (kaldes også subsetting)
+- Danne nye variables
+- Rekode værdier
 
 R understøtter datahåndtering med “basis”-kommandoer, men funktionerne
 tilgængelige gennem tidyverse (https://www.tidyverse.org/) er langt mere
@@ -33,17 +35,6 @@ overskrives, når man importerer `tidyverse` (se advarsel).
 ``` r
 library(tidyverse)
 ```
-
-    ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-
-    ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-    ✓ tibble  3.1.6     ✓ dplyr   1.0.8
-    ✓ tidyr   1.2.0     ✓ stringr 1.4.0
-    ✓ readr   2.1.1     ✓ forcats 0.5.1
-
-    ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    x dplyr::filter() masks stats::filter()
-    x dplyr::lag()    masks stats::lag()
 
 # {#Afsnit}Udvælg rækker med filter
 
