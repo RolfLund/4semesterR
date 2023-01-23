@@ -19,13 +19,13 @@ I denne sektion ser vi nærmere på forskellige funktioner til at rekode i R.
 
 Vi kan overordnet adskille mellem tre typer af rekodning:
 
--   Simpel rekodning (fx omregning af eksisterende varibel)
+-   Simpel rekodning (fx omregning af eksisterende variabel)
 -   Ændring af kategorier (fx ved at sammenslå flere kategorier til én)
 -   Omkodning fra numerisk til kategorisk (fx ved at lave variable for kategoriseringer af alder, indkomst eller andet)
 
 # {#Afsnit}Hvornår laver man en ny variabel?
 
-Når man laver datahåndtering, bør man altid bestræbe sig efter ikke at *fjerne* information fra datasættet. Når man laver variabelændringer, bør man derfor *altid* lave en ny variabel, hvis informationen i den oprindleige variabel ændres (fx når man rekoder fra numerisk til kateogriske eller sammenslår kategorier).
+Når man laver datahåndtering, bør man altid bestræbe sig efter ikke at *fjerne* information fra datasættet. Når man laver variabelændringer, bør man derfor *altid* lave en ny variabel, hvis informationen i den oprindelige variabel ændres (fx når man rekoder fra numerisk til kategoriske eller sammenslår kategorier).
 
 Hvis variabelændringer primært går på at rette fejl i variablen, så kan man typisk fint overskrive den oprindelige variabel. Dette kan fx være aktuelt, hvis variabel skal ændres fra tekst til numerisk, eller hvis der skal rettes fejl i kategorinavne.
 
@@ -82,11 +82,11 @@ Vi har tidligere set på hvordan variable kan dannes eller rekodes fra eksistere
 
 Rekodning af kategoriske data må gøres anderledes. Her står man typisk enten over for at skulle ændre kategorierne, slå kategorier sammen eller danne kategorier ud fra nogle betingelser (fx hvis man skal lave en intervalskaleret variabel om til kategorisk).
 
-`tidyverse` (pakken `dplyr`) har en række funktioner til rekodning af kategoriske værdier. De tre hovedfunktioner er: 
+`tidyverse` (pakken `dplyr`) har en række funktioner til rekodning af kategoriske værdier. De tre hovedfunktioner er:
 
-- `recode`: Ændrer enkelte kategorier 
-- `if_else`: Rekodning baseret på ét logisk udtryk 
-- `case_when`: Rekodning baseret på flere logiske udtryk
+-   `recode`: Ændrer enkelte kategorier
+-   `if_else`: Rekodning baseret på ét logisk udtryk
+-   `case_when`: Rekodning baseret på flere logiske udtryk
 
 Alle disse skal kombineres med `mutate`.
 

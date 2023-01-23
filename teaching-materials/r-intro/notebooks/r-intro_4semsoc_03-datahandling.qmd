@@ -17,11 +17,11 @@ ess18 <- read_csv("https://github.com/RolfLund/4semesterR/raw/master/teaching-ma
 
 Når man arbejder med data, er man næsten altid nødt til at foretage visse ændringer i data, før at de er egnet til analyse. Dette kaldes "datahåndtering".
 
-Datahåndtering inkluderer blandt andet: 
+Datahåndtering inkluderer blandt andet:
 
-- Udvælge specifikke observationer og variable (kaldes også subsetting) 
-- Danne nye variables 
-- Rekode værdier
+-   Udvælge specifikke observationer og variable (kaldes også subsetting)
+-   Danne nye variables
+-   Rekode værdier
 
 R understøtter datahåndtering med "basis"-kommandoer, men funktionerne tilgængelige gennem tidyverse (https://www.tidyverse.org/) er langt mere intuitive.
 
@@ -186,7 +186,7 @@ head(ess18_male_subset)
 
 # {#Afsnit}Variabelændringer med mutate
 
-En væsentlig del af datahåndtering er at foretage forskellige variabelændringer - enten i form af at rekode værdier i en variabel eller ved at danne nye variable, som gør brug af informaiton fra andre variable.
+En væsentlig del af datahåndtering er at foretage forskellige variabelændringer - enten i form af at rekode værdier i en variabel eller ved at danne nye variable, som gør brug af information fra andre variable.
 
 I `tidyverse` bruges funktionen `mutate` til at foretage variabelændringer - uanset om der er tale om nye variable eller ændring af eksisterende (rekodning).
 

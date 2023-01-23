@@ -14,7 +14,7 @@ format:
       \usepackage[english]{babel}
       \usepackage[T1]{fontenc}
       \usepackage{helvet}
-      \title{Introduktion til R}
+      \title{Introduktion til R I}
       \date{6. februar 2023}
       \author{Kristian G. Kjelmann (\href{mailto:kgk@socsci.aau.dk}{{\tt kgk@socsci.aau.dk}})\\
               \&\\
