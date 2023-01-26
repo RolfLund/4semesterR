@@ -69,11 +69,10 @@ summary(ess18)
      Length:1285        Length:1285        Length:1285        Length:1285       
      Class :character   Class :character   Class :character   Class :character  
      Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-
-
-​                                                                                
-​                                                                                
-​                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
          gndr               yrbrn        edlvddk              eduyrs  
      Length:1285        Min.   :1929   Length:1285        Min.   : 0  
      Class :character   1st Qu.:1952   Class :character   1st Qu.:11  
@@ -98,6 +97,7 @@ summary(ess18)
      3rd Qu.: 70.00  
      Max.   :613.00  
      NA's   :5       
+
 
 ## Data frames og variable
 
