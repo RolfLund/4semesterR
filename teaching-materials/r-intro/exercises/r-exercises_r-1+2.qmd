@@ -1,0 +1,70 @@
+---
+format: 
+  beamer:
+    theme: AAUsimple
+    fontsize: 10pt
+    header-includes: |
+      \title{Introduktion til R}
+      \date{6. februar 2023}
+      \author{Kristian G. Kjelmann (\href{mailto:kgk@socsci.aau.dk}{{\tt kgk@socsci.aau.dk}})\\
+              \&\\
+              Rolf L. Lund (\href{mailto:rolfll@socsci.aau.dk}{{\tt rolfll@socsci.aau.dk}})
+              }
+      \begin{document}
+editor: visual
+execute:
+  echo: true
+  warning: false
+  error: true
+---
+
+## ØVELSE 1
+
+1.  Lav et script, der danner følgende objekter:
+
+-   `navn1`: `"araya"`
+-   `navn2`: `"townsend"`
+-   `aar1`: `1961` (uden anførselstegn)
+-   `aar2`: `"1972"` (med anførselstegn)
+
+2.  Kør dit script og kontrollér, at de fire objekter dannes uden fejl.
+
+3.  Tilføj kode til dit script, der danner objekter, der indeholder alder for hhv. `aar1` og `aar2`.
+
+4.  Kør koden for at danne objekterne. Hvis der gives fejl, undersøg da, hvad fejlen kan være og ret din kodefil til.
+
+5.  Tilføj kode til dit script, der bruger funktionen `gsub()` til at skifte det lille "t" i `navn2` ud med stort "T" (se hjælpefilen).
+
+## ØVELSE 2
+
+1.  Sørg for at `tidyverse` er installeret og indlæst
+
+2.  Hent ESS18 datasættet ned på din computer
+
+-   Data findes på moodle
+
+-   *Sørg for at lægge data et sted, hvor du kan finde det igen!*
+
+3.  Indlæs datasæt som dataframe i R med `read_csv()` eller brug peg-og-klik i RStudio
+
+## ØVELSE 3
+
+1.  Tilføj kode til dit script, der laver en vector, der indeholder alder for personerne i datasættet (fødselsår findes i variabel `yrbrn`)
+
+2.  Udregn gennemsnitsalder for personer i datasættet med funktionen `mean()`
+
+3.  Find ud af, om alder for person med fødselsår som `aar2` (objekt fra øvelse 1) er ældre end gennemsnittet i datasættet
+
+## ØVELSE 4
+
+1.  Brug forskellige funktioner til at udregne følgende:
+
+-   Middelværdien (`mean()`) for tid brugt på internettet om dagen (`netustm`)
+
+-   Den højeste værdi (`max()`) for tid brugt på internettet om dagen (`netustm`)
+
+-   Medianen (`median()`) for brutto månedsløn (`grspnum`)
+
+*BEMÆRK!* Variablene indeholder muligvis missing-værdier. Tjek hjælpefilerne for at se, hvordan man tager højde for dette.
+
+2. Lav et nyt script, der kun indeholder indlæsning af tidyverse (øverst) og indlæsning af datasæt (bruges til dag 2).

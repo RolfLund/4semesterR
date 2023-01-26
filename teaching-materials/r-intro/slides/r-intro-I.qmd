@@ -102,16 +102,26 @@ Brugt R siden 2016
 
 ## Hvad er R?
 
+::: {.columns align="center"}
+::: {.column width="65%" align="center"}
 R er et gratis analyseprogram med sit eget kommandosprog/kodesprog.\
 \
 Programmet egner sig især til kvantitative analyser og visualiseringer af kvantitative data.\
 \
-R kan arbejde med mange forskellige dataformater. Da programmet er "open source", findes ufatteligt mange udvidelser til programmet, der tilføjer funktioner.\
+R kan arbejde med mange forskellige dataformater. Da programmet er "open source", findes ufatteligt mange udvidelser til programmet, der tilføjer funktioner.
+:::
+
+::: {.column width="35%" align="center"}
+![](img/r-logo.png){fig-align="left" width="100%"}
+:::
+:::
 
 ## Hvad er RStudio?
 
 ::: {.columns align="center"}
 ::: {.column width="50%"}
+![](img/rstudio-logo.png){fig-align="left" height="25%"}
+
 R i sig selv er meget begrænset. RStudio tilføjer en brugerflade ovenpå R, der gør det rarere at arbejde med.\
 \
 Man arbejder typisk i RStudio, når man bruger R.
@@ -184,7 +194,7 @@ Kan lære nye ting
 | `%%`         | Modulo           |
 | `%/%`        | Integer Division |
 
-## R-sproget: R scripts
+## R scripts
 
 Script-filer er tekst filer med kode, som R kan forstå ("fortolke").\
 \
@@ -251,10 +261,12 @@ print(bolden)
 
 Funktioner er kommandoer brugt til at transformere objekter på en eller anden måde og give et output.
 
-Det, som man sætter i funktionen, kaldes et "argument" eller "input". Antallet af argumenter varierer mellem funktioner.\
-\
-Funktioner har alle den samme opbygning: `funktionsnavn(arg1, arg2, arg3)`. (funktionsnavn med argumenterne i parentes adskilt med kommaer).\
-\
+Det, som man sætter i funktionen, kaldes et "argument" eller "input". Antallet af argumenter varierer mellem funktioner.
+
+Funktioner har alle den samme opbygning: 
+
+`funktionsnavn(arg1, arg2, arg3)`. (funktionsnavn med argumenterne i parentes adskilt med kommaer).
+
 Nogle argumenter er krævede, mens andre er valgfrie.
 
 ## Funktioner
@@ -422,6 +434,7 @@ En vector svarer til en enkelt variabel/kolonne i en dataframe, og man arbejder 
 \
 Vectors dukker op i mange forskellige sammenhænge i R, da de bruges hver gang, at man skal angive en samling af flere værdier.
 
+
 ## Vectors (enkeltvariable)
 
 For R er værdier (tal, tekst, osv.) *altid* vectors.\
@@ -429,3 +442,12 @@ For R er værdier (tal, tekst, osv.) *altid* vectors.\
 Selv objekter, der blot består af ét tal, behandler R som en vector (en vector bestående af én talværdi).\
 \
 Derfor virker kommandoer og funktioner i R ens, uanset om de bruges på enkelte tal, enkelte vectors eller enkelte kolonner i en data frame.
+
+
+## Missingværdier
+
+Data vil ofte indeholde missing-værdier. Missing-værdier angiver ikke-gyldige værdier; fx et manglende svar, ugyldigt svar, information der ikke kunne skaffes eller lignende.
+
+Missing-værdier bruges til at give en værdi uden at give en værdi (cellerne skal indeholde noget). På den måde er man ikke nødt til at fjerne hele rækker fra datasættet, selvom der mangler oplysninger.
+
+I R angives missing-værdier med `NA` og er hverken høje eller lave.
