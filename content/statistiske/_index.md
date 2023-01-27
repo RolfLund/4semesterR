@@ -1,7 +1,7 @@
 ---
 title: Statistiske modeller i R
 type: chapter
-weight: 10
+weight: 11
 draft: false
 ---
 R kan bruges til at lave mange forskellige former for statistiske

@@ -1,7 +1,7 @@
 ---
 title: Kategoriske variable i R (factors)
 type: chapter
-weight: 8
+weight: 9
 draft: false
 ---
 Kategoriske variable (nominale og ordinale variable) er typisk gemt som
