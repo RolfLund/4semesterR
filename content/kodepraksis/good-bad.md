@@ -1,7 +1,7 @@
 ---
 title: "Tips til god kodepraksis"
 date: 2023-01-27T08:26:22+01:00
-draft: true
+draft: false
 ---
 
 
