@@ -8,7 +8,6 @@ draft: false
 
 Herunder ses eksempler på hhv. god og dårlig kodepraksis. Koderne gør i princippet fuldstændig det samme (skift mellem eksemplerne bed brug af fane-knapperne).
 
-````
 {{< tabs >}}
 {{% tab name="God" %}}
 ```R
@@ -66,7 +65,6 @@ ggplot(data_5,aes(x=overtid,y=grspnum,colour=gndr))+
 ```
 {{% /tab %}}
 {{< /tabs >}}
-````
 
 
 
