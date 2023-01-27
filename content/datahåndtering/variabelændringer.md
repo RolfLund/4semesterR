@@ -1,10 +1,10 @@
 ---
 title: Variabelændringer med mutate
-weight: 5
+weight: 6
 ---
 En væsentlig del af datahåndtering er at foretage forskellige
 variabelændringer - enten i form af at rekode værdier i en variabel
-eller ved at danne nye variable, som gør brug af informaiton fra andre
+eller ved at danne nye variable, som gør brug af information fra andre
 variable.
 
 I `tidyverse` bruges funktionen `mutate` til at foretage

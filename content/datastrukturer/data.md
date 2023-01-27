@@ -1,5 +1,5 @@
 ---
-title: Data Frames (Tabeldata i R)
+title: Data frames (Tabeldata i R)
 weight: 3
 ---
 `ess18` er nu et objekt, der indeholder et datasæt. Bemærk at måden vi
@@ -57,6 +57,7 @@ middelværdi, standardafvigelse, minimum, maksimum, kvartiler).
 summary(ess18)
 ```
 
+
           idno           netustm          ppltrst          vote          
      Min.   :  5816   Min.   :   0.0   Min.   : 0.00   Length:1285       
      1st Qu.: 93707   1st Qu.:  90.0   1st Qu.: 6.00   Class :character  
@@ -69,9 +70,6 @@ summary(ess18)
      Length:1285        Length:1285        Length:1285        Length:1285       
      Class :character   Class :character   Class :character   Class :character  
      Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-                                                                                
-                                                                                
-                                                                                
                                                                                 
          gndr               yrbrn        edlvddk              eduyrs  
      Length:1285        Min.   :1929   Length:1285        Min.   : 0  

@@ -1,6 +1,6 @@
 ---
 title: Håndtering af missingværdier
-weight: 3
+weight: 4
 ---
 Missingværdier er angivet med `NA` i R.
 

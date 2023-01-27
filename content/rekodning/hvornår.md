@@ -5,8 +5,8 @@ weight: 1
 Når man laver datahåndtering, bør man altid bestræbe sig efter ikke at
 *fjerne* information fra datasættet. Når man laver variabelændringer,
 bør man derfor *altid* lave en ny variabel, hvis informationen i den
-oprindleige variabel ændres (fx når man rekoder fra numerisk til
-kateogriske eller sammenslår kategorier).
+oprindelige variabel ændres (fx når man rekoder fra numerisk til
+kategoriske eller sammenslår kategorier).
 
 Hvis variabelændringer primært går på at rette fejl i variablen, så kan
 man typisk fint overskrive den oprindelige variabel. Dette kan fx være

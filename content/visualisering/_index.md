@@ -2,7 +2,6 @@
 title: Visualisering i R (med ggplot2)
 type: chapter
 weight: 10
-draft: false
 ---
 R (eller mere specifikt `ggplot2`) er rost for de mange måder, som man
 kan danne og tilpasse visualiseringer af data.

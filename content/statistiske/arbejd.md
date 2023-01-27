@@ -1,7 +1,6 @@
 ---
 title: Arbejd med statistiske modeller i R
 weight: 1
-mathjax: true
 ---
 Der er to dele i at få resultaterne af en statistisk model frem i R:
 
@@ -56,7 +55,7 @@ grsp_model
 
     Call:
     lm(formula = grspnum ~ eduyrs + wkhtot, data = ess18)
-    
+
     Coefficients:
     (Intercept)       eduyrs       wkhtot  
         -3668.7        891.1        888.4  
@@ -71,11 +70,11 @@ summary(grsp_model)
 
     Call:
     lm(formula = grspnum ~ eduyrs + wkhtot, data = ess18)
-    
+
     Residuals:
         Min      1Q  Median      3Q     Max 
      -64614  -16639  -10324   -1448 2955649 
-    
+
     Coefficients:
                 Estimate Std. Error t value Pr(>|t|)  
     (Intercept)  -3668.7    20645.3  -0.178   0.8590  
@@ -83,7 +82,7 @@ summary(grsp_model)
     wkhtot         888.4      458.2   1.939   0.0529 .
     ---
     Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    
+
     Residual standard error: 121600 on 707 degrees of freedom
       (575 observations deleted due to missingness)
     Multiple R-squared:  0.007698,  Adjusted R-squared:  0.004891 

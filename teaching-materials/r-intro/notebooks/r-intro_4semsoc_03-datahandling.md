@@ -107,7 +107,7 @@ En række operationer i R returnerer altid logiske værdier:
 `filter()` forventer et logisk udtryk som kriterie, og bevarer så alle
 de observationer, som opfylder kriteriet.
 
-# \#{#Afsnit}Udvælg variable med select
+# {#Afsnit}Udvælg variable med select
 
 `select` tager mindst to input: et datasæt (en dataframe) og en eller
 flere variable fra det datasæt, som kan beholdes/gemmes i et nyt
@@ -306,7 +306,7 @@ head(ess18_male_subset)
 
 En væsentlig del af datahåndtering er at foretage forskellige
 variabelændringer - enten i form af at rekode værdier i en variabel
-eller ved at danne nye variable, som gør brug af informaiton fra andre
+eller ved at danne nye variable, som gør brug af information fra andre
 variable.
 
 I `tidyverse` bruges funktionen `mutate` til at foretage

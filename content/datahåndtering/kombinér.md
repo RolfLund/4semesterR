@@ -1,6 +1,6 @@
 ---
-title: Kombinér datahåndteringsfunktioner med pipe (\|\>)
-weight: 4
+title: Kombinér datahåndteringsfunktioner med pipe (|>)
+weight: 5
 ---
 Det bliver hurtigt omstændeligt at foretage flere
 datahåndteringsoperationer, hvis man skal specificere navnet på

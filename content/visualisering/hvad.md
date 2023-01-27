@@ -34,7 +34,7 @@ Som hovedregel følger et ggplot denne skabelon:
       <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 
 - **ggplot**: Hovedfunktion. Denne angiver *hvad* der skal visualiseres.
-  Funktikonen `ggplot()` indeholder ikke i sig selv information om
+  Funktionen `ggplot()` indeholder ikke i sig selv information om
   hvilken type plot, der skal laves. Dette angives med en
   “geom”-funktion.
 

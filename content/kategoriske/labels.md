@@ -2,7 +2,7 @@
 title: Labels i en factor
 weight: 3
 ---
-factor()` funktionen har også et `labels` argument. Denne bruges til at
+`factor()` funktionen har også et `labels` argument. Denne bruges til at
 angive, hvad værdierne i factoren skal hedde. Som standard antager R, at
 `labels` skal være det samme som `levels`, men man kan vælge at
 specificere andre labels. Disse skal så angives i samme rækkefølge som

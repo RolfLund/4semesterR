@@ -2,7 +2,6 @@
 title: Datastrukturer i R
 type: chapter
 weight: 5
-draft: false
 ---
 R har forskellige måder at lagre data på. Vi har hidtil set på, hvordan
 R håndterer enkelte værdier. I det følgende ser vi på, hvordan R

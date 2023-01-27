@@ -1,5 +1,5 @@
 ---
-title: Output af model (med `stargazer`)
+title: Output af model (med stargazer)
 weight: 3
 ---
 Outputtet af en model i R konsollen er ikke kønt og egner sig dårligt

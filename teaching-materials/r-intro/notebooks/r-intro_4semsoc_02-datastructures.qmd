@@ -74,7 +74,7 @@ Til R introduktionerne bruger vi et udsnit af European Social Survey fra 2018 (h
 **Datasættet indeholder følgende variable:**
 
 | variabel | beskrivelse                                                        |
-|-----------------------------------------|-------------------------------|
+|----------|--------------------------------------------------------------------|
 | idno     | Respondent's identification number                                 |
 | netustm  | Internet use, how much time on typical day, in minutes             |
 | ppltrst  | Most people can be trusted or you can't be too careful             |
