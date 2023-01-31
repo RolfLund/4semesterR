@@ -49,8 +49,8 @@ midlertidige data frame objekter samt at skulle skrive navn på input
 data frame:
 
 ``` r
-ess18_male_subset <- ess18 %>% # subset skal tage udgangspunkt i ess18
-    filter(gndr == 'Male') %>% # filter for mænd - datainput er output af ovenstående (en kopi af ess18)
+ess18_male_subset <- ess18 |> # subset skal tage udgangspunkt i ess18
+    filter(gndr == 'Male') |> # filter for mænd - datainput er output af ovenstående (en kopi af ess18)
     select(idno, gndr, yrbrn, edlvddk) # udvælg variable - datainput er output af ovenstående (ess18 filtreret for mænd)
 
 head(ess18_male_subset)
