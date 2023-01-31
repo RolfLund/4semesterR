@@ -22,3 +22,16 @@
 
 
 ### R intro II
+
+| Tid  | Kl.   |      | Lokale 1 aktivitet                           | Lokale 1 underviser | Lokale 2 aktivitet                           | Lokale 2 underviser |
+| ---- | ----- | ---- | -------------------------------------------- | ------------------- | -------------------------------------------- | ------------------- |
+| 0    | 12.30 |      | Datahåndtering i R (slide 1-15)              | KGK (virtuelt)      | Datahåndtering i R (slide 1-15)              | KGK                 |
+| 45   | 13.15 |      | Pause                                        |                     | Pause                                        |                     |
+| 60   | 13.30 |      | Datahåndtering i R (slide 1-15)              | KGK (virtuelt)      | Datahåndtering i R (slide 1-15)              | KGK                 |
+| 90   | 14.00 |      | ØVELSE 1+2                                   | RLL                 | ØVELSE 1+2                                   | KGK                 |
+| 105  | 14.15 |      | Pause                                        |                     | Pause                                        |                     |
+| 120  | 14.30 |      | ØVELSE 1+2                                   | RLL                 | ØVELSE 1+2                                   | KGK                 |
+| 135  | 14.45 |      | Opsamling på øvelser                         | RLL                 | Opsamling på øvelser                         | KGK                 |
+| 150  | 15.00 |      | God kodepraksis (slide 16-18)<br />ØVELSE 7a | RLL                 | God kodepraksis (slide 16-18)<br />ØVELSE 7b | KGK                 |
+| 180  | 15.45 |      | ØVELSE 8a (fælles)                           | RLL                 | ØVELSE 8b (fælles)                           | KGK                 |
+| 225  | 16.15 |      | Færdig                                       |                     | Færdig                                       |                     |
