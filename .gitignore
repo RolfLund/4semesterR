@@ -3,3 +3,6 @@ teaching-materials/r-intro/slides/img/
 teaching-materials/r-intro/notebooks/convert/
 
 
+.Rproj.user
+*.Rproj
+*.Rhistory
