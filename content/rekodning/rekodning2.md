@@ -86,26 +86,20 @@ bevarer resten, som de er:
 ``` r
 ess18n <- ess18 |> 
     mutate(health_r = ifelse(health %in% c('Very bad', 'Bad', 'Fair'), 'Not good', health)) |>
-    select(idno, health, healthdum)
-```
+    select(idno, health, health_r)
 
-    Error in `select()`:
-    ! Can't subset columns that don't exist.
-    x Column `healthdum` doesn't exist.
-
-``` r
 head(ess18n)
 ```
 
     # A tibble: 6 × 3
-       idno health   healthdum
-      <dbl> <chr>    <chr>    
-    1  5816 Good     Good     
-    2  7251 Fair     Not good 
-    3  7887 Fair     Not good 
-    4  9607 Good     Good     
-    5 11688 Very bad Not good 
-    6 12355 Fair     Not good 
+       idno health   health_r
+      <dbl> <chr>    <chr>   
+    1  5816 Good     Good    
+    2  7251 Fair     Not good
+    3  7887 Fair     Not good
+    4  9607 Good     Good    
+    5 11688 Very bad Not good
+    6 12355 Fair     Not good
 
 Koden kan oversættes til: Hvis værdien i `health` er enten “Very bad”,
 “Bad” eller “Fair”, så kod om til “Not good”. Ellers bevar værdien, som
