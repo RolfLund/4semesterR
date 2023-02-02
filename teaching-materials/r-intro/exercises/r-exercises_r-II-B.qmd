@@ -24,7 +24,6 @@ execute:
 
 2.  Beregn middelværdien for tid brugt på internettet om dagen (`netustm`) for subsettet.
 
-
 ## ØVELSE 2
 
 1.  Tilføj en aldersvariabel til subsettet (datasættet er fra 2018).
@@ -35,26 +34,24 @@ execute:
 
 -   Husk at `as.numeric()` tvinger værdier om til tal.
 
-3. Hvad er det maksimale antal år, en respondent i subsettet har boet hjemme? (brug enten `summary()` eller `max()`).
+3.  Hvad er det maksimale antal år, en respondent i subsettet har boet hjemme? (brug enten `summary()` eller `max()`).
 
-4. Hvor gammel er personen, som har boet hjemme længst?
-
+4.  Hvor gammel er personen, som har boet hjemme længst?
 
 ## ØVELSE 3
 
-1. Skriv din kodefil ren, så den *kun* indeholder indlæsning af data, filtreringen og udvælgelse af variable fra øvelse 1 samt variable dannet fra øvelse 2.
+1.  Skriv din kodefil ren, så den *kun* indeholder indlæsning af data, filtreringen og udvælgelse af variable fra øvelse 1 samt variable dannet fra øvelse 2.
 
-2. Overvej hvad du kan gøre, for at gøre din kode mere læsbar (indsæt kommentarer, tilføj afsnit osv.). Tilret din kode herefeter.
+2.  Overvej hvad du kan gøre, for at gøre din kode mere læsbar (indsæt kommentarer, tilføj afsnit osv.). Tilret din kode herefeter.
 
-3. Læg din kodefil på moodle ("Kodefiler hold B").
-
+3.  Læg din kodefil på moodle ("Kodefiler hold B").
 
 ## ØVELSE 4 (fælles)
 
 Vi har modtaget en kodefil, som danner et subset af ESS18 data samt danner variabel for alder samt variabel for, hvor meget man arbejder mere end man er ansat til (overarbejde).
 
-1. Find ud af hvad subsettet indeholder ved at kigge på kodefilen *uden at køre den!*.
+1.  Find ud af hvad subsettet indeholder ved at kigge på kodefilen *uden at køre den!*.
 
-2. Find ud af hvad der skal tilrettes for, at koden virker på din egen computer.
+2.  Find ud af hvad der skal tilrettes for, at koden virker på din egen computer.
 
-3. Find ud af hvilke linjer kode der skal tilføjes, for at vi kan se alder for den person, som har mest overarbejde.
+3.  Find ud af hvilke linjer kode der skal tilføjes, for at vi kan se alder for den person, som har mest overarbejde.

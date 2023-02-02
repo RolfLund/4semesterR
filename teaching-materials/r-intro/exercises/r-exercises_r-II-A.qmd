@@ -24,7 +24,6 @@ execute:
 
 2.  Beregn middelværdien for tid brugt på internettet om dagen (`netustm`) for subsettet.
 
-
 ## ØVELSE 2
 
 1.  Tilføj en aldersvariabel til subsettet (datasættet er fra 2018).
@@ -33,24 +32,22 @@ execute:
 
 3.  Hvad er den højeste overarbejdsværdi? (brug enten `summary()` eller `max()`)
 
-4. Hvor meget tid på internettet bruger personen med mest overarbejde?
-
+4.  Hvor meget tid på internettet bruger personen med mest overarbejde?
 
 ## ØVELSE 3
 
-1. Skriv din kodefil ren, så den *kun* indeholder indlæsning af data, filtreringen og udvælgelse af variable fra øvelse 1 samt variable dannet fra øvelse 2.
+1.  Skriv din kodefil ren, så den *kun* indeholder indlæsning af data, filtreringen og udvælgelse af variable fra øvelse 1 samt variable dannet fra øvelse 2.
 
-2. Overvej hvad du kan gøre, for at gøre din kode mere læsbar (indsæt kommentarer, tilføj afsnit osv.). Tilret din kode herefeter.
+2.  Overvej hvad du kan gøre, for at gøre din kode mere læsbar (indsæt kommentarer, tilføj afsnit osv.). Tilret din kode herefeter.
 
-3. Læg din kodefil på moodle ("Kodefiler hold A").
-
+3.  Læg din kodefil på moodle ("Kodefiler hold A").
 
 ## ØVELSE 4 (fælles)
 
 Vi har modtaget en kodefil, som danner et subset af ESS18 data samt danner variabel for alder samt variabel for, hvor mange år man boede hjemme, inden man flyttede hjemmefra.
 
-1. Find ud af hvad subsettet indeholder ved at kigge på kodefilen *uden at køre den!*.
+1.  Find ud af hvad subsettet indeholder ved at kigge på kodefilen *uden at køre den!*.
 
-2. Find ud af hvad der skal tilrettes for, at koden virker på din egen computer.
+2.  Find ud af hvad der skal tilrettes for, at koden virker på din egen computer.
 
-3. Find ud af hvilke linjer kode der skal tilføjes, for at vi kan se, hvor meget tid på internettet personen, som boede flest år hjemme, bruger.
+3.  Find ud af hvilke linjer kode der skal tilføjes, for at vi kan se, hvor meget tid på internettet personen, som boede flest år hjemme, bruger.
