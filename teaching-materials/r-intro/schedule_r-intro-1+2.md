@@ -32,6 +32,6 @@
 | 105  | 14.15 |      | Pause                                        |                     | Pause                                        |                     |
 | 120  | 14.30 |      | ØVELSE 1+2                                   | RLL                 | ØVELSE 1+2                                   | KGK                 |
 | 135  | 14.45 |      | Opsamling på øvelser                         | RLL                 | Opsamling på øvelser                         | KGK                 |
-| 150  | 15.00 |      | God kodepraksis (slide 16-18)<br />ØVELSE 3a | RLL                 | God kodepraksis (slide 16-18)<br />ØVELSE 1b | KGK                 |
-| 180  | 15.45 |      | ØVELSE 4a (fælles)                           | RLL                 | ØVELSE 2b (fælles)                           | KGK                 |
+| 150  | 15.00 |      | God kodepraksis (slide 16-18)<br />ØVELSE 3a | RLL                 | God kodepraksis (slide 16-18)<br />ØVELSE 3b | KGK                 |
+| 180  | 15.45 |      | ØVELSE 4a (fælles)                           | RLL                 | ØVELSE 4b (fælles)                           | KGK                 |
 | 225  | 16.15 |      | Færdig                                       |                     | Færdig                                       |                     |
