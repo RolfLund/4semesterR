@@ -263,7 +263,7 @@ Funktioner er kommandoer brugt til at transformere objekter på en eller anden m
 
 Det, som man sætter i funktionen, kaldes et "argument" eller "input". Antallet af argumenter varierer mellem funktioner.
 
-Funktioner har alle den samme opbygning: 
+Funktioner har alle den samme opbygning:
 
 `funktionsnavn(arg1, arg2, arg3)`. (funktionsnavn med argumenterne i parentes adskilt med kommaer).
 
@@ -434,7 +434,6 @@ En vector svarer til en enkelt variabel/kolonne i en dataframe, og man arbejder 
 \
 Vectors dukker op i mange forskellige sammenhænge i R, da de bruges hver gang, at man skal angive en samling af flere værdier.
 
-
 ## Vectors (enkeltvariable)
 
 For R er værdier (tal, tekst, osv.) *altid* vectors.\
@@ -442,7 +441,6 @@ For R er værdier (tal, tekst, osv.) *altid* vectors.\
 Selv objekter, der blot består af ét tal, behandler R som en vector (en vector bestående af én talværdi).\
 \
 Derfor virker kommandoer og funktioner i R ens, uanset om de bruges på enkelte tal, enkelte vectors eller enkelte kolonner i en data frame.
-
 
 ## Missingværdier
 

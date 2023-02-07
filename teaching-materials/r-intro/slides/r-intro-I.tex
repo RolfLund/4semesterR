@@ -227,7 +227,7 @@
 \date{}
 
 \begin{document}
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, interior hidden, breakable, sharp corners, boxrule=0pt]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, breakable, sharp corners, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, enhanced, frame hidden]}{\end{tcolorbox}}\fi
 
 \begin{frame}{Dagens program}
 \protect\hypertarget{dagens-program}{}
@@ -443,8 +443,8 @@ Kan lære nye ting
 \end{longtable}
 \end{frame}
 
-\begin{frame}[fragile]{R-sproget: R scripts}
-\protect\hypertarget{r-sproget-r-scripts}{}
+\begin{frame}[fragile]{R scripts}
+\protect\hypertarget{r-scripts}{}
 Script-filer er tekst filer med kode, som R kan forstå (``fortolke'').\\
 \strut \\
 En script-fil kan forstås som en ``analyseopskrift'', der indeholder
@@ -566,12 +566,13 @@ Funktioner er kommandoer brugt til at transformere objekter på en eller
 anden måde og give et output.
 
 Det, som man sætter i funktionen, kaldes et ``argument'' eller
-``input''. Antallet af argumenter varierer mellem funktioner.\\
-\strut \\
+``input''. Antallet af argumenter varierer mellem funktioner.
+
 Funktioner har alle den samme opbygning:
+
 \texttt{funktionsnavn(arg1,\ arg2,\ arg3)}. (funktionsnavn med
-argumenterne i parentes adskilt med kommaer).\\
-\strut \\
+argumenterne i parentes adskilt med kommaer).
+
 Nogle argumenter er krævede, mens andre er valgfrie.
 \end{frame}
 
@@ -823,6 +824,20 @@ vector bestående af én talværdi).\\
 \strut \\
 Derfor virker kommandoer og funktioner i R ens, uanset om de bruges på
 enkelte tal, enkelte vectors eller enkelte kolonner i en data frame.
+\end{frame}
+
+\begin{frame}[fragile]{Missingværdier}
+\protect\hypertarget{missingvuxe6rdier}{}
+Data vil ofte indeholde missing-værdier. Missing-værdier angiver
+ikke-gyldige værdier; fx et manglende svar, ugyldigt svar, information
+der ikke kunne skaffes eller lignende.
+
+Missing-værdier bruges til at give en værdi uden at give en værdi
+(cellerne skal indeholde noget). På den måde er man ikke nødt til at
+fjerne hele rækker fra datasættet, selvom der mangler oplysninger.
+
+I R angives missing-værdier med \texttt{NA} og er hverken høje eller
+lave.
 \end{frame}
 
 
