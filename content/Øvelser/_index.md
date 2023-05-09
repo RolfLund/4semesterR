@@ -21,7 +21,7 @@ Der kontrolleres for køn (`gndr`) og alder (udregnet med `yrbrn` "fødselsår")
 
 Link til data: https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv
 
-I kan se variabelbeskrivelse under sektionen ["Intro til R 1"](https://rolflund.github.io/4semesterR/intro-til-r-1/#indhold-i-data).
+I kan se variabelbeskrivelse under sektionen ["Datastrukturer i R/Indlæsning af data"](https://rolflund.github.io/4semesterR/datastrukturer/indl%25C3%25A6sning/#data-brugt-i-undervisningen-european-social-survey-2018).
 
 
 
@@ -80,6 +80,6 @@ I kan se variabelbeskrivelse under sektionen ["Intro til R 1"](https://rolflund.
 10. Udvid modellen med kontrolvariabel for, hvorvidt man stemte på rød eller blå blok
 
 
-
+11. Eksportér modellen med `stargazer`, så den er klar til at inkludere i en rapport.
 
 
