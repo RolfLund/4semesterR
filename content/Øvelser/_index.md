@@ -1,8 +1,8 @@
 ---
 title: "Datahåndteringsøvelse"
-date: 2022-05-18
-draft: true
-weight: 14
+date: 2023-05-09
+draft: false
+weight: 12
 ---
 
 ## Øvelse
@@ -81,5 +81,4 @@ I kan se variabelbeskrivelse under sektionen ["Datastrukturer i R/Indlæsning af
 
 
 11. Eksportér modellen med `stargazer`, så den er klar til at inkludere i en rapport.
-
 
