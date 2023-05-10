@@ -227,7 +227,7 @@
 \date{}
 
 \begin{document}
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, breakable, enhanced, sharp corners, interior hidden, boxrule=0pt, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, enhanced, breakable, sharp corners, frame hidden, interior hidden]}{\end{tcolorbox}}\fi
 
 \begin{frame}{Dagens program}
 \protect\hypertarget{dagens-program}{}
@@ -421,6 +421,108 @@ behandler den i en model!
 }
 
 \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Eksport af statistiske modeller}
+\protect\hypertarget{eksport-af-statistiske-modeller-1}{}
+Outputtet af en model i R konsollen er ikke kønt og egner sig dårligt
+til at fremstille i en publikation (rapport, artikel eller andet).
+
+Der findes forskellige pakker til at lave pæne outputs af modeller fra
+R. En god pakke til dette er pakken
+\href{https://cran.r-project.org/web/packages/stargazer/stargazer.pdf}{\texttt{stargazer}}.
+
+\texttt{stargazer} tillader bl.a. at eksportere output fra en statistisk
+model til en HTML-fil. Indholdet af en HTML-fil kan kopieres direkte
+over i programmer som Microsoft Word.
+\end{frame}
+
+\begin{frame}[fragile]{Eksport af statistiske modeller}
+\protect\hypertarget{eksport-af-statistiske-modeller-2}{}
+\texttt{stargazer} har ufatteligt mange tilpasningsmuligheder.
+
+For at danne en output-fil af en model med stargazer kræves som minimum:
+
+\begin{itemize}
+\tightlist
+\item
+  En model (det objekt hvor modellen er gemt - ikke outputtet af
+  \texttt{summary()})
+\item
+  En filtype (\texttt{stargazer} kan danne forskellige filtyper, som kan
+  styres med argumentet \texttt{type}. \texttt{type\ =\ "HTML"} danner
+  et HTML-output)
+\item
+  Et filnavn, som outputtet skal gemmes til (dette gøres med argumentet
+  \texttt{out\ =\ \textless{}filnavn\textgreater{}})
+\end{itemize}
+
+\textbf{OBS! Output-filer fra \texttt{stargazer} gemmes i din arbejdssti
+(\texttt{getwd()})}
+\end{frame}
+
+\begin{frame}[fragile]{Eksport af statistiske modeller}
+\protect\hypertarget{eksport-af-statistiske-modeller-3}{}
+\begin{block}{Eksempel på brug af \texttt{stargazer}}
+\protect\hypertarget{eksempel-puxe5-brug-af-stargazer}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{stargazer}\NormalTok{(}
+\NormalTok{  grsp\_model,}
+  \AttributeTok{type =} \StringTok{"html"}\NormalTok{,}
+  \AttributeTok{out =} \StringTok{"grsp\_model2.html"}\NormalTok{,}
+  \AttributeTok{star.cutoffs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.05}\NormalTok{, }\FloatTok{0.01}\NormalTok{, }\FloatTok{0.001}\NormalTok{), }
+  \AttributeTok{decimal.mark =} \StringTok{","}\NormalTok{,}
+  \AttributeTok{digit.separator =} \StringTok{"."}\NormalTok{,}
+  \AttributeTok{covariate.labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Antal års uddannelse"}\NormalTok{, }
+                       \StringTok{"Arbejdstimer om ugen"}\NormalTok{),}
+  \AttributeTok{dep.var.labels.include =} \ConstantTok{FALSE}\NormalTok{,}
+  \AttributeTok{dep.var.caption =} \StringTok{""}\NormalTok{,}
+  \AttributeTok{digits =} \DecValTok{2}\NormalTok{,}
+  \AttributeTok{title =} \StringTok{"Effekt af års uddannelse og arbejdstid på løn"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Eksport af statistiske modeller}
+\protect\hypertarget{eksport-af-statistiske-modeller-4}{}
+\tiny
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6667}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Argument
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Forklaring
+\end{minipage} \\
+\midrule()
+\endhead
+\texttt{type} & Hvilken filtype skal output gemmes som? (``html''
+anbefales) \\
+\texttt{out} & Hvad skal filen hedde? (Husk at ende med ``.html'', hvis
+\texttt{type\ =\ "html"} - vær desuden opmærksom på arbejdssti (tjek med
+\texttt{getwd()}) \\
+\texttt{star.cutoffs} & Skæringsværider for p-værdier til
+stjernenotation. Specificeres som vector med tre tal, svarende til værdi
+for hhv. *, **, *** (fx \texttt{c(0.05,\ 0.01,\ 0.001)}) \\
+\texttt{decimal.mark} & Sæt hvilket tegn, der skal adskille decimaler \\
+\texttt{digit.separator} & Sæt hvilket tegn, der skal adskille
+tusinde \\
+\texttt{digits} & Bestem antal decimaler \\
+\texttt{covariate.labels} & Ændrer mærkater for uafhængige variable.
+Skrives som en vector (\texttt{c()}) i samme rækkefølge som i
+modellen \\
+\texttt{dep.var.labels.include} & Bestem hvorvidt mærkat for afhængig
+variabel skal inkluderes (logisk værdi, \texttt{TRUE}/\texttt{FALSE}) \\
+\texttt{dep.var.caption} & Bestem overskrift for afhængig variabel
+(udelad ved at angive tom tekstværdi: \texttt{""}) \\
+\texttt{title} & Giv output en overskrift \\
+\bottomrule()
+\end{longtable}
 \end{frame}
 
 

@@ -155,3 +155,64 @@ Dette kan lede til uhensigtsmæssige resultater. Man bør derfor altid tage akti
 ## Eksport af statistiske modeller
 
 ![](img/model_egon-drake.png){fig-align="center" width="80%"}
+
+
+## Eksport af statistiske modeller
+
+Outputtet af en model i R konsollen er ikke kønt og egner sig dårligt til at fremstille i en publikation (rapport, artikel eller andet). 
+
+Der findes forskellige pakker til at lave pæne outputs af modeller fra R. En god pakke til dette er pakken [`stargazer`](https://cran.r-project.org/web/packages/stargazer/stargazer.pdf).
+
+`stargazer` tillader bl.a. at eksportere output fra en statistisk model til en HTML-fil. Indholdet af en HTML-fil kan kopieres direkte over i programmer som Microsoft Word.
+
+
+## Eksport af statistiske modeller
+
+`stargazer` har ufatteligt mange tilpasningsmuligheder.
+
+For at danne en output-fil af en model med stargazer kræves som minimum:
+
+- En model (det objekt hvor modellen er gemt - ikke outputtet af `summary()`)
+- En filtype (`stargazer` kan danne forskellige filtyper, som kan styres med argumentet `type`. `type = "HTML"` danner et HTML-output)
+- Et filnavn, som outputtet skal gemmes til (dette gøres med argumentet `out = <filnavn>`)
+
+**OBS! Output-filer fra `stargazer` gemmes i din arbejdssti (`getwd()`)**
+
+
+## Eksport af statistiske modeller
+
+### Eksempel på brug af `stargazer`
+
+```{r, eval = FALSE}
+stargazer(
+  grsp_model,
+  type = "html",
+  out = "grsp_model2.html",
+  star.cutoffs = c(0.05, 0.01, 0.001), 
+  decimal.mark = ",",
+  digit.separator = ".",
+  covariate.labels = c("Antal års uddannelse", 
+                       "Arbejdstimer om ugen"),
+  dep.var.labels.include = FALSE,
+  dep.var.caption = "",
+  digits = 2,
+  title = "Effekt af års uddannelse og arbejdstid på løn"
+)
+```
+
+
+## Eksport af statistiske modeller
+
+\tiny
+|Argument|Forklaring|
+|--|----|
+|`type`|Hvilken filtype skal output gemmes som? (“html” anbefales)|
+|`out`|Hvad skal filen hedde? (Husk at ende med “.html”, hvis `type = "html"` - vær desuden opmærksom på arbejdssti (tjek med `getwd()`)|
+|`star.cutoffs`|Skæringsværider for p-værdier til stjernenotation. Specificeres som vector med tre tal, svarende til værdi for hhv. \*, \*\*, \*\*\* (fx `c(0.05, 0.01, 0.001)`)|
+|`decimal.mark`|Sæt hvilket tegn, der skal adskille decimaler|
+|`digit.separator`|Sæt hvilket tegn, der skal adskille tusinde|
+|`digits`|Bestem antal decimaler|
+|`covariate.labels`|Ændrer mærkater for uafhængige variable. Skrives som en vector (`c()`) i samme rækkefølge som i modellen|
+|`dep.var.labels.include`|Bestem hvorvidt mærkat for afhængig variabel skal inkluderes (logisk værdi, `TRUE`/`FALSE`)|
+|`dep.var.caption`|Bestem overskrift for afhængig variabel (udelad ved at angive tom tekstværdi: `""`)|
+|`title`|Giv output en overskrift|

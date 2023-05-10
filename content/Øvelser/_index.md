@@ -80,5 +80,7 @@ I kan se variabelbeskrivelse under sektionen ["Datastrukturer i R/Indlæsning af
 10. Udvid modellen med kontrolvariabel for, hvorvidt man stemte på rød eller blå blok
 
 
+
+
 11. Eksportér modellen med `stargazer`, så den er klar til at inkludere i en rapport.
 
