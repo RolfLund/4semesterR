@@ -1,0 +1,428 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  10pt,
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{AAUsimple}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\def\tightlist{}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\title{Introduktion til R III}
+\date{12. maj 2023}
+\author{Kristian G. Kjelmann (\href{mailto:kgk@socsci.aau.dk}{{\tt kgk@socsci.aau.dk}})\\
+        \&\\
+        Rolf L. Lund (\href{mailto:rolfll@socsci.aau.dk}{{\tt rolfll@socsci.aau.dk}})
+        }
+\institute{Institut for Sociologi og Socialt Arbejde}
+\pgfdeclareimage[height=1.5cm]{titlepagelogo}{AAUgraphics/aau_logo_new}
+\titlegraphic{
+  \pgfuseimage{titlepagelogo}
+  }
+\begin{document}
+  \begin{frame}[plain,noframenumbering]
+    \titlepage
+  \end{frame}
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, breakable, enhanced, sharp corners, interior hidden, boxrule=0pt, frame hidden]}{\end{tcolorbox}}\fi
+
+\begin{frame}{Dagens program}
+\protect\hypertarget{dagens-program}{}
+\begin{enumerate}
+\item
+  Opsamling på datahåndtering
+\item
+  Eksport af statistiske modeller (med stargazer)
+\item
+  Opsætning af modeller i tekstpublikationer
+\item
+  Øvelser
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Dagens læringsmål}
+\protect\hypertarget{dagens-luxe6ringsmuxe5l}{}
+\begin{itemize}
+\item
+  I kan lave publicérbare modeller med R
+\item
+  I kan løse forskelligartede datahåndteringsudfordringer i det samme
+  datasæt
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Datahåndteringsbegreber}
+\protect\hypertarget{datahuxe5ndteringsbegreber}{}
+\textbf{Har I styr på jeres datahåndteringsbegreber?}
+
+\begin{itemize}
+\item
+  Subsetting
+\item
+  Filtrering
+\item
+  Variabelændringer
+\item
+  Rekodning
+\item
+  Missingværdier
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Statistiske modeller i R}
+\protect\hypertarget{statistiske-modeller-i-r}{}
+Der er to dele i at få resultaterne af en statistisk model frem i R:
+
+\begin{enumerate}
+\item
+  Specificér modellen (fx med en funktion som \texttt{lm()} for lineære
+  modeller)
+\item
+  Få koefficienter og resultater fra modellen (med brug af funktionen
+  \texttt{summary()})
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Statistiske modeller i R - Specificer model}
+\protect\hypertarget{statistiske-modeller-i-r---specificer-model}{}
+Tre ting krævet for at specificere en model:
+
+\begin{enumerate}
+\item
+  Et datasæt
+\item
+  Funktion for typen af model, man vil lave
+\item
+  Formel, der specificerer det sammenhæng, som man vil modellere
+\end{enumerate}
+
+Al datahåndtering i datasæt skal ske \emph{inden} man laver modellen.
+
+Man specificerer en formel med R's formelsyntax, fx
+\texttt{y\ \textasciitilde{}\ x1\ +\ x2\ +\ x3}.
+
+Eksempel:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grsp\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(grspnum }\SpecialCharTok{\textasciitilde{}}\NormalTok{ eduyrs }\SpecialCharTok{+}\NormalTok{ wkhtot, }\AttributeTok{data =}\NormalTok{ ess18)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Statistiske modeller i R - Resultater}
+\protect\hypertarget{statistiske-modeller-i-r---resultater}{}
+En model i R er blot endnu en type objekt.
+
+For at se resultatet af modellen, skal man derfor spørge R korrekt om
+det.
+
+Ved blot at kalde modellen får man begrænsede resultater:
+
+\small
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grsp\_model}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Call:
+lm(formula = grspnum ~ eduyrs + wkhtot, data = ess18)
+
+Coefficients:
+(Intercept)       eduyrs       wkhtot  
+    -3668.7        891.1        888.4  
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Statistiske modeller i R - Resultater}
+\protect\hypertarget{statistiske-modeller-i-r---resultater-1}{}
+Ved at bruge \texttt{summary()} funktionen gives de relevante
+resultater:
+
+\tiny
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(grsp\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Call:
+lm(formula = grspnum ~ eduyrs + wkhtot, data = ess18)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+ -64614  -16639  -10324   -1448 2955649 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)  -3668.7    20645.3  -0.178   0.8590  
+eduyrs         891.1      856.4   1.041   0.2984  
+wkhtot         888.4      458.2   1.939   0.0529 .
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 121600 on 707 degrees of freedom
+  (575 observations deleted due to missingness)
+Multiple R-squared:  0.007698,  Adjusted R-squared:  0.004891 
+F-statistic: 2.742 on 2 and 707 DF,  p-value: 0.06511
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Statistiske modeller i R - factors}
+\protect\hypertarget{statistiske-modeller-i-r---factors}{}
+Som standard vil R behandle tekstvariable i statistiske modeller som
+\emph{unordered factors}; altså nominalt skalerede variable.
+
+R vil desuden tage kategorien, der kommer først i alfabetisk rækkefølge,
+som referencekategori.
+
+Dette kan lede til uhensigtsmæssige resultater. Man bør derfor altid
+tage aktiv stilling til, hvordan den kategoriske variabel skal
+behandles, inden man laver modellen.
+\end{frame}
+
+\begin{frame}[fragile]{Statistiske modeller i R - factors}
+\protect\hypertarget{statistiske-modeller-i-r---factors-1}{}
+\textbf{Overvej følgende:}
+
+\begin{itemize}
+\item
+  Skal variablen behandles som \emph{ordinal} eller \emph{nominal}?
+  (\texttt{ordered} eller \texttt{unordered})
+\item
+  Skal variablen behandles som \emph{intervalskaleret}? (konvertér til
+  numerisk)
+\item
+  Hvis variablen skal behandles som nominal, hvilken kategori skal så
+  være \emph{referencekategorien}? (kan fx ændres med \texttt{relevel} i
+  \texttt{mutate} funktionen)
+\end{itemize}
+
+\emph{HUSK}: Der er forskel på hvad variablen \emph{er}, og hvordan vi
+behandler den i en model!
+\end{frame}
+
+\begin{frame}{Eksport af statistiske modeller}
+\protect\hypertarget{eksport-af-statistiske-modeller}{}
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\textwidth,height=\textheight]{img/model_egon-drake.png}
+
+}
+
+\end{figure}
+\end{frame}
+
+
+
+\end{document}

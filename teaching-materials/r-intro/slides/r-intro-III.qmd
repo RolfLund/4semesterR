@@ -1,0 +1,157 @@
+---
+format: 
+  beamer:
+    theme: AAUsimple
+    keep-tex: true  
+    fontsize: 10pt
+    header-includes: |
+      \def\tightlist{}
+      \usepackage[utf8]{inputenc}
+      \usepackage[english]{babel}
+      \usepackage[T1]{fontenc}
+      \usepackage{helvet}
+      \title{Introduktion til R III}
+      \date{12. maj 2023}
+      \author{Kristian G. Kjelmann (\href{mailto:kgk@socsci.aau.dk}{{\tt kgk@socsci.aau.dk}})\\
+              \&\\
+              Rolf L. Lund (\href{mailto:rolfll@socsci.aau.dk}{{\tt rolfll@socsci.aau.dk}})
+              }
+      \institute{Institut for Sociologi og Socialt Arbejde}
+      \pgfdeclareimage[height=1.5cm]{titlepagelogo}{AAUgraphics/aau_logo_new}
+      \titlegraphic{
+        \pgfuseimage{titlepagelogo}
+        }
+      \begin{document}
+        \begin{frame}[plain,noframenumbering]
+          \titlepage
+        \end{frame}
+editor: visual
+execute:
+  echo: true
+  warning: false
+  error: true
+---
+
+```{r, echo=FALSE, include=FALSE}
+library(tidyverse)
+
+ess18 <- read_csv('https://github.com/RolfLund/4semesterR/raw/master/teaching-materials/r-intro/datasets/ESS2018DK_subset.csv')
+
+```
+
+
+## Dagens program
+
+1. Opsamling på datahåndtering
+
+2. Eksport af statistiske modeller (med stargazer)
+
+3. Opsætning af modeller i tekstpublikationer
+
+4. Øvelser
+
+
+## Dagens læringsmål
+
+- I kan lave publicérbare modeller med R
+
+- I kan løse forskelligartede datahåndteringsudfordringer i det samme datasæt
+
+
+## Datahåndteringsbegreber
+
+**Har I styr på jeres datahåndteringsbegreber?**
+
+- Subsetting
+
+- Filtrering
+
+- Variabelændringer
+
+- Rekodning
+
+- Missingværdier
+
+
+## Statistiske modeller i R
+
+Der er to dele i at få resultaterne af en statistisk model frem i R:
+
+1. Specificér modellen (fx med en funktion som `lm()` for lineære modeller)
+
+2. Få koefficienter og resultater fra modellen (med brug af funktionen `summary()`)
+
+
+
+## Statistiske modeller i R - Specificer model
+
+Tre ting krævet for at specificere en model:
+
+1. Et datasæt
+
+2. Funktion for typen af model, man vil lave
+
+3. Formel, der specificerer det sammenhæng, som man vil modellere
+
+Al datahåndtering i datasæt skal ske *inden* man laver modellen.
+
+Man specificerer en formel med R's formelsyntax, fx `y ~ x1 + x2 + x3`.
+
+Eksempel:
+
+```{r}
+grsp_model <- lm(grspnum ~ eduyrs + wkhtot, data = ess18)
+```
+
+
+
+## Statistiske modeller i R - Resultater
+
+En model i R er blot endnu en type objekt.
+
+For at se resultatet af modellen, skal man derfor spørge R korrekt om det.
+
+Ved blot at kalde modellen får man begrænsede resultater:
+
+\small
+```{r}
+grsp_model
+```
+
+
+## Statistiske modeller i R - Resultater
+
+Ved at bruge `summary()` funktionen gives de relevante resultater:
+
+\tiny
+```{r}
+summary(grsp_model)
+```
+
+
+## Statistiske modeller i R - factors
+
+Som standard vil R behandle tekstvariable i statistiske modeller som *unordered factors*; altså nominalt skalerede variable.
+
+R vil desuden tage kategorien, der kommer først i alfabetisk rækkefølge, som referencekategori.
+
+Dette kan lede til uhensigtsmæssige resultater. Man bør derfor altid tage aktiv stilling til, hvordan den kategoriske variabel skal behandles, inden man laver modellen.
+
+
+## Statistiske modeller i R - factors
+
+**Overvej følgende:**
+
+- Skal variablen behandles som *ordinal* eller *nominal*? (`ordered` eller `unordered`)
+
+- Skal variablen behandles som *intervalskaleret*? (konvertér til numerisk)
+
+- Hvis variablen skal behandles som nominal, hvilken kategori skal så være *referencekategorien*? (kan fx ændres med `relevel` i `mutate` funktionen)
+
+
+*HUSK*: Der er forskel på hvad variablen *er*, og hvordan vi behandler den i en model!
+
+
+## Eksport af statistiske modeller
+
+![](img/model_egon-drake.png){fig-align="center" width="80%"}
