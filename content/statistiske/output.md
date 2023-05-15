@@ -2,6 +2,8 @@
 title: Output af model (med stargazer)
 weight: 3
 ---
+{{< youtube 21pBZm_xhS8 >}}
+
 Outputtet af en model i R konsollen er ikke kønt og egner sig dårligt
 til at fremstille. Der findes dog en række måder at lave pæne outputs af
 modeller fra R. En god pakke til dette er pakken `stargazer`
